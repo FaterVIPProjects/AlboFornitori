@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<SelectDialog 
+		app:filterName="purchase_org"
+		app:propertyName="Ekotx" app:propertyId="Ekorg"
+		app:inputId="purchaseOrganizationFilterInput"
+		id="purchaseOrgInputAssistedDialog"
+		title="{i18n>purchaseOrgValueHelpDialogTitle}" 
+		class="sapUiPopupWithPadding" 
+		items="{oDataModel>/PurchaseOrganizationSet}" 
+		multiSelect="true"
+		search="_handleValueHelpSearch"
+		confirm="_handleValueHelpClose" 
+		cancel="_handleValueHelpClose">
+			<StandardListItem 
+				title="{oDataModel>Ekotx}"
+				info="{oDataModel>Ekorg}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

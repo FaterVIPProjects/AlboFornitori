@@ -1,0 +1,1060 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZVIP_PROJECT_SRV" xml:lang="it" sap:schema-version="0">
+            <EntityType Name="Cluster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ClusterId"/>
+                </Key>
+                <Property Name="ClusterId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cluster Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Spiegazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="SurveyS" Relationship="ZVIP_PROJECT_SRV.SurveyA" FromRole="FromRole_SurveyA" ToRole="ToRole_SurveyA"/>
+                <NavigationProperty Name="ClusterCom" Relationship="ZVIP_PROJECT_SRV.ClusterComs" FromRole="FromRole_ClusterComs" ToRole="ToRole_ClusterComs"/>
+            </EntityType>
+            <EntityType Name="SupplierAnswerGroup" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="GroupId"/>
+                    <PropertyRef Name="ParticipationId"/>
+                    <PropertyRef Name="SurveyId"/>
+                </Key>
+                <Property Name="GroupId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Group Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParticipationId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Participation Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Points" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SurveyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Survey Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SupplierCluster" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierId"/>
+                    <PropertyRef Name="ClusterId"/>
+                </Key>
+                <Property Name="SupplierId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="ID Fornitore" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClusterId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cluster Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Language" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Key" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="35" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SupplierPurOrg" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierId"/>
+                    <PropertyRef Name="Ekorg"/>
+                </Key>
+                <Property Name="SupplierId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="ID Fornitore" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Org. acquisti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuyCurrency" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuyPaymentCondition" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuyIncotermsCode" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuyIncotermsPlace" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuyCheckInvoiceEm" Type="Edm.Boolean" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PurchaseOrganizationId" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuyTransportationMethod" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Componente del numero versione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Smoiappr" Type="Edm.Boolean" sap:label="Indicatore a una posizione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuyCurrencyappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuyPaymentConditionappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuyIncotermsCodeappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BuyIncotermsPlaceappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Smoi" Type="Edm.Boolean" sap:label="SMOI" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vendorschema" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Vendor Schema" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Answer" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AnswerId"/>
+                    <PropertyRef Name="QuestionId"/>
+                    <PropertyRef Name="GroupId"/>
+                    <PropertyRef Name="SurveyId"/>
+                </Key>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Titolo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Descrizione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AnswerId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Id risposta" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuestionId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Id domanda" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HsnePoints" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomValue" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zorder" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Tipo Risposta" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Constraints" Type="Edm.String" Nullable="false" MaxLength="1000" sap:label="Constraints" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="valueState" Type="Edm.String" MaxLength="10" sap:label="Campo carattere (10 posizioni)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GroupId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Group Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="valueStateText" Type="Edm.String" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Selected" Type="Edm.Boolean" sap:label="Selezionato" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mandatory" Type="Edm.Boolean" sap:label="TRUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SurveyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Survey Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Text" Relationship="ZVIP_PROJECT_SRV.AnswerText" FromRole="FromRole_AnswerText" ToRole="ToRole_AnswerText"/>
+            </EntityType>
+            <EntityType Name="Question" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SurveyId"/>
+                    <PropertyRef Name="GroupId"/>
+                    <PropertyRef Name="QuestionId"/>
+                </Key>
+                <Property Name="HsnePoints" Type="Edm.Int32" Nullable="false" sap:label="Punteggio HSE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsHsne" Type="Edm.Boolean" sap:label="Is HSNE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:label="Descrizione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="valueStateText" Type="Edm.String" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="valueState" Type="Edm.String" MaxLength="10" sap:label="Campo carattere (10 posizioni)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SurveyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Survey Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" sap:label="Titolo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zorder" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zoption" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Constraints" Type="Edm.String" Nullable="false" MaxLength="1000" sap:label="Constraints" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Tipo Domanda" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mandatory" Type="Edm.Boolean" Nullable="false" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GroupId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Group Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuestionId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Id domanda" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Text" Relationship="ZVIP_PROJECT_SRV.QuestionText" FromRole="FromRole_QuestionText" ToRole="ToRole_QuestionText"/>
+                <NavigationProperty Name="AnswerS" Relationship="ZVIP_PROJECT_SRV.AnswerA" FromRole="FromRole_AnswerA" ToRole="ToRole_AnswerA"/>
+            </EntityType>
+            <EntityType Name="Group" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SurveyId"/>
+                    <PropertyRef Name="GroupId"/>
+                </Key>
+                <Property Name="TargetPoint" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Constraints" Type="Edm.String" Nullable="false" MaxLength="1000" sap:label="Constraints" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SurveyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Survey Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zorder" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Ordine" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuestCount" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GroupId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Group Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:label="Descrizione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" sap:label="Titolo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Weight" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ThresholdPoint" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Points" Type="Edm.Int32" Nullable="false" sap:label="Punti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HsnePoints" Type="Edm.Int32" Nullable="false" sap:label="Punti HSNE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HsneThreshold" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsHsne" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="QuestionS" Relationship="ZVIP_PROJECT_SRV.QuestionA" FromRole="FromRole_QuestionA" ToRole="ToRole_QuestionA"/>
+            </EntityType>
+            <EntityType Name="Survey" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SurveyId"/>
+                </Key>
+                <Property Name="SurveyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Survey Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GroupCount" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParticipCount" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CanRecompile" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Created" Type="Edm.DateTime" Precision="7" sap:label="Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Updated" Type="Edm.DateTime" Precision="7" sap:label="Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClusterId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cluster Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParticipationId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Participation Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome utente" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Survey Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Showacceptpaymentcondition" Type="Edm.Boolean" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Società" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Org. acquisti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="GroupS" Relationship="ZVIP_PROJECT_SRV.GroupA" FromRole="FromRole_GroupA" ToRole="ToRole_GroupA"/>
+                <NavigationProperty Name="Cluster" Relationship="ZVIP_PROJECT_SRV.SurveyCluster" FromRole="FromRole_SurveyCluster" ToRole="ToRole_SurveyCluster"/>
+            </EntityType>
+            <EntityType Name="Participation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ParticipationId"/>
+                </Key>
+                <Property Name="CompletedT" Type="Edm.DateTime" Precision="7" sap:label="Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParticipationId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Participation Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IpAddress" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserAgent" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Referer" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SurveyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Survey Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExpireT" Type="Edm.DateTime" Precision="7" sap:label="Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SentT" Type="Edm.DateTime" Precision="7" sap:label="Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Note" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CommercialRefId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Commercial Refer id" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DoneByFater" Type="Edm.Boolean" Nullable="false" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SupplierRefId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Supplier Refer id" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CommercManagerId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Commercial Mng id" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="RegistryManagerId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Registry Manager id" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SupplierId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="ID Fornitore" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ModifiedT" Type="Edm.DateTime" Precision="7" sap:label="Timestamp" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="DraftStat" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Draft Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Acceptedpaymentcondition" Type="Edm.Boolean" sap:label="" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Privacyaccepted" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClusterId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cluster Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Società" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Org. acquisti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Emailupload" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Formupload" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekotx" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Descrizione Org. Acquisti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedT" Type="Edm.DateTime" Precision="7" sap:label="Timestamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Butxt" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Descrizione Società" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StatusChange" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Participation Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Apprrespcomm" Type="Edm.Boolean" sap:label="Indicatore a una posizione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Apprrespanag" Type="Edm.Boolean" sap:label="Indicatore a una posizione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Editbysupplier" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RejectNote" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Survey" Relationship="ZVIP_PROJECT_SRV.ParticipationSurvey" FromRole="FromRole_ParticipationSurvey" ToRole="ToRole_ParticipationSurvey"/>
+                <NavigationProperty Name="Supplier" Relationship="ZVIP_PROJECT_SRV.ParticipationSupplier" FromRole="FromRole_ParticipationSupplier" ToRole="ToRole_ParticipationSupplier"/>
+                <NavigationProperty Name="Cluster" Relationship="ZVIP_PROJECT_SRV.ParticipationCluster" FromRole="FromRole_ParticipationCluster" ToRole="ToRole_ParticipationCluster"/>
+            </EntityType>
+            <EntityType Name="Supplier" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierId"/>
+                </Key>
+                <Property Name="UserPortal" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome utente" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SupplierId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="ID Fornitore" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Lingua" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erdat" Type="Edm.DateTime" Precision="7" sap:label="Data creazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ernam" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Creato da" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Note" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HeaderSap" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IndustrialSector" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PreferredContact" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SearchKeyword" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CommercialEmail" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Spiegazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AdministrationName" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AdministrationEmail" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Spiegazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OdaName" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OdaEmail" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Spiegazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContactArea" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContactCellNumber" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Telefono (2)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContactEmail" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Spiegazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContactName" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContactSurname" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContactTitle" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContactTelNumber" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Telefono (2)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Address" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Indirizzo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PostCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="CAP" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="City" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Località" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Province" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Regione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Regione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TaxCode" Type="Edm.String" MaxLength="16" sap:label="Partita IVA 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fax" Type="Edm.String" Nullable="false" MaxLength="31" sap:label="Telefax" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Phone" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Telefono 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VatCee" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Partita IVA CEE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VatIt" Type="Edm.String" Nullable="false" MaxLength="11" sap:label="Partita IVA IT" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Lifnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Fornitore" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Nome" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Addressnumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Numero civico" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UserHsne" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedT" Type="Edm.DateTime" Precision="7" sap:label="Timestamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentCondition" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Spiegazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CommercialName" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CommercialSurname" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AdministrationSurname" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OdaSurname" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Role" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AdditionalEmail" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Spiegazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccountGroup" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Gruppo conti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Denominazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Naturalperson" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Whsex" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Indicatore a una posizione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Whbirthdate" Type="Edm.DateTime" Precision="7" sap:label="Timestamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Whbirthcity" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Commento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Whjob" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="30 caratteri" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Whcode" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Componente del numero versione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BankAttestation" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name1appr" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IndustrialSectorappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Addressappr" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PostCodeappr" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Provinceappr" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Countryappr" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TaxCodeappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VatCeeappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VatItappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Whsexappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Whbirthdateappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Whbirthcityappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Whjobappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Whcodeappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Hseemail" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Spiegazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Hsefirstname" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Testo (40 posizioni)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Hselastname" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Testo (40 posizioni)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="PurchaseOrg" Relationship="ZVIP_PROJECT_SRV.SupplierPurOrgs" FromRole="FromRole_SupplierPurOrgs" ToRole="ToRole_SupplierPurOrgs"/>
+                <NavigationProperty Name="Company" Relationship="ZVIP_PROJECT_SRV.SupplierCompanies" FromRole="FromRole_SupplierCompanies" ToRole="ToRole_SupplierCompanies"/>
+                <NavigationProperty Name="SupplierCluster" Relationship="ZVIP_PROJECT_SRV.SupplierClusters" FromRole="FromRole_SupplierClusters" ToRole="ToRole_SupplierClusters"/>
+                <NavigationProperty Name="Associated" Relationship="ZVIP_PROJECT_SRV.SupplierSupAssociated" FromRole="FromRole_SupplierSupAssociated" ToRole="ToRole_SupplierSupAssociated"/>
+            </EntityType>
+            <EntityType Name="Company" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Società" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Butxt" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Nome della ditta" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="PurchaseOrg" Relationship="ZVIP_PROJECT_SRV.CompanyPurOrg" FromRole="FromRole_CompanyPurOrg" ToRole="ToRole_CompanyPurOrg"/>
+            </EntityType>
+            <EntityType Name="PurchaseOrganization" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Ekorg"/>
+                </Key>
+                <Property Name="Ekorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Org. acquisti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekotx" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Definizione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Società" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SupplierCompany" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SupplierId"/>
+                    <PropertyRef Name="Bukrs"/>
+                </Key>
+                <Property Name="SupplierId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="ID Fornitore" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Società" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BankName" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Spiegazione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BankAddress" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Via" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BankAddressNum" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Numero civico" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Abi" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cab" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BankAccount" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cin" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Branch" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BranchCode" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Swift" Type="Edm.String" Nullable="false" MaxLength="11" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Iban" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BackupAccount" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReconciliationAccount" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClassificationKey" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentCondition" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentConditionText" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CheckDoubleInvoice" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentMethod" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BirthCity" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BirthDate" Type="Edm.DateTime" Precision="7" sap:label="Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gender" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FiscalCode" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Profession" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SupplierWithholding" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PhysicalPerson" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Abiappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cabappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cinappr" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BankNameappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BankAddressappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BankAccountappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Swiftappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ibanappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentConditionTextappr" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Scadenziario" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="ParticipationId" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RemainingDays" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RespCluster" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MandatoryDoc" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SupplierStatus" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ExpireDate" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SupplierId" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ClusterId" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExpireCheck" Type="Edm.Boolean" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="Country" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="TransportationMethod" Relationship="ZVIP_PROJECT_SRV.CountryTransportationMethod" FromRole="FromRole_CountryTransportationMethod" ToRole="ToRole_CountryTransportationMethod"/>
+                <NavigationProperty Name="PaymentMethod" Relationship="ZVIP_PROJECT_SRV.CountryPaymentMethod" FromRole="FromRole_CountryPaymentMethod" ToRole="ToRole_CountryPaymentMethod"/>
+                <NavigationProperty Name="Regio" Relationship="ZVIP_PROJECT_SRV.Regios" FromRole="FromRole_Regios" ToRole="ToRole_Regios"/>
+                <NavigationProperty Name="Withholdingtaxcode" Relationship="ZVIP_PROJECT_SRV.CountryWHTaxCode" FromRole="FromRole_CountryWHTaxCode" ToRole="ToRole_CountryWHTaxCode"/>
+            </EntityType>
+            <EntityType Name="PaymentCondition" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Incoterm" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Mandatory" Type="Edm.Boolean" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CommMtd" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="TransportationMethod" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CountryKey"/>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="CountryKey" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="WithholdingTaxCode" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                    <PropertyRef Name="CountryKey"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CountryKey" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ReconciliationAccount" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                    <PropertyRef Name="Bukrs"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="File" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FileName"/>
+                    <PropertyRef Name="Supplier"/>
+                </Key>
+                <Property Name="MimeType" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Supplier" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="QuestionT" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Langu"/>
+                    <PropertyRef Name="QuestionId"/>
+                    <PropertyRef Name="GroupId"/>
+                    <PropertyRef Name="SurveyId"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Descrizione" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Title" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Langu" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Lingua" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuestionId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Id domanda" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GroupId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Group Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SurveyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Survey Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="VendorSchema" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Regio" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                    <PropertyRef Name="CountryKey"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CountryKey" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="IndustrialSector" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ClassificationKey" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AccountGroup" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="PaymentMethod" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                    <PropertyRef Name="CountryKey"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CountryKey" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Title" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Description" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SupplierAssociated" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lifnr"/>
+                    <PropertyRef Name="SupplierId"/>
+                </Key>
+                <Property Name="Lifnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Fornitore Associato" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SupplierId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="ID Fornitore" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <NavigationProperty Name="Supplier" Relationship="ZVIP_PROJECT_SRV.SuppliersAssociated" FromRole="FromRole_SuppliersAssociated" ToRole="ToRole_SuppliersAssociated"/>
+            </EntityType>
+            <EntityType Name="TicketH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TicketId"/>
+                    <PropertyRef Name="ParticipationId"/>
+                </Key>
+                <Property Name="Internal" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TicketId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Ticket_id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParticipationId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Participation Id" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Created" Type="Edm.DateTime" Precision="7" sap:label="Timestamp" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Item" Relationship="ZVIP_PROJECT_SRV.TicketItems" FromRole="FromRole_TicketItems" ToRole="ToRole_TicketItems"/>
+            </EntityType>
+            <EntityType Name="TicketI" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Line"/>
+                    <PropertyRef Name="TicketId"/>
+                    <PropertyRef Name="ParticipationId"/>
+                </Key>
+                <Property Name="IsNew" Type="Edm.Boolean" sap:label="Nuovo messaggio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Inserted" Type="Edm.DateTime" Precision="7" sap:label="Timestamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Utente" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Line" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TicketId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Ticket_id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParticipationId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Participation Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ClusterCom" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="ClusterId"/>
+                    <PropertyRef Name="Ekorg"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Società" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClusterId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cluster Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekotx" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Descrizione Org. Acquisti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ekorg" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Org. acquisti" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Resp" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome utente" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RespAnag" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome utente" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Butxt" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Descrizione Società" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Hse" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PurchTerms" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ScoreManagement" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quality" Type="Edm.Boolean" sap:label="Variabile booleana (X=true, -=false, space=unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FirstReminder" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecondReminder" Type="Edm.Int32" Nullable="false" sap:label="Numero" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Company" Relationship="ZVIP_PROJECT_SRV.ClusterCompany" FromRole="FromRole_ClusterCompany" ToRole="ToRole_ClusterCompany"/>
+            </EntityType>
+            <EntityType Name="AnswerT" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SurveyId"/>
+                    <PropertyRef Name="GroupId"/>
+                    <PropertyRef Name="QuestionId"/>
+                    <PropertyRef Name="AnswerId"/>
+                    <PropertyRef Name="Langu"/>
+                </Key>
+                <Property Name="SurveyId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Survey Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GroupId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Group Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuestionId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Id domanda" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AnswerId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Id risposta" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Langu" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Lingua" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Testo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="SurveyA" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Cluster" Multiplicity="1" Role="FromRole_SurveyA"/>
+                <End Type="ZVIP_PROJECT_SRV.Survey" Multiplicity="1" Role="ToRole_SurveyA"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SurveyA">
+                        <PropertyRef Name="ClusterId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SurveyA">
+                        <PropertyRef Name="ClusterId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ClusterComs" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Cluster" Multiplicity="1" Role="FromRole_ClusterComs"/>
+                <End Type="ZVIP_PROJECT_SRV.ClusterCom" Multiplicity="*" Role="ToRole_ClusterComs"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ClusterComs">
+                        <PropertyRef Name="ClusterId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ClusterComs">
+                        <PropertyRef Name="ClusterId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ClusterCompany" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.ClusterCom" Multiplicity="1" Role="FromRole_ClusterCompany"/>
+                <End Type="ZVIP_PROJECT_SRV.Company" Multiplicity="1" Role="ToRole_ClusterCompany"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ClusterCompany">
+                        <PropertyRef Name="ClusterId"/>
+                        <PropertyRef Name="Bukrs"/>
+                        <PropertyRef Name="Ekorg"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ClusterCompany">
+                        <PropertyRef Name="Bukrs"/>
+                        <PropertyRef Name="Bukrs"/>
+                        <PropertyRef Name="Bukrs"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SupplierPurOrgs" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Supplier" Multiplicity="1" Role="FromRole_SupplierPurOrgs"/>
+                <End Type="ZVIP_PROJECT_SRV.SupplierPurOrg" Multiplicity="*" Role="ToRole_SupplierPurOrgs"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SupplierPurOrgs">
+                        <PropertyRef Name="SupplierId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SupplierPurOrgs">
+                        <PropertyRef Name="SupplierId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SupplierCompanies" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Supplier" Multiplicity="1" Role="FromRole_SupplierCompanies"/>
+                <End Type="ZVIP_PROJECT_SRV.SupplierCompany" Multiplicity="*" Role="ToRole_SupplierCompanies"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SupplierCompanies">
+                        <PropertyRef Name="SupplierId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SupplierCompanies">
+                        <PropertyRef Name="SupplierId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SupplierClusters" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Supplier" Multiplicity="1" Role="FromRole_SupplierClusters"/>
+                <End Type="ZVIP_PROJECT_SRV.Cluster" Multiplicity="*" Role="ToRole_SupplierClusters"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SupplierClusters">
+                        <PropertyRef Name="SupplierId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SupplierClusters">
+                        <PropertyRef Name="ClusterId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SupplierSupAssociated" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Supplier" Multiplicity="1" Role="FromRole_SupplierSupAssociated"/>
+                <End Type="ZVIP_PROJECT_SRV.SupplierAssociated" Multiplicity="*" Role="ToRole_SupplierSupAssociated"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SupplierSupAssociated">
+                        <PropertyRef Name="SupplierId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SupplierSupAssociated">
+                        <PropertyRef Name="SupplierId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CompanyPurOrg" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Company" Multiplicity="1" Role="FromRole_CompanyPurOrg"/>
+                <End Type="ZVIP_PROJECT_SRV.PurchaseOrganization" Multiplicity="1" Role="ToRole_CompanyPurOrg"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CompanyPurOrg">
+                        <PropertyRef Name="Bukrs"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CompanyPurOrg">
+                        <PropertyRef Name="Bukrs"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AnswerText" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Answer" Multiplicity="1" Role="FromRole_AnswerText"/>
+                <End Type="ZVIP_PROJECT_SRV.AnswerT" Multiplicity="*" Role="ToRole_AnswerText"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AnswerText">
+                        <PropertyRef Name="AnswerId"/>
+                        <PropertyRef Name="QuestionId"/>
+                        <PropertyRef Name="SurveyId"/>
+                        <PropertyRef Name="GroupId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AnswerText">
+                        <PropertyRef Name="AnswerId"/>
+                        <PropertyRef Name="QuestionId"/>
+                        <PropertyRef Name="SurveyId"/>
+                        <PropertyRef Name="GroupId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Regios" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Country" Multiplicity="1" Role="FromRole_Regios"/>
+                <End Type="ZVIP_PROJECT_SRV.Regio" Multiplicity="*" Role="ToRole_Regios"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Regios">
+                        <PropertyRef Name="Key"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Regios">
+                        <PropertyRef Name="CountryKey"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CountryPaymentMethod" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Country" Multiplicity="1" Role="FromRole_CountryPaymentMethod"/>
+                <End Type="ZVIP_PROJECT_SRV.PaymentMethod" Multiplicity="*" Role="ToRole_CountryPaymentMethod"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CountryPaymentMethod">
+                        <PropertyRef Name="Key"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CountryPaymentMethod">
+                        <PropertyRef Name="CountryKey"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CountryTransportationMethod" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Country" Multiplicity="1" Role="FromRole_CountryTransportationMethod"/>
+                <End Type="ZVIP_PROJECT_SRV.TransportationMethod" Multiplicity="*" Role="ToRole_CountryTransportationMethod"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CountryTransportationMethod">
+                        <PropertyRef Name="Key"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CountryTransportationMethod">
+                        <PropertyRef Name="CountryKey"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CountryWHTaxCode" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Country" Multiplicity="1" Role="FromRole_CountryWHTaxCode"/>
+                <End Type="ZVIP_PROJECT_SRV.WithholdingTaxCode" Multiplicity="*" Role="ToRole_CountryWHTaxCode"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CountryWHTaxCode">
+                        <PropertyRef Name="Key"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CountryWHTaxCode">
+                        <PropertyRef Name="CountryKey"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GroupA" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Survey" Multiplicity="1" Role="FromRole_GroupA"/>
+                <End Type="ZVIP_PROJECT_SRV.Group" Multiplicity="*" Role="ToRole_GroupA"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_GroupA">
+                        <PropertyRef Name="SurveyId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_GroupA">
+                        <PropertyRef Name="SurveyId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SurveyCluster" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Survey" Multiplicity="1" Role="FromRole_SurveyCluster"/>
+                <End Type="ZVIP_PROJECT_SRV.Cluster" Multiplicity="1" Role="ToRole_SurveyCluster"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SurveyCluster">
+                        <PropertyRef Name="SurveyId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SurveyCluster">
+                        <PropertyRef Name="ClusterId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="QuestionA" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Group" Multiplicity="1" Role="FromRole_QuestionA"/>
+                <End Type="ZVIP_PROJECT_SRV.Question" Multiplicity="*" Role="ToRole_QuestionA"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_QuestionA">
+                        <PropertyRef Name="SurveyId"/>
+                        <PropertyRef Name="GroupId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_QuestionA">
+                        <PropertyRef Name="SurveyId"/>
+                        <PropertyRef Name="GroupId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GroupUsAnswerGroup" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Group" Multiplicity="1" Role="FromRole_GroupUsAnswerGroup"/>
+                <End Type="ZVIP_PROJECT_SRV.SupplierAnswerGroup" Multiplicity="*" Role="ToRole_GroupUsAnswerGroup"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_GroupUsAnswerGroup">
+                        <PropertyRef Name="SurveyId"/>
+                        <PropertyRef Name="GroupId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_GroupUsAnswerGroup">
+                        <PropertyRef Name="SurveyId"/>
+                        <PropertyRef Name="GroupId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="TicketItems" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.TicketH" Multiplicity="1" Role="FromRole_TicketItems"/>
+                <End Type="ZVIP_PROJECT_SRV.TicketI" Multiplicity="*" Role="ToRole_TicketItems"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_TicketItems">
+                        <PropertyRef Name="TicketId"/>
+                        <PropertyRef Name="ParticipationId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_TicketItems">
+                        <PropertyRef Name="TicketId"/>
+                        <PropertyRef Name="ParticipationId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SuppliersAssociated" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.SupplierAssociated" Multiplicity="1" Role="FromRole_SuppliersAssociated"/>
+                <End Type="ZVIP_PROJECT_SRV.Supplier" Multiplicity="1" Role="ToRole_SuppliersAssociated"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SuppliersAssociated">
+                        <PropertyRef Name="Lifnr"/>
+                        <PropertyRef Name="SupplierId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SuppliersAssociated">
+                        <PropertyRef Name="Lifnr"/>
+                        <PropertyRef Name="SupplierId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AnswerA" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Question" Multiplicity="1" Role="FromRole_AnswerA"/>
+                <End Type="ZVIP_PROJECT_SRV.Answer" Multiplicity="*" Role="ToRole_AnswerA"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AnswerA">
+                        <PropertyRef Name="SurveyId"/>
+                        <PropertyRef Name="GroupId"/>
+                        <PropertyRef Name="QuestionId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AnswerA">
+                        <PropertyRef Name="SurveyId"/>
+                        <PropertyRef Name="GroupId"/>
+                        <PropertyRef Name="QuestionId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="QuestionText" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Question" Multiplicity="1" Role="FromRole_QuestionText"/>
+                <End Type="ZVIP_PROJECT_SRV.QuestionT" Multiplicity="*" Role="ToRole_QuestionText"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_QuestionText">
+                        <PropertyRef Name="QuestionId"/>
+                        <PropertyRef Name="GroupId"/>
+                        <PropertyRef Name="SurveyId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_QuestionText">
+                        <PropertyRef Name="QuestionId"/>
+                        <PropertyRef Name="GroupId"/>
+                        <PropertyRef Name="SurveyId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ParticipationUsAnswerGroup" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Participation" Multiplicity="1" Role="FromRole_ParticipationUsAnswerGroup"/>
+                <End Type="ZVIP_PROJECT_SRV.SupplierAnswerGroup" Multiplicity="*" Role="ToRole_ParticipationUsAnswerGroup"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ParticipationUsAnswerGroup">
+                        <PropertyRef Name="ParticipationId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ParticipationUsAnswerGroup">
+                        <PropertyRef Name="ParticipationId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ParticipationSupplier" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Participation" Multiplicity="1" Role="FromRole_ParticipationSupplier"/>
+                <End Type="ZVIP_PROJECT_SRV.Supplier" Multiplicity="1" Role="ToRole_ParticipationSupplier"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ParticipationSupplier">
+                        <PropertyRef Name="ParticipationId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ParticipationSupplier">
+                        <PropertyRef Name="SupplierId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ParticipationCluster" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Participation" Multiplicity="1" Role="FromRole_ParticipationCluster"/>
+                <End Type="ZVIP_PROJECT_SRV.Cluster" Multiplicity="1" Role="ToRole_ParticipationCluster"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ParticipationCluster">
+                        <PropertyRef Name="ParticipationId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ParticipationCluster">
+                        <PropertyRef Name="ClusterId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ParticipationSurvey" sap:content-version="1">
+                <End Type="ZVIP_PROJECT_SRV.Participation" Multiplicity="1" Role="FromRole_ParticipationSurvey"/>
+                <End Type="ZVIP_PROJECT_SRV.Survey" Multiplicity="1" Role="ToRole_ParticipationSurvey"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ParticipationSurvey">
+                        <PropertyRef Name="ParticipationId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ParticipationSurvey">
+                        <PropertyRef Name="ParticipationId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZVIP_PROJECT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ClusterSet" EntityType="ZVIP_PROJECT_SRV.Cluster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SupplierAnswerGroupSet" EntityType="ZVIP_PROJECT_SRV.SupplierAnswerGroup" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SupplierClusterSet" EntityType="ZVIP_PROJECT_SRV.SupplierCluster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="LanguageSet" EntityType="ZVIP_PROJECT_SRV.Language" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SupplierPurOrgSet" EntityType="ZVIP_PROJECT_SRV.SupplierPurOrg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AnswerSet" EntityType="ZVIP_PROJECT_SRV.Answer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="QuestionSet" EntityType="ZVIP_PROJECT_SRV.Question" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="GroupSet" EntityType="ZVIP_PROJECT_SRV.Group" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SurveySet" EntityType="ZVIP_PROJECT_SRV.Survey" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ParticipationSet" EntityType="ZVIP_PROJECT_SRV.Participation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SupplierSet" EntityType="ZVIP_PROJECT_SRV.Supplier" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CompanySet" EntityType="ZVIP_PROJECT_SRV.Company" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PurchaseOrganizationSet" EntityType="ZVIP_PROJECT_SRV.PurchaseOrganization" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SupplierCompanySet" EntityType="ZVIP_PROJECT_SRV.SupplierCompany" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ScadenziarioSet" EntityType="ZVIP_PROJECT_SRV.Scadenziario" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CountrySet" EntityType="ZVIP_PROJECT_SRV.Country" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PaymentConditionSet" EntityType="ZVIP_PROJECT_SRV.PaymentCondition" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="IncotermSet" EntityType="ZVIP_PROJECT_SRV.Incoterm" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CommMtdSet" EntityType="ZVIP_PROJECT_SRV.CommMtd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="TransportationMethodSet" EntityType="ZVIP_PROJECT_SRV.TransportationMethod" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="WithholdingTaxCodeSet" EntityType="ZVIP_PROJECT_SRV.WithholdingTaxCode" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ReconciliationAccountSet" EntityType="ZVIP_PROJECT_SRV.ReconciliationAccount" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="FileSet" EntityType="ZVIP_PROJECT_SRV.File" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="QuestionTSet" EntityType="ZVIP_PROJECT_SRV.QuestionT" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="VendorSchemaSet" EntityType="ZVIP_PROJECT_SRV.VendorSchema" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="RegioSet" EntityType="ZVIP_PROJECT_SRV.Regio" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="IndustrialSectorSet" EntityType="ZVIP_PROJECT_SRV.IndustrialSector" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ClassificationKeySet" EntityType="ZVIP_PROJECT_SRV.ClassificationKey" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="AccountGroupSet" EntityType="ZVIP_PROJECT_SRV.AccountGroup" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CurrencySet" EntityType="ZVIP_PROJECT_SRV.Currency" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PaymentMethodSet" EntityType="ZVIP_PROJECT_SRV.PaymentMethod" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="TitleSet" EntityType="ZVIP_PROJECT_SRV.Title" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SupplierAssociatedSet" EntityType="ZVIP_PROJECT_SRV.SupplierAssociated" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TicketHSet" EntityType="ZVIP_PROJECT_SRV.TicketH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TicketISet" EntityType="ZVIP_PROJECT_SRV.TicketI" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ClusterSocSet" EntityType="ZVIP_PROJECT_SRV.ClusterCom" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AnswerTSet" EntityType="ZVIP_PROJECT_SRV.AnswerT" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="GroupASet" Association="ZVIP_PROJECT_SRV.GroupA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SurveySet" Role="FromRole_GroupA"/>
+                    <End EntitySet="GroupSet" Role="ToRole_GroupA"/>
+                </AssociationSet>
+                <AssociationSet Name="ParticipationAnswerGroupSet" Association="ZVIP_PROJECT_SRV.ParticipationUsAnswerGroup" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ParticipationSet" Role="FromRole_ParticipationUsAnswerGroup"/>
+                    <End EntitySet="SupplierAnswerGroupSet" Role="ToRole_ParticipationUsAnswerGroup"/>
+                </AssociationSet>
+                <AssociationSet Name="GroupAnswerSet" Association="ZVIP_PROJECT_SRV.GroupUsAnswerGroup" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="GroupSet" Role="FromRole_GroupUsAnswerGroup"/>
+                    <End EntitySet="SupplierAnswerGroupSet" Role="ToRole_GroupUsAnswerGroup"/>
+                </AssociationSet>
+                <AssociationSet Name="SupplierCompaniesSet" Association="ZVIP_PROJECT_SRV.SupplierCompanies" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SupplierSet" Role="FromRole_SupplierCompanies"/>
+                    <End EntitySet="SupplierCompanySet" Role="ToRole_SupplierCompanies"/>
+                </AssociationSet>
+                <AssociationSet Name="QuestionASet" Association="ZVIP_PROJECT_SRV.QuestionA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="GroupSet" Role="FromRole_QuestionA"/>
+                    <End EntitySet="QuestionSet" Role="ToRole_QuestionA"/>
+                </AssociationSet>
+                <AssociationSet Name="ParticipationSupplierSet" Association="ZVIP_PROJECT_SRV.ParticipationSupplier" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ParticipationSet" Role="FromRole_ParticipationSupplier"/>
+                    <End EntitySet="SupplierSet" Role="ToRole_ParticipationSupplier"/>
+                </AssociationSet>
+                <AssociationSet Name="CountryPaymentMethodSet" Association="ZVIP_PROJECT_SRV.CountryPaymentMethod" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CountrySet" Role="FromRole_CountryPaymentMethod"/>
+                    <End EntitySet="PaymentMethodSet" Role="ToRole_CountryPaymentMethod"/>
+                </AssociationSet>
+                <AssociationSet Name="SupplierPurOrgsSet" Association="ZVIP_PROJECT_SRV.SupplierPurOrgs" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SupplierSet" Role="FromRole_SupplierPurOrgs"/>
+                    <End EntitySet="SupplierPurOrgSet" Role="ToRole_SupplierPurOrgs"/>
+                </AssociationSet>
+                <AssociationSet Name="SupplierSupAssociated_AssocSet" Association="ZVIP_PROJECT_SRV.SupplierSupAssociated" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SupplierSet" Role="FromRole_SupplierSupAssociated"/>
+                    <End EntitySet="SupplierAssociatedSet" Role="ToRole_SupplierSupAssociated"/>
+                </AssociationSet>
+                <AssociationSet Name="SurveyASet" Association="ZVIP_PROJECT_SRV.SurveyA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ClusterSet" Role="FromRole_SurveyA"/>
+                    <End EntitySet="SurveySet" Role="ToRole_SurveyA"/>
+                </AssociationSet>
+                <AssociationSet Name="ParticipationSurveySet" Association="ZVIP_PROJECT_SRV.ParticipationSurvey" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ParticipationSet" Role="FromRole_ParticipationSurvey"/>
+                    <End EntitySet="SurveySet" Role="ToRole_ParticipationSurvey"/>
+                </AssociationSet>
+                <AssociationSet Name="ParticipationClusterSet" Association="ZVIP_PROJECT_SRV.ParticipationCluster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ParticipationSet" Role="FromRole_ParticipationCluster"/>
+                    <End EntitySet="ClusterSet" Role="ToRole_ParticipationCluster"/>
+                </AssociationSet>
+                <AssociationSet Name="AnswerAssSet" Association="ZVIP_PROJECT_SRV.AnswerA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="QuestionSet" Role="FromRole_AnswerA"/>
+                    <End EntitySet="AnswerSet" Role="ToRole_AnswerA"/>
+                </AssociationSet>
+                <AssociationSet Name="AnswerTextSet" Association="ZVIP_PROJECT_SRV.AnswerText" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="AnswerSet" Role="FromRole_AnswerText"/>
+                    <End EntitySet="AnswerTSet" Role="ToRole_AnswerText"/>
+                </AssociationSet>
+                <AssociationSet Name="TicketItemsSet" Association="ZVIP_PROJECT_SRV.TicketItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="TicketHSet" Role="FromRole_TicketItems"/>
+                    <End EntitySet="TicketISet" Role="ToRole_TicketItems"/>
+                </AssociationSet>
+                <AssociationSet Name="SuppliersAssociatedSet" Association="ZVIP_PROJECT_SRV.SuppliersAssociated" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SupplierAssociatedSet" Role="FromRole_SuppliersAssociated"/>
+                    <End EntitySet="SupplierSet" Role="ToRole_SuppliersAssociated"/>
+                </AssociationSet>
+                <AssociationSet Name="RegiosSet" Association="ZVIP_PROJECT_SRV.Regios" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CountrySet" Role="FromRole_Regios"/>
+                    <End EntitySet="RegioSet" Role="ToRole_Regios"/>
+                </AssociationSet>
+                <AssociationSet Name="ClusterCompanySet" Association="ZVIP_PROJECT_SRV.ClusterCompany" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ClusterSocSet" Role="FromRole_ClusterCompany"/>
+                    <End EntitySet="CompanySet" Role="ToRole_ClusterCompany"/>
+                </AssociationSet>
+                <AssociationSet Name="CountryTransportationMethodSet" Association="ZVIP_PROJECT_SRV.CountryTransportationMethod" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CountrySet" Role="FromRole_CountryTransportationMethod"/>
+                    <End EntitySet="TransportationMethodSet" Role="ToRole_CountryTransportationMethod"/>
+                </AssociationSet>
+                <AssociationSet Name="QuestionTextSet" Association="ZVIP_PROJECT_SRV.QuestionText" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="QuestionSet" Role="FromRole_QuestionText"/>
+                    <End EntitySet="QuestionTSet" Role="ToRole_QuestionText"/>
+                </AssociationSet>
+                <AssociationSet Name="ClusterComsSet" Association="ZVIP_PROJECT_SRV.ClusterComs" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ClusterSet" Role="FromRole_ClusterComs"/>
+                    <End EntitySet="ClusterSocSet" Role="ToRole_ClusterComs"/>
+                </AssociationSet>
+                <AssociationSet Name="CountryWHTaxCodeSet" Association="ZVIP_PROJECT_SRV.CountryWHTaxCode" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CountrySet" Role="FromRole_CountryWHTaxCode"/>
+                    <End EntitySet="WithholdingTaxCodeSet" Role="ToRole_CountryWHTaxCode"/>
+                </AssociationSet>
+                <AssociationSet Name="SupplierClustersSet" Association="ZVIP_PROJECT_SRV.SupplierClusters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SupplierSet" Role="FromRole_SupplierClusters"/>
+                    <End EntitySet="ClusterSet" Role="ToRole_SupplierClusters"/>
+                </AssociationSet>
+                <AssociationSet Name="CompanyPurOrgSet" Association="ZVIP_PROJECT_SRV.CompanyPurOrg" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CompanySet" Role="FromRole_CompanyPurOrg"/>
+                    <End EntitySet="PurchaseOrganizationSet" Role="ToRole_CompanyPurOrg"/>
+                </AssociationSet>
+                <AssociationSet Name="SurveyClusterSet" Association="ZVIP_PROJECT_SRV.SurveyCluster" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SurveySet" Role="FromRole_SurveyCluster"/>
+                    <End EntitySet="ClusterSet" Role="ToRole_SurveyCluster"/>
+                </AssociationSet>
+                <FunctionImport Name="Scadenziario" ReturnType="Collection(ZVIP_PROJECT_SRV.Scadenziario)" EntitySet="ScadenziarioSet" m:HttpMethod="GET">
+                    <Parameter Name="suppliers" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="respcluster" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="datefrom" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="dateto" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="supplierstatus" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="TileCount" ReturnType="Collection(ZVIP_PROJECT_SRV.Participation)" EntitySet="ParticipationSet" m:HttpMethod="GET"/>
+                <FunctionImport Name="GetSurveyId" ReturnType="ZVIP_PROJECT_SRV.Survey" EntitySet="SurveySet" m:HttpMethod="GET"/>
+                <FunctionImport Name="ApplyDecision" ReturnType="ZVIP_PROJECT_SRV.Participation" EntitySet="ParticipationSet" m:HttpMethod="POST">
+                    <Parameter Name="ParticipationId" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Decision" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="TaxNumberCheck" ReturnType="ZVIP_PROJECT_SRV.Participation" EntitySet="ParticipationSet" m:HttpMethod="GET">
+                    <Parameter Name="NaturalPerson" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="Regio" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Taxcode" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Vat" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Country" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://SAPGW1.INTRANET.FATER.IT:8000/sap/opu/odata/sap/ZVIP_PROJECT_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://SAPGW1.INTRANET.FATER.IT:8000/sap/opu/odata/sap/ZVIP_PROJECT_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

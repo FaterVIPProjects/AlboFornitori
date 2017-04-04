@@ -1,0 +1,74 @@
+[
+	{
+		"CompanyName": "Fater S.p.a.",
+		"CompanyId": "20",
+		"Location": "Pescara",
+		"PurchaseOrganizations": [
+			{
+				"OrganizationName": "Org. Acq. Fater",
+				"OrganizaionId": "10",
+				"CompanyId": "20"
+			}
+		]
+	},
+	{
+		"CompanyName": "FATER Portugal, Unipessoa",
+		"CompanyId": "30",
+		"Location": "Guifões-Matosinhos",
+		"PurchaseOrganizations": [
+			{
+				"OrganizationName": "Porto Purch. Org.",
+				"OrganizaionId": "30",
+				"CompanyId": "30"
+			}
+		]
+	},
+	{
+		"CompanyName": "FATER CENTRAL EUROPE SRL",
+		"CompanyId": "32",
+		"Location": "Bucuresti",
+		"PurchaseOrganizations": [
+			{
+				"OrganizationName": "Romania Purch. Org.",
+				"OrganizaionId": "32",
+				"CompanyId": "32"
+			}
+		]
+	},
+	{
+		"CompanyName": "FATER EASTERN EUROPE LLC",
+		"CompanyId": "34",
+		"Location": "Moscow",
+		"PurchaseOrganizations": [
+			{
+				"OrganizationName": "Russia Purch Org.",
+				"OrganizaionId": "34",
+				"CompanyId": "34"
+			}
+		]
+	},
+	{
+		"CompanyName": "FATER Turkey",
+		"CompanyId": "40",
+		"Location": "Turchia",
+		"PurchaseOrganizations": [
+			{
+				"OrganizationName": "Turkey Purch. Org.",
+				"OrganizaionId": "40",
+				"CompanyId": "40"
+			}
+		]
+	},
+	{
+		"CompanyName": "FATER MOROCCO SARLAU",
+		"CompanyId": "50",
+		"Location": "Marocco",
+		"PurchaseOrganizations": [
+			{
+				"OrganizationName": "Morocco Purch. Org.",
+				"OrganizaionId": "50",
+				"CompanyId": "50"
+			}
+		]
+	}
+]

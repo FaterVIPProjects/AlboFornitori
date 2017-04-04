@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" 
+	xmlns:te="org.fater.app.control"
+	xmlns:u="sap.ui.unified"
+	xmlns="sap.m">
+	<List items="{QuestionS/}" updateFinished="onUpdateFinished"
+		visible="{= ${QuestionS/}.length > 0 }">
+		<items>
+			<CustomListItem>
+				<Panel expandable="true" expanded="true" width="100%" height="auto" backgroundDesign="Solid" class="surveyContent">
+					<headerToolbar>
+						<Toolbar design="Info" class="newLineToolbar">
+							<Title text="{= ${Mandatory} === true ? '* ' : ' ' }{Title}" titleStyle="H6" textAlign="Initial" class="newLine" />
+						</Toolbar>
+					</headerToolbar>
+					<content>
+							<Toolbar visible="{= ${IsHsne} &amp;&amp; ${user>/Username} === ${/CommercialRefId} &amp;&amp; ${/DoneByFater} === false }">   
+								<ToolbarSpacer/>
+								<Text visible="{= ${user>/Username} === ${/CommercialRefId} &amp;&amp; ${/DoneByFater} === false }" text="{i18n>scoreHSE}: {HsnePoints}" class="sapUiSmallMarginEnd"/>
+								<HBox justifyContent="Center" visible="{= ${user>/Username} === ${/CommercialRefId} &amp;&amp; ${/DoneByFater} === false }">
+									<core:Icon	src="sap-icon://circle-task-2"
+										color="{= ${HsnePoints} !== -1 ? '#008000' : '#ff0000' }"/>
+								</HBox>
+							</Toolbar>
+							<l:Grid
+								visible="{= ${Description} !== undefined &amp;&amp; ${Description} !== null &amp;&amp; ${Description}.length > 0 }"
+								class="sapUiSmallMarginTop"
+								hSpacing="2"
+								defaultSpan="L12 M12 S12">
+								<l:content>
+									<Label text="{i18n>description}">
+										<layoutData>
+											<l:GridData	span="L3 M3 S3" />
+										</layoutData>
+									</Label>
+									<Text text="{Description}">
+										<layoutData>
+											<l:GridData	span="L9 M9 S9" />
+										</layoutData>
+									</Text>
+								</l:content>
+							</l:Grid>
+							
+							<l:Grid
+								defaultSpan="L12 M12 S12">
+								<l:content>
+								</l:content>
+							</l:Grid>
+							
+					</content>
+				</Panel>
+			</CustomListItem>
+		</items>
+	</List>
+</core:FragmentDefinition>

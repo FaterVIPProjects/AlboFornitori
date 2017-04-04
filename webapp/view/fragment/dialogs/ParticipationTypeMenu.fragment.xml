@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleMenuConfirm">
+		<filterItems>
+			<ViewSettingsFilterItem text="{i18n>participationType}" key="Type">
+				<items>
+					<ViewSettingsItem text="{i18n>PARTICIPATION_TYPE_PRE_QUALIFICATION}" key="{Types>/participationType/PRE_QUALIFICATION}" />
+					<ViewSettingsItem text="{i18n>PARTICIPATION_TYPE_PRE_QUALIFICATION_AND_QUALIFICATION}" key="{Types>/participationType/PRE_QUALIFICATION_AND_QUALIFICATION}" />
+					<ViewSettingsItem text="{i18n>PARTICIPATION_TYPE_ONLY_CODIFICATION}" key="{Types>/participationType/ONLY_CODIFICATION}" />
+					<ViewSettingsItem text="{i18n>PARTICIPATION_TYPE_QUALIFICATION}" key="{Types>/participationType/QUALIFICATION}" />
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

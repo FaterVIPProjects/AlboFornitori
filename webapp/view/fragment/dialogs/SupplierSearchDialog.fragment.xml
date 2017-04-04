@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<SelectDialog 
+		id="supplier_search_dialog"
+		noDataText="{i18n>selectSupplierDialogNoDataText}"
+		title="{i18n>selectSupplierDialogTitle}"
+		items="{
+			path: 'oDataModel>/SupplierSet'
+		}"
+		search="handleSupplierDialogSearch"
+		confirm="handleSupplierDialogConfirm"
+		multiSelect="true">
+			<ObjectListItem title="{oDataModel>Name1}">
+				<attributes>
+					<ObjectAttribute text="{i18n>supplierCode}: {oDataModel>SupplierId}" 
+						visible="{= ${oDataModel>SupplierId} !== '' &amp;&amp; ${oDataModel>Lifnr} === ''}"/>	
+					<ObjectAttribute text="{i18n>supplierCode}: {oDataModel>Lifnr}"
+						visible="{= ${oDataModel>Lifnr} !== ''}"/>		
+					<ObjectAttribute text="{i18n>vat}: {oDataModel>VatIt}" 
+						visible="{= ${oDataModel>VatIt} !== ''}"/>						
+					<ObjectAttribute text="{i18n>vatCEE}: {oDataModel>VatCee}" 
+						visible="{= ${oDataModel>VatCee} !== ''}"/>
+					<ObjectAttribute text="{i18n>taxCode}: {oDataModel>TaxCode}"
+						visible="{= ${oDataModel>TaxCode} !== ''}"/>
+					<ObjectAttribute text="{oDataModel>City} ({oDataModel>Country})" 
+						visible="{= ${oDataModel>City} !== ''}"/>
+				</attributes>				
+			</ObjectListItem>
+    </SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,57 @@
+[
+  {
+    "__metadata": {
+      "id": "https://webidetesting2122015-p1942102633trial.dispatcher.hanatrial.ondemand.com/sap/opu/odata/sap/ZVIP_PROJECT_SRV/ClusterSet('1')",
+      "uri": "https://webidetesting2122015-p1942102633trial.dispatcher.hanatrial.ondemand.com/sap/opu/odata/sap/ZVIP_PROJECT_SRV/ClusterSet('1')",
+      "type": "ZVIP_PROJECT_SRV.Cluster"
+    },
+    "ClusterId": "1",
+    "Name": "Materiali Tecnici",
+    "ManagerId": "12345",
+    "ManagerName": "Mario Rossi"
+  },
+  {
+    "__metadata": {
+      "id": "https://webidetesting2122015-p1942102633trial.dispatcher.hanatrial.ondemand.com/sap/opu/odata/sap/ZVIP_PROJECT_SRV/ClusterSet('2')",
+      "uri": "https://webidetesting2122015-p1942102633trial.dispatcher.hanatrial.ondemand.com/sap/opu/odata/sap/ZVIP_PROJECT_SRV/ClusterSet('2')",
+      "type": "ZVIP_PROJECT_SRV.Cluster"
+    },
+    "ClusterId": "2",
+    "Name": "Servizi Posa In Opera",
+    "ManagerId": "12346",
+    "ManagerName": "Paolo Bianchi"
+  },
+  {
+    "__metadata": {
+      "id": "https://webidetesting2122015-p1942102633trial.dispatcher.hanatrial.ondemand.com/sap/opu/odata/sap/ZVIP_PROJECT_SRV/ClusterSet('3')",
+      "uri": "https://webidetesting2122015-p1942102633trial.dispatcher.hanatrial.ondemand.com/sap/opu/odata/sap/ZVIP_PROJECT_SRV/ClusterSet('3')",
+      "type": "ZVIP_PROJECT_SRV.Cluster"
+    },
+    "ClusterId": "3",
+    "Name": "Servizi Intellettuali",
+    "ManagerId": "12347",
+    "ManagerName": "Rosa Verdi"
+  },
+  {
+    "__metadata": {
+      "id": "https://webidetesting2122015-p1942102633trial.dispatcher.hanatrial.ondemand.com/sap/opu/odata/sap/ZVIP_PROJECT_SRV/ClusterSet('4')",
+      "uri": "https://webidetesting2122015-p1942102633trial.dispatcher.hanatrial.ondemand.com/sap/opu/odata/sap/ZVIP_PROJECT_SRV/ClusterSet('4')",
+      "type": "ZVIP_PROJECT_SRV.Cluster"
+    },
+    "ClusterId": "4",
+    "Name": "Materie Prime e prodotti finiti",
+    "ManagerId": "12348",
+    "ManagerName": "Maria Giallo"
+  },
+  {
+    "__metadata": {
+      "id": "https://webidetesting2122015-p1942102633trial.dispatcher.hanatrial.ondemand.com/sap/opu/odata/sap/ZVIP_PROJECT_SRV/ClusterSet('5')",
+      "uri": "https://webidetesting2122015-p1942102633trial.dispatcher.hanatrial.ondemand.com/sap/opu/odata/sap/ZVIP_PROJECT_SRV/ClusterSet('5')",
+      "type": "ZVIP_PROJECT_SRV.Cluster"
+    },
+    "ClusterId": "5",
+    "Name": "Materiali e servizi promozionali",
+    "ManagerId": "12349",
+    "ManagerName": "Giuseppe Neri"
+  }
+]

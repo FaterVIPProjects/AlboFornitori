@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog 
+		title="{i18n>personalizationTableDialogTitle}" 
+		class="sapUiPopupWithPadding">
+			<List
+				width="100%"
+				mode="MultiSelect"
+				rememberSelections="true"
+				items="{tempModel>/tableColumns}">
+				<items>
+					<StandardListItem 
+						title="{tempModel>name}" 
+						selected="{tempModel>selected}"/>	
+				</items><!-- sap.m.ListItemBase -->
+			</List>
+			
+			<beginButton>
+				<Button
+					text="Ok"
+					press="handleTablePersonalizationDialogOKButtonPress"/>
+			</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

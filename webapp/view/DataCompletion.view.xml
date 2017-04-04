@@ -1,0 +1,160 @@
+<mvc:View xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m"
+	xmlns:semantic="sap.m.semantic"
+	controllerName="org.fater.app.controller.DataCompletion"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<semantic:DetailPage
+		id="data_completion_page"
+		title="{i18n>qualificationProcess}"
+		showNavButton="true"
+		navButtonPress="onNavBack"
+		showFooter="false">
+		<semantic:content>
+			<ObjectHeader
+				id="id"
+				title="{/Supplier/Name1}"
+				number="{
+						parts: [
+							{path: '/Status'},
+							{path: '/StatusChange'},
+							{path: '/Editbysupplier'},
+							{path: 'user>/Role'}
+						],	
+						formatter: '.formatter.participationDetailStatus'
+				}"
+				numberState="Success"
+				numberUnit=""
+				intro="{
+						parts: [
+							{path: '/Status'},
+							{path: 'i18n>supplierCode'},
+							{path: '/SupplierId'}
+						],	
+						formatter: '.formatter.supplierCode'
+				}"
+				icon="">
+				<attributes>
+					<ObjectAttribute
+						title="{i18n>participationId}"
+						text="{ParticipationId}"/>
+					<ObjectAttribute
+						title="{i18n>supplierReference}"
+						text="{Supplier/ContactName} {Supplier/ContactSurname}"/>
+					<ObjectAttribute
+						title="{i18n>supplierType}"
+						text="{
+							parts: [
+								{path: '/Supplier/Type'}
+							],	
+							formatter: '.formatter.supplierType'
+						}"/>
+					<ObjectAttribute
+						title="{i18n>supplierQualificationType}"
+						text="{
+							parts: [
+								{path: '/Type'}
+							],	
+							formatter: '.formatter.participationType'
+						}"/>
+					<ObjectAttribute
+						visible="{= ${RejectNote} !== null &amp;&amp; ${RejectNote} !== undefined  &amp;&amp; ${RejectNote} !== '' }"
+						title="{i18n>rejectNote}"
+						text="{RejectNote}" />
+				</attributes>
+				<statuses>
+					<ObjectStatus
+						title="{i18n>supplierStatus}"
+						text="{
+								parts: [
+									{path: 'Supplier/Status'}
+								],
+								formatter: '.formatter.supplierStatus'
+						}"/>
+					<ObjectStatus
+						visible="{= ${DoneByFater} === true }"
+						title="{i18n>internalActor}"
+						text="{CommercialReference>/Address/Firstname} {CommercialReference>/Address/Lastname}"/>
+				</statuses>
+			</ObjectHeader>
+			<IconTabBar id="iconTabBarDataCompletion" expanded="true" select="iconTabBarItemSelected" 
+				expandable="false">
+				<items>
+					<IconTabFilter 
+						id="dc_tab_1"
+						key="dc_tab_1"
+						binding="{/Supplier}"
+						text="{i18n>generalData}"
+						icon="sap-icon://create">
+						<core:Fragment fragmentName="org.fater.app.view.fragment.dataCompletion.GeneralData" type="XML" />
+					</IconTabFilter>		
+					<IconTabFilter
+						id="dc_tab_2"
+						key="dc_tab_2"
+						binding="{/Supplier}"
+						text="{i18n>companyData}"
+						icon="sap-icon://manager">
+						<core:Fragment fragmentName="org.fater.app.view.fragment.dataCompletion.CompanyData" type="XML" />
+					</IconTabFilter>
+					<IconTabFilter
+						id="dc_tab_3"
+						key="dc_tab_3"
+						binding="{/Supplier}"
+						text="{i18n>purchasingData}"
+						icon="sap-icon://loan">
+						<core:Fragment fragmentName="org.fater.app.view.fragment.dataCompletion.PurchasingData" type="XML" />
+					</IconTabFilter>
+					<IconTabFilter
+						id="dc_tab_4"
+						key="dc_tab_4"
+						binding="{/Supplier}"
+						text="{i18n>cluster}"
+						icon="sap-icon://tree">
+						<core:Fragment fragmentName="org.fater.app.view.fragment.dataCompletion.Cluster" type="XML" />
+					</IconTabFilter>					
+					<IconTabFilter
+						id="dc_tab_5"
+						key="dc_tab_5"
+						binding="{/Survey}"
+						text="{i18n>survey}"
+						icon="sap-icon://synchronize">
+						<core:Fragment fragmentName="org.fater.app.view.fragment.dataCompletion.Survey" type="XML" />
+					</IconTabFilter>
+					<IconTabFilter
+						id="dc_tab_6"
+						key="dc_tab_6"
+						binding="{}"
+						text="{i18n>authorisations}"
+						icon="sap-icon://settings">
+						<core:Fragment fragmentName="org.fater.app.view.fragment.dataCompletion.Authorizations" type="XML" />
+					</IconTabFilter>
+					<IconTabFilter
+						id="dc_tab_7"
+						key="dc_tab_7"
+						text="{i18n>communications}"
+						icon="sap-icon://world">
+						<core:Fragment fragmentName="org.fater.app.view.fragment.Communication" type="XML" />
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+		<semantic:customFooterContent>
+			
+			<Button
+				visible="{= !${tempModel>/editEnabled} &amp;&amp; ${StatusChange} !== ${Types>/participationStatusEdit/RC} &amp;&amp; ${Status} === ${Types>/participationStatus/QC} &amp;&amp; ( ${user>/Username} === ${/CommercialRefId} || ${user>/Username} === ${/RegistryManagerId} ) }"
+				press="onEnableEdit"
+				type="Accept"
+				text="{i18n>buttonEnableEdit}"/>
+			<Button
+				visible="{= ${tempModel>/editEnabled} &amp;&amp; ${StatusChange} !== ${Types>/participationStatusEdit/RC} &amp;&amp; ${Status} === ${Types>/participationStatus/QC} &amp;&amp; ( ${user>/Username} === ${/CommercialRefId} || ${user>/Username} === ${/RegistryManagerId} ) }"
+				press="onSendEditButtonPress"
+				type="Accept"
+				text="{i18n>buttonSendEdit}"/>
+			<Button 
+				visible="{= ${StatusChange} === ${Types>/participationStatusEdit/RC} &amp;&amp; ${Status} === ${Types>/participationStatus/QC} &amp;&amp; ( ${user>/Username} === ${/CommercialRefId} || ${user>/Username} === ${/RegistryManagerId} ) }"
+				enabled="false"
+				type="Emphasized"
+				text="{i18n>buttonSendEditDisabled}"/>
+		</semantic:customFooterContent>
+	</semantic:DetailPage>
+</mvc:View>

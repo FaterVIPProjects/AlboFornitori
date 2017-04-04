@@ -1,0 +1,457 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns:te="org.fater.app.control"
+	xmlns:u="sap.ui.unified"
+	xmlns="sap.m">
+	
+	<f:SimpleForm layout="ResponsiveGridLayout" editable="true" title="{i18n>supplierDocumentation}" visible="{field_visibility>/supplier_doc_form/visible}">
+		<f:content>
+			<Label 
+				visible="{field_visibility>/supplier_doc_upload_email/visible}" 
+				required="{field_visibility>/supplier_doc_upload_email/required}" 
+				text="{i18n>supplier_doc_upload_email}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</Label>
+			<u:FileUploader
+				id="supplier_doc_upload_email"
+				name="supplier_doc_upload_email"
+				uploadUrl="/sap/opu/odata/sap/ZVIP_PROJECT_SRV/FileSet"
+				sendXHR="true"
+				useMultipart="false"
+				visible="{field_visibility>/supplier_doc_upload_email/visible}"
+				enabled="{field_visibility>/supplier_doc_upload_email/enabled}"
+				uploadComplete="onUploadEmailComplete">
+				<u:layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</u:layoutData>
+			</u:FileUploader>
+			<Button
+				text="{i18n>upload}"
+				press="onUploadEmailClick">
+				<layoutData>
+					<l:GridData span="L2 M2 S2" />
+				</layoutData>
+			</Button>
+			<Link
+				id="supplier_doc_upload_email_link"
+				target="_blank"
+				visible="{= ${/Emailupload} !== '' }"
+				text="{i18n>uploadedFile}"
+				emphasized="true"
+				href="{
+					parts: [
+						{ path: '/Emailupload' },
+						{ path: '/SupplierId' }
+					],
+					formatter: '.formatter.fileUrl'
+				}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2" />
+				</layoutData>
+			</Link>
+			
+			<Label 
+				visible="{field_visibility>/supplier_doc_upload_form/visible}"
+				required="{field_visibility>/supplier_doc_upload_form/required}" 
+				text="{i18n>supplier_doc_upload_form}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" linebreak="true" />
+				</layoutData>
+			</Label>
+			<u:FileUploader
+				id="supplier_doc_upload_form"
+				name="supplier_doc_upload_form"
+				uploadUrl="/sap/opu/odata/sap/ZVIP_PROJECT_SRV/FileSet"
+				sendXHR="true"
+				useMultipart="false"
+				visible="{field_visibility>/supplier_doc_upload_form/visible}"
+				enabled="{field_visibility>/supplier_doc_upload_form/enabled}"
+				uploadComplete="onUploadFormComplete">
+				<u:layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</u:layoutData>
+			</u:FileUploader>
+			<Button
+				text="{i18n>upload}"
+				press="onUploadFormClick">
+				<layoutData>
+					<l:GridData span="L2 M2 S2" />
+				</layoutData>
+			</Button>
+			<Link
+				id="supplier_doc_upload_form_link"
+				target="_blank"
+				visible="{= ${/Formupload} !== '' }"
+				text="{i18n>uploadedFile}"
+				emphasized="true"
+				href="{
+					parts: [
+						{ path: '/Formupload' },
+						{ path: '/SupplierId' }
+					],
+					formatter: '.formatter.fileUrl'
+				}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2" />
+				</layoutData>
+			</Link>
+		</f:content>
+	</f:SimpleForm>
+	
+	<f:SimpleForm layout="ResponsiveGridLayout" editable="true" title="{i18n>generalData}">
+		<f:content>
+			<Label 
+				visible="{field_visibility>/header/visible}" 
+				required="{field_visibility>/header/required}" 
+				text="{i18n>titleSAP}"/>
+			<te:TESelect
+				id="header"
+				forceSelection="false"
+				visible="{field_visibility>/header/visible}"
+				enabled="{field_visibility>/header/enabled}"
+                selectedKey="{HeaderSap}"
+				items="{
+						path: 'oDataModel>/TitleSet',
+						sorter: { path: 'Description' }
+					}">
+					<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+				<te:layoutData>
+					<l:GridData span="L3 M4 S4" />
+				</te:layoutData>
+			</te:TESelect>
+			<Label 
+				visible="{field_visibility>/supplier_code/visible}"
+				required="{field_visibility>/supplier_code/required}" 
+				text="{i18n>supplierOrBidder}"/>
+			<Text
+				visible="{field_visibility>/supplier_code/visible}"
+				text="{SupplierId}"/>
+			<Label text="{i18n>businessName}" 
+				visible="{field_visibility>/business_name/visible}"
+				required="{field_visibility>/business_name/required}"  />
+			<Input value="{Name1}"
+				id="business_name"
+				maxLength="70"
+				visible="{field_visibility>/business_name/visible}"
+				enabled="{field_visibility>/business_name/enabled}"  />
+				
+			<Label text="{i18n>country}"
+				visible="{field_visibility>/country/visible}"
+				required="{field_visibility>/country/required}" />
+			<te:TESelect
+				id="country"
+				forceSelection="false"
+				change="onCountryChange"
+				visible="{field_visibility>/country/visible}"
+				enabled="{field_visibility>/country/enabled}"
+                selectedKey="{Country}"
+				items="{
+					path: 'oDataModel>/CountrySet',
+					sorter: { path: 'Description' }
+				}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</te:layoutData>
+			</te:TESelect>
+			
+			<Text class="fakeLabel required" text="{i18n>region}:" textAlign="End" 
+				visible="{field_visibility>/province/visible}" />
+			<te:TESelect
+				id="province"
+				forceSelection="false"
+                selectedKey="{Province}"
+				visible="{field_visibility>/province/visible}"
+				enabled="{field_visibility>/province/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</te:layoutData>
+			</te:TESelect>
+				
+			<Label text="{i18n>streetNumber}" 
+				visible="{field_visibility>/street_address/visible}"
+				required="{field_visibility>/street_address/required}"  />
+			<Input value="{Address}" 
+				id="street_address"
+				maxLength="35"
+				visible="{field_visibility>/street_address/visible}"
+				enabled="{field_visibility>/street_address/enabled}"  />
+			<Input value="{Addressnumber}" 
+				id="street_number"
+				maxLength="10"
+				visible="{field_visibility>/street_number/visible}"
+				enabled="{field_visibility>/street_number/enabled}">
+				<layoutData>
+					<l:GridData span="L3 M4 S4"/>
+				</layoutData>
+			</Input>
+			
+			<Label text="{i18n>capLoc}" 
+				visible="{field_visibility>/cap/visible}"
+				required="{field_visibility>/cap/required}" />
+			<Input 
+				value="{PostCode}"
+				id="cap"
+				maxLength="10"
+				visible="{field_visibility>/cap/visible}"
+				enabled="{field_visibility>/cap/enabled}" />
+				
+			<Input value="{City}" 
+				id="locality"
+				maxLength="35"
+				visible="{field_visibility>/locality/visible}"
+				enabled="{field_visibility>/locality/enabled}" />
+			
+			<Label text="{i18n>telNum}" 
+				visible="{field_visibility>/telephone/visible}"
+				required="{field_visibility>/telephone/required}"  />
+			<Input value="{Phone}"
+				type="Tel" 
+				id="telephone"
+				maxLength="16"
+				visible="{field_visibility>/telephone/visible}"
+				enabled="{field_visibility>/telephone/enabled}"  />
+				
+			<Label text="{i18n>faxNum}" 
+				visible="{field_visibility>/fax/visible}"  />
+			<Input value="{Fax}" 
+				id="fax"
+				type="Tel" 
+				maxLength="31"
+				visible="{field_visibility>/fax/visible}"
+				enabled="{field_visibility>/fax/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</Input>
+			
+			<Text class="fakeLabel" text="{i18n>email}:" textAlign="End"
+				visible="{field_visibility>/email/visible}" />
+			<Input value="{AdditionalEmail}" 
+				id="email"
+				type="Email"
+				maxLength="50"
+				visible="{field_visibility>/email/visible}"
+				enabled="{field_visibility>/email/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</Input>
+			
+			<Label text="{i18n>modComunStd}" 
+				visible="{field_visibility>/communication_preferred/visible}"
+				required="{field_visibility>/communication_preferred/required}" />
+			<te:TESelect
+				id="communication_preferred"
+				forceSelection="false"
+                selectedKey="{PreferredContact}"
+				items="{
+					path: 'oDataModel>/CommMtdSet',
+					sorter: { path: 'Description' },
+					filters: [
+						{ path: 'Key', operator: 'EQ', value1: 'FAX' },
+						{ path: 'Key', operator: 'EQ', value1: 'INT' }
+					]
+				}"
+				visible="{field_visibility>/communication_preferred/visible}"
+				enabled="{field_visibility>/communication_preferred/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</te:layoutData>
+			</te:TESelect>
+			
+			
+		</f:content>
+	</f:SimpleForm>
+	
+	<f:SimpleForm layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true"
+		title="{i18n>contactInformation}">
+		<f:content>
+			<Label text="{i18n>title}" 
+				visible="{field_visibility>/contact_title/visible}"
+				required="{field_visibility>/contact_title/required}" />
+			<Input value="{ContactTitle}" 
+				id="contact_title"
+				maxLength="100"
+				visible="{field_visibility>/contact_title/visible}"
+				enabled="{field_visibility>/contact_title/enabled}" />
+			<Label text="{i18n>name}" 
+				visible="{field_visibility>/contact_name/visible}"
+				required="{field_visibility>/contact_name/required}" />
+			<Input value="{ContactName}" type="Text"
+				id="contact_name"
+				maxLength="100"
+				visible="{field_visibility>/contact_name/visible}"
+				enabled="{field_visibility>/contact_name/enabled}" ></Input>
+			<Label text="{i18n>surname}" 
+				visible="{field_visibility>/contact_surname/visible}"
+				required="{field_visibility>/contact_surname/required}" />
+			<Input value="{ContactSurname}" type="Text" 
+				id="contact_surname"
+				maxLength="100"
+				visible="{field_visibility>/contact_surname/visible}"
+				enabled="{field_visibility>/contact_surname/enabled}" />
+			<Label text="{i18n>area}"
+				visible="{field_visibility>/contact_area/visible}"
+				required="{field_visibility>/contact_area/required}"/>
+			<te:TESelect selectedKey="{ContactArea}" 
+				id="contact_area"
+				forceSelection="false"
+				visible="{field_visibility>/contact_area/visible}"
+				enabled="{field_visibility>/contact_area/enabled}">
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</te:layoutData>
+			</te:TESelect>
+			<Label text="{i18n>telNum}" 
+				visible="{field_visibility>/contact_telephone/visible}"
+				required="{field_visibility>/contact_telephone/required}" />
+			<Input value="{ContactTelNumber}" type="Tel"
+				id="contact_telephone"
+				maxLength="100"
+				visible="{field_visibility>/contact_telephone/visible}"
+				enabled="{field_visibility>/contact_telephone/enabled}" />
+			<Label text="{i18n>cellNum}" 
+				visible="{field_visibility>/contact_cellphone/visible}"
+				required="{field_visibility>/contact_cellphone/required}" />
+			<Input value="{ContactCellNumber}" type="Tel"
+				id="contact_cellphone"
+				maxLength="16"
+				visible="{field_visibility>/contact_cellphone/visible}"
+				enabled="{field_visibility>/contact_cellphone/enabled}" />
+			<Label text="{i18n>email}" 
+				visible="{field_visibility>/contact_email/visible}"
+				required="{field_visibility>/contact_email/required}" />
+			<Input value="{ContactEmail}" type="Email" 
+				id="contact_email"
+				maxLength="50"
+				visible="{field_visibility>/contact_email/visible}"
+				enabled="{field_visibility>/contact_email/enabled}" />
+		</f:content>
+	</f:SimpleForm>
+	<f:SimpleForm layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true" title="{i18n>fiscalInformation}">
+		<f:content>
+			<Label text="{i18n>vat}" 
+				visible="{field_visibility>/vat_it/visible}"
+				required="{field_visibility>/vat_it/required}" />
+			<Input value="{VatIt}" 
+				id="vat_it"
+				maxLength="11"
+				visible="{field_visibility>/vat_it/visible}"
+				enabled="{field_visibility>/vat_it/enabled}"  />
+			<Label text="{i18n>vat_CEE}" 
+				visible="{field_visibility>/vat_cee/visible}"
+				required="{field_visibility>/vat_cee/required}" />
+			<Input value="{VatCee}" 
+				id="vat_cee"
+				maxLength="16"
+				visible="{field_visibility>/vat_cee/visible}"
+				enabled="{field_visibility>/vat_cee/enabled}"  />
+			<Label  text="{i18n>fiscal_code}" 
+				visible="{field_visibility>/fiscal_code/visible}"
+				required="{field_visibility>/fiscal_code/required}" >
+			</Label>
+			<Input value="{TaxCode}" 
+				id="fiscal_code"
+				maxLength="16"
+				visible="{field_visibility>/fiscal_code/visible}"
+				enabled="{field_visibility>/fiscal_code/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</Input>
+			<Text id="profession_label" class="fakeLabel required" text="{i18n>profession}:" textAlign="End" 
+				visible="{field_visibility>/profession/visible}" >
+				<layoutData>
+					<l:GridData span="L2 M2 S2" />
+				</layoutData>
+			</Text>
+			<Input value="{Whjob}" 
+				maxLength="30"
+				id="profession"
+				visible="{field_visibility>/profession/visible}"
+				enabled="{field_visibility>/profession/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</Input>
+			
+			<Label id="gender_label" text="{i18n>gender}" 
+				visible="{field_visibility>/gender/visible}"
+				required="{field_visibility>/gender/required}" >
+			</Label>
+			<te:TESelect selectedKey="{Whsex}" 
+				id="gender"
+				forceSelection="false"
+				visible="{field_visibility>/gender/visible}"
+				enabled="{field_visibility>/gender/enabled}">
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</te:layoutData>
+			</te:TESelect>
+			<Text text="{i18n>phisicalPerson}:" 
+				class="fakeLabel required" textAlign="End" 
+				visible="{field_visibility>/phisical_person/visible}">
+					<layoutData>
+						<l:GridData span="L2 M2 S2" />
+					</layoutData>
+			</Text>
+			<CheckBox selected="{Naturalperson}" 
+				id="phisical_person"
+				visible="{field_visibility>/phisical_person/visible}"
+				enabled="{field_visibility>/phisical_person/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</CheckBox>
+			
+			<Label  text="{i18n>birthCity}" 
+				visible="{field_visibility>/birth_city/visible}"
+				required="{field_visibility>/birth_city/required}" >
+			</Label>
+			<Input value="{Whbirthcity}" 
+				id="birth_city"
+				maxLength="50"
+				visible="{field_visibility>/birth_city/visible}"
+				enabled="{field_visibility>/birth_city/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</Input>
+			<Text 
+				id="birth_date_label"
+				class="fakeLabel required" text="{i18n>birthDate}:" textAlign="End" 
+				visible="{field_visibility>/birth_date/visible}" >
+				<layoutData>
+					<l:GridData span="L2 M2 S2" />
+				</layoutData>
+			</Text>
+			<DatePicker dateValue="{Whbirthdate}" 
+				id="birth_date"
+				textAlign="Center"
+				visible="{field_visibility>/birth_date/visible}"
+				enabled="{field_visibility>/birth_date/enabled}">
+			</DatePicker>
+			
+			<Label  text="{i18n>withholding}" 
+				visible="{field_visibility>/withholding/visible}"
+				required="{field_visibility>/withholding/required}" >
+			</Label>
+			<te:TESelect
+				id="withholding"
+				forceSelection="false"
+                selectedKey="{Company/0/SupplierWithholding}"
+				visible="{field_visibility>/withholding/visible}"
+				enabled="{field_visibility>/withholding/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+				<te:layoutData>
+					<l:GridData span="L8 M8 S8" />
+				</te:layoutData>
+			</te:TESelect>
+			
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

@@ -1,0 +1,58 @@
+{
+	"userRoleTypes": {
+	    "SUPPLIER": "SUPPLIER",
+		"COMMERCIAL_REFERENCE": "COMMERCIAL_REFERENCE",
+		"COMMERCIAL_MANAGER": "COMMERCIAL_MANAGER",
+		"ANAGRAPHIC_MANAGER": "ANAGRAPHIC_MANAGER"
+	},
+	
+	"supplierRoleTypes": {
+	    "QUALIFICATION_PROCESS": "QUALIFICATION_PROCESS",
+		"ORDER_MANAGER": "ORDER_MANAGER",
+	    "BANK_STATEMENTS": "BANK_STATEMENTS"
+	},
+	
+	"supplierTypes": {
+	    "NATIONAL": "NATIONAL",
+		"CEE": "CEE",
+		"EXTRA_CEE": "ECEE",
+		"FREELANCER": "FREELANCER"
+	},
+	
+	"supplierStatus": {
+	    "POTENTIAL_BIDDER": "POTENTIAL_BIDDER",
+		"BIDDER": "BIDDER",
+		"SUPPLIER": "SUPPLIER"
+	},
+	
+	"participationType": {
+	    "PRE_QUALIFICATION": "PRE_QUALIFICATION",
+		"PRE_QUALIFICATION_AND_QUALIFICATION": "PRE_QUALIFICATION_AND_QUALIFICATION",
+		"ONLY_CODIFICATION": "ONLY_CODIFICATION",
+		"QUALIFICATION": "QUALIFICATION"
+	},
+	
+	"participationStatus": {
+	    "N": "N",
+		"I": "I",
+		"S": "S",
+		"R": "R",
+		"DI": "DI",
+		"DQ": "DQ",
+		"C": "C",
+		"A1": "A1",
+		"A2": "A2",
+		"QC": "QC",
+		"C1": "C1",
+		"C2": "C2",
+		"C3": "C3",
+		"ES": "ES",
+		"ER": "ER",
+		"EA": "EA"
+	},
+	
+	"participationStatusEdit": {
+	    "DA": "DA",
+		"RC": "RC"
+	}
+}

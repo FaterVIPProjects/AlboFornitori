@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m">
+	
+	<core:Fragment binding="{GroupS/0/}" fragmentName="org.fater.app.view.fragment.survey.CompanyInformationReadOnly" type="XML" />
+	
+	<core:Fragment binding="{GroupS/1/}" fragmentName="org.fater.app.view.fragment.survey.CompanyInformationReadOnly" type="XML" />
+
+	<core:Fragment binding="{GroupS/2/}" fragmentName="org.fater.app.view.fragment.survey.CompanyInformationReadOnly" type="XML" />
+	
+	<core:Fragment binding="{GroupS/3/}" fragmentName="org.fater.app.view.fragment.survey.CompanyInformationReadOnly" type="XML" />	
+
+</core:FragmentDefinition>

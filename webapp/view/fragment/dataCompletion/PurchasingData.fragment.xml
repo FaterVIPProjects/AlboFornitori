@@ -1,0 +1,157 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns:te="org.fater.app.control"
+	xmlns="sap.m">
+	<f:SimpleForm binding="{}" layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true" labelSpanL="3"
+		labelSpanM="3" title="{i18n>conditions}">
+		<f:content>
+			<Label text="{i18n>purchasingOrganization}" 
+					visible="{field_visibility>/purchase_organization/visible}" 
+					required="{field_visibility>/purchase_organization/required}"/>
+			<te:TESelect 
+					id="purchase_organization"
+					valueState="{= ${PurchaseOrg/0/Ekorgappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PurchaseOrg/0/Ekorgappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{PurchaseOrg/0/Ekorg}" 
+					visible="{field_visibility>/purchase_organization/visible}"
+					enabled="{field_visibility>/purchase_organization/enabled}"
+					items="{
+						path: 'oDataModel>/PurchaseOrganizationSet',
+						sorter: { path: 'Ekotx' }
+					}">
+				<core:Item key="{oDataModel>Ekorg}" text="{oDataModel>Ekorg} - {oDataModel>Ekotx}"/>
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</te:layoutData>
+			</te:TESelect>
+			<Label text="{i18n>purchaseOrdersDivise}" 
+					visible="{field_visibility>/purchase_currency/visible}" 
+					required="{field_visibility>/purchase_currency/required}"/>
+			<te:TESelect 
+					id="purchase_currency"
+					valueState="{= ${PurchaseOrg/0/BuyCurrencyappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PurchaseOrg/0/BuyCurrencyappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{PurchaseOrg/0/BuyCurrency}"
+					items="{
+						path: 'oDataModel>/CurrencySet',
+						sorter: { path: 'Description' }
+					}"
+					visible="{field_visibility>/purchase_currency/visible}"
+					enabled="{field_visibility>/purchase_currency/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Key} - {oDataModel>Description}"/>
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</te:layoutData>
+			</te:TESelect>
+			<Label text="{i18n>incoterms}" 
+					visible="{field_visibility>/purchase_incoterms/visible}" 
+					required="{field_visibility>/purchase_incoterms/required}"/>
+			<te:TESelect 
+					id="purchase_incoterms"
+					valueState="{= ${PurchaseOrg/0/BuyIncotermsCodeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PurchaseOrg/0/BuyIncotermsCodeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{PurchaseOrg/0/BuyIncotermsCode}"
+					change="onIncotermSelected"
+					items="{
+						path: 'oDataModel>/IncotermSet',
+						sorter: { path: 'Description' }
+					}"
+					visible="{field_visibility>/purchase_incoterms/visible}"
+					enabled="{field_visibility>/purchase_incoterms/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Key} - {oDataModel>Description}"/>
+			</te:TESelect>
+			<Input 
+					id="purchase_incoterms_text"
+					valueState="{= ${PurchaseOrg/0/BuyIncotermsPlaceappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PurchaseOrg/0/BuyIncotermsPlaceappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					value="{PurchaseOrg/0/BuyIncotermsPlace}" 
+					maxLength="255"
+					visible="{field_visibility>/purchase_incoterms_text/visible}"
+					enabled="{field_visibility>/purchase_incoterms_text/enabled}">
+				<layoutData>
+					<l:GridData span="L6 M6 S6"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>paymentConditionsChoice}"
+					visible="{field_visibility>/purchase_payment_condition/visible}" 
+					required="{field_visibility>/purchase_payment_condition/required}"/>
+			<te:TESelect 
+					id="purchase_payment_condition"
+					valueState="{= ${PurchaseOrg/0/BuyPaymentConditionappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PurchaseOrg/0/BuyPaymentConditionappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{PurchaseOrg/0/BuyPaymentCondition}" 
+					items="{
+						path: 'oDataModel>/PaymentConditionSet',
+						sorter: { path: 'Description' }
+					}"
+					visible="{field_visibility>/purchase_payment_condition/visible}"
+					enabled="{field_visibility>/purchase_payment_condition/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Key} - {oDataModel>Description}"/>
+			</te:TESelect>
+			<Label text="{i18n>invoiceVerificationForEM}" 
+					visible="{field_visibility>/purchase_invoice_verification/visible}" 
+					required="{field_visibility>/purchase_invoice_verification/required}"/>
+			<CheckBox 
+					id="purchase_invoice_verification"
+					valueState="{= ${PurchaseOrg/0/BuyCheckInvoiceEmappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PurchaseOrg/0/BuyCheckInvoiceEmappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					selected="{PurchaseOrg/0/BuyCheckInvoiceEm}" 
+					visible="{field_visibility>/purchase_invoice_verification/visible}"
+					enabled="{field_visibility>/purchase_invoice_verification/enabled}"/>
+			
+			<Label text="{i18n>vendorSchema}" 
+				visible="{field_visibility>/purchase_scheme_group/visible}" 
+				required="{field_visibility>/purchase_scheme_group/required}"/>
+			
+			<te:TESelect 
+					id="purchase_scheme_group"
+					valueState="{= ${PurchaseOrg/0/Vendorschemaappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PurchaseOrg/0/Vendorschemaappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{PurchaseOrg/0/Vendorschema}" 
+					visible="{field_visibility>/purchase_scheme_group/visible}"
+					enabled="{field_visibility>/purchase_scheme_group/enabled}"
+					items="{
+						path: 'oDataModel>/VendorSchemaSet',
+						sorter: { path: 'Description' }
+					}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}"/>
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</te:layoutData>
+			</te:TESelect>	
+			
+			<Text text="{i18n>smoi}" textAlign="End"
+				class="fakeLabel" 
+				visible="{field_visibility>/smoi/visible}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2"/>
+				</layoutData>
+			</Text>
+			<CheckBox
+					id="smoi"
+					valueState="{= ${PurchaseOrg/0/Smoiappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PurchaseOrg/0/Smoiappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					selected="{PurchaseOrg/0/Smoi}"
+					visible="{field_visibility>/smoi/visible}"
+					enabled="{field_visibility>/smoi/enabled}"/>
+			
+			<Label text="{i18n>paymentTransportationMethod}"
+					visible="{field_visibility>/purchase_transportation_method/visible}" 
+					required="{field_visibility>/purchase_transportation_method/required}"/>
+			<te:TESelect 
+					id="purchase_transportation_method"
+					valueState="{= ${PurchaseOrg/0/BuyTransportationMethodappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PurchaseOrg/0/BuyTransportationMethodappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{PurchaseOrg/0/BuyTransportationMethod}" 
+					visible="{field_visibility>/purchase_transportation_method/visible}"
+					enabled="{field_visibility>/purchase_transportation_method/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Key} - {oDataModel>Description}"/>
+			</te:TESelect>
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

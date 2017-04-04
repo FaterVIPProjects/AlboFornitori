@@ -1,0 +1,76 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m">
+	<l:Grid>
+		<Toolbar 
+			visible="{= ${user>/Username} !== ${/SupplierRefId} &amp;&amp; ${tickets>/hasInternal} }">
+			<Label text="{i18n>timelineTitleInternal}" design="Bold"/>
+			<layoutData>
+				<l:GridData
+					span="{= (${user>/Username} === ${/CommercialRefId} || ${user>/Username} === ${/RegistryManagerId}) ? 'L6 M6 S12' : 'L12 M12 S12'}"/>
+			</layoutData>
+		</Toolbar>
+		<Toolbar 
+			visible="{= (${user>/Username} === ${/CommercialRefId} || ${user>/Username} === ${/SupplierRefId}) &amp;&amp; ${tickets>/hasExternal} }">
+			<Label text="{i18n>timelineTitleExternal}" design="Bold" visible="{= (${user>/Username} === ${/CommercialRefId} || ${user>/Username} === ${/RegistryManagerId}) }" />
+			<layoutData>
+				<l:GridData
+					span="{= ${user>/Username} === ${/CommercialRefId} ? 'L6 M6 S12' : 'L12 M12 S12'}"/>
+			</layoutData>
+		</Toolbar>
+		<List id="communicationInternalList"
+			noDataText="{i18n>noTicketMessage}"
+			visible="{= ${user>/Username} !== ${/SupplierRefId} &amp;&amp; ${tickets>/hasInternal} }"
+			items="{ 
+				path: 'tickets>/results', 
+				sorter: { path: 'Created', descending: true }, 
+				filters: [ 
+					{ path: 'Internal', operator: 'EQ', value1: true } 
+				] 
+			}">
+			<items>
+				<StandardListItem 
+					type="Navigation"
+					title="{tickets>Title}" 
+					description="{ 
+						parts: [ 
+							{path: 'tickets>Created'}
+						], 
+						formatter: '.formatter.formattedDateFull' 
+					}"
+					press="onTicketPress"></StandardListItem>
+			</items>
+			<layoutData>
+				<l:GridData
+						span="{= (${user>/Username} === ${/CommercialRefId} || ${user>/Username} === ${/RegistryManagerId}) ? 'L6 M6 S12' : 'L12 M12 S12'}"/>
+			</layoutData>
+		</List>
+		<List 
+			id="communicationExternalList"
+			noDataText="{i18n>noTicketMessage}"
+			visible="{= (${user>/Username} === ${/CommercialRefId} || ${user>/Username} === ${/SupplierRefId}) &amp;&amp; ${tickets>/hasExternal} }"
+			items="{ 
+				path: 'tickets>/results', 
+				sorter: { path: 'Created', descending: true }, 
+				filters: [ 
+					{ path: 'Internal', operator: 'EQ', value1: false } 
+				] 
+			}">
+			<items>
+				<StandardListItem 
+					type="Navigation"
+					title="{tickets>Title}" 
+					description="{ 
+						parts: [ 
+							{path: 'tickets>Created'}
+						], 
+						formatter: '.formatter.formattedDateFull' 
+					}"
+					press="onTicketPress"></StandardListItem>
+			</items>
+			<layoutData>
+				<l:GridData
+						span="{= (${user>/Username} === ${/CommercialRefId} || ${user>/Username} === ${/RegistryManagerId}) ? 'L6 M6 S12' : 'L12 M12 S12'}"/>
+			</layoutData>
+		</List>
+	</l:Grid>
+</core:FragmentDefinition>

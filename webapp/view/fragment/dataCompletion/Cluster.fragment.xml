@@ -1,0 +1,72 @@
+<core:FragmentDefinition
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m">
+	
+	<Table id="clustersTable"
+		inset="false">
+		<columns>
+			<Column>
+				<Text text="{i18n>sentOn}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>completedOn}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>status}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>purchasingPlan}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>company}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>clusterCode}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>clusterDesc}" />
+			</Column>
+		</columns>
+		<items >
+			<ColumnListItem>
+				<cells>
+					<Text
+						text="{
+							parts: [
+								{path: 'oDataModel>SentT'}
+							],	
+							formatter: '.formatter.formattedDate'
+						}" />
+					<Text
+						text="{
+							parts: [
+								{path: 'oDataModel>CompletedT'}
+							],	
+							formatter: '.formatter.formattedDate'
+						}" />
+					<Text
+						text="{
+								parts: [
+									{path: 'oDataModel>Status'},
+									{path: 'oDataModel>StatusChange'},
+									{path: 'oDataModel>Editbysupplier'},
+									{path: 'user>/Role'}
+								],	
+								formatter: '.formatter.participationStatus'
+						}" />
+					<Text
+						text="{oDataModel>Ekotx}" />
+					<Text
+						text="{oDataModel>Butxt}" />
+					<Text
+						text="{oDataModel>Cluster/ClusterId}" />
+					<Text
+						text="{oDataModel>Cluster/Name}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

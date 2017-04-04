@@ -1,0 +1,236 @@
+<core:FragmentDefinition
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:te="org.fater.app.control"
+	xmlns="sap.m">
+		<f:SimpleForm 
+			binding="{}" 
+			layout="ResponsiveGridLayout" 
+			columnsL="10"
+			columnsM="10"
+			editable="true" 
+			title = "{i18n>address}">
+			<f:content>
+				<Label text="{i18n>titleSAP}" 
+					visible="{field_visibility>/header/visible}" 
+					required="{field_visibility>/header/required}" />
+				<te:TESelect
+					id="header"
+					valueState="{= ${HeaderSapappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${HeaderSapappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+                    selectedKey="{HeaderSap}"
+					items="{
+						path: 'oDataModel>/TitleSet',
+						sorter: { path: 'Description' }
+					}"
+					visible="{field_visibility>/header/visible}"
+					enabled="{field_visibility>/header/enabled}">
+					<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+					<te:layoutData>
+						<l:GridData span="L4 M4 S4" />
+					</te:layoutData>
+				</te:TESelect>
+				<Label text="{i18n>businessName}" 
+					visible="{field_visibility>/business_name/visible}" 
+					required="{field_visibility>/business_name/required}" />
+				<Input value="{Name1}"
+					valueState="{= ${Name1appr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Name1appr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="business_name"
+					maxLength="70"
+					visible="{field_visibility>/business_name/visible}"
+					enabled="{field_visibility>/business_name/enabled}" />
+				<Label text="{i18n>researchPolicy}" 
+					visible="{field_visibility>/research_critery/visible}" 
+					required="{field_visibility>/research_critery/required}"/>
+				<Input 
+					id="research_critery"
+					value="{
+					path: 'Name1',
+						formatter: '.formatter.getResearchPolicyText'
+					}" 
+					maxLength="70"
+					visible="{field_visibility>/research_critery/visible}"
+					enabled="{field_visibility>/research_critery/enabled}">
+					<layoutData>
+						<l:GridData span="L4 M4 S4" />
+					</layoutData>
+				</Input>
+				<Label text="{i18n>streetNumber}" 
+					visible="{field_visibility>/street_address/visible}" 
+					required="{field_visibility>/street_address/required}"/>
+				<Input value="{Address}"
+					valueState="{= ${Addressappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Addressappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="street_address"
+					maxLength="35" 
+					visible="{field_visibility>/street_address/visible}"
+					enabled="{field_visibility>/street_address/enabled}"/>
+				<Input value="{Addressnumber}"
+					valueState="{= ${Addressnumberappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Addressnumberappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="street_number"
+					maxLength="10"
+					visible="{field_visibility>/street_number/visible}"
+					enabled="{field_visibility>/street_number/enabled}">
+					<layoutData>
+						<l:GridData span="L3 M4 S4" />
+					</layoutData>
+				</Input>
+				<Label text="{i18n>capLoc}" 
+					visible="{field_visibility>/cap/visible}" 
+					required="{field_visibility>/cap/required}"/>
+				<Input 
+					value="{PostCode}"
+					valueState="{= ${PostCodeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PostCodeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="cap"
+					maxLength="10"
+					visible="{field_visibility>/cap/visible}"
+					enabled="{field_visibility>/cap/enabled}" />
+				<Input value="{City}" 
+					valueState="{= ${Cityappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Cityappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="locality"
+					maxLength="35"
+					visible="{field_visibility>/locality/visible}"
+					enabled="{field_visibility>/locality/enabled}" />
+				<Label text="{i18n>country}" 
+					visible="{field_visibility>/country/visible}" 
+					required="{field_visibility>/country/required}"/>
+				<te:TESelect
+					id="country"
+					valueState="{= ${Countryappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Countryappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					change="onCountryChange"
+                    selectedKey="{Country}"
+					items="{
+						path: 'oDataModel>/CountrySet',
+						sorter: { path: 'Description' }
+					}"
+					visible="{field_visibility>/country/visible}"
+					enabled="{field_visibility>/country/enabled}">
+					<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+					<te:layoutData>
+						<l:GridData span="L6 M6 S6" />
+					</te:layoutData>
+				</te:TESelect>
+				<te:TESelect
+					id="province"
+					valueState="{= ${Provinceappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Provinceappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+	                selectedKey="{Province}"
+					visible="{field_visibility>/province/visible}"
+					enabled="{field_visibility>/province/enabled}">
+					<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+					<te:layoutData>
+						<l:GridData span="L4 M4 S4" />
+					</te:layoutData>
+				</te:TESelect>
+			</f:content>
+		</f:SimpleForm>
+		
+		<f:SimpleForm
+			binding="{}"
+			layout="ResponsiveGridLayout"
+			columnsL="10"
+			columnsM="10"
+			editable="true"
+			title = "{i18n>communication}">
+			<f:content>
+				<Label text="{i18n>language}" 
+					visible="{field_visibility>/header/visible}" 
+					required="{field_visibility>/header/required}"/>
+				<te:TESelect
+					id="language"
+					valueState="{= ${Languageappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Languageappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+                    selectedKey="{Language}"
+					items="{
+						path: 'oDataModel>/LanguageSet',
+						sorter: { path: 'Description' }
+					}"
+					visible="{field_visibility>/language/visible}"
+					enabled="{field_visibility>/language/enabled}">
+					<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+					<te:layoutData>
+						<l:GridData span="L4 M4 S4" />
+					</te:layoutData>
+				</te:TESelect>
+				<Label text="{i18n>telNum}" 
+					visible="{field_visibility>/telephone/visible}" 
+					required="{field_visibility>/telephone/required}"/>
+				<Input value="{Phone}" 
+					valueState="{= ${Phoneappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Phoneappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="telephone"
+					type="Tel"
+					maxLength="16"
+					visible="{field_visibility>/telephone/visible}"
+					enabled="{field_visibility>/telephone/enabled}">
+					<layoutData>
+						<l:GridData span="L4 M4 S4" />
+					</layoutData>
+				</Input>
+				<Label text="{i18n>faxNum}" 
+					visible="{field_visibility>/fax/visible}" 
+					required="{field_visibility>/fax/required}"/>
+				<Input value="{Fax}" 
+					valueState="{= ${Faxappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Faxappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="fax"
+					type="Tel"
+					maxLength="31"
+					visible="{field_visibility>/fax/visible}"
+					enabled="{field_visibility>/fax/enabled}">
+					<layoutData>
+						<l:GridData span="L4 M4 S4" />
+					</layoutData>
+				</Input>
+				<Text class="fakeLabel" text="{i18n>email}:" textAlign="End" visible="{field_visibility>/email/visible}"  />
+				<Input value="{ContactEmail}" 
+					valueState="{= ${ContactEmailappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${ContactEmailappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="email"
+					type="Email"
+					maxLength="50"
+					visible="{field_visibility>/email/visible}"
+					enabled="{field_visibility>/email/enabled}">
+					<layoutData>
+						<l:GridData span="L4 M4 S4" />
+					</layoutData>
+				</Input>
+				<Label text="{i18n>modComunStd}" 
+					visible="{field_visibility>/communication_preferred/visible}" 
+					required="{field_visibility>/communication_preferred/required}" />
+				<te:TESelect
+					id="communication_preferred"
+					valueState="{= ${PreferredContactappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${PreferredContactappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+                    selectedKey="{PreferredContact}"
+					items="{
+						path: 'oDataModel>/CommMtdSet',
+						sorter: { path: 'Description' },
+						filters: [
+							{ path: 'Key', operator: 'EQ', value1: 'FAX' },
+							{ path: 'Key', operator: 'EQ', value1: 'INT' }
+						]
+					}"
+					visible="{field_visibility>/communication_preferred/visible}"
+					enabled="{field_visibility>/communication_preferred/enabled}">
+					<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+					<te:layoutData>
+						<l:GridData span="L4 M4 S4" />
+					</te:layoutData>
+				</te:TESelect>
+			</f:content>
+		</f:SimpleForm>
+
+</core:FragmentDefinition>

@@ -1,0 +1,486 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns:te="org.fater.app.control"
+	xmlns="sap.m">
+	<!-- START FISCAL INFORMATION -->
+	<f:SimpleForm binding="{}" layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true" title="{i18n>fiscalInformation}">
+		<f:content>
+			<Label text="{i18n>vat}"
+					visible="{field_visibility>/vat_it/visible}" 
+					required="{field_visibility>/vat_it/required}"/>
+			<Input value="{VatIt}"
+					id="vat_it"
+					valueState="{= ${VatCeeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${VatCeeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					maxLength="11"
+					visible="{field_visibility>/vat_it/visible}"
+					enabled="{field_visibility>/vat_it/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>vat_CEE}" 
+					visible="{field_visibility>/vat_cee/visible}" 
+					required="{field_visibility>/vat_cee/required}" />
+			<Input value="{VatCee}" 
+					id="vat_cee"
+					valueState="{= ${VatCeeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${VatCeeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					maxLength="16"
+					visible="{field_visibility>/vat_cee/visible}"
+					enabled="{field_visibility>/vat_cee/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</layoutData>
+			</Input>
+			
+			<Label  text="{i18n>fiscal_code}" 
+				visible="{field_visibility>/fiscal_code/visible}"
+				required="{field_visibility>/fiscal_code/required}" >
+			</Label>
+			<Input value="{TaxCode}" 
+				valueState="{= ${TaxCodeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+				tooltip="{= ${TaxCodeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+				id="fiscal_code"
+				maxLength="16"
+				visible="{field_visibility>/fiscal_code/visible}"
+				enabled="{field_visibility>/fiscal_code/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</Input>
+			<Text id="profession_label" class="fakeLabel required" text="{i18n>profession}:" textAlign="End" 
+				visible="{field_visibility>/profession/visible}" >
+				<layoutData>
+					<l:GridData span="L2 M2 S2" />
+				</layoutData>
+			</Text>
+			<Input value="{Whjob}" 
+				valueState="{= ${Whjobappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+				tooltip="{= ${Whjobappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+				maxLength="30"
+				id="profession"
+				visible="{field_visibility>/profession/visible}"
+				enabled="{field_visibility>/profession/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</Input>
+			
+			<Label id="gender_label" text="{i18n>gender}" 
+				visible="{field_visibility>/gender/visible}"
+				required="{field_visibility>/gender/required}" >
+			</Label>
+			<te:TESelect selectedKey="{Whsex}" 
+				id="gender"
+				valueState="{= ${Whsexappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+				tooltip="{= ${Whsexappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+				forceSelection="false"
+				visible="{field_visibility>/gender/visible}"
+				enabled="{field_visibility>/gender/enabled}">
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</te:layoutData>
+			</te:TESelect>
+			
+			<Text  text="{i18n>phisicalPerson}:" 
+				class="fakeLabel required" textAlign="End" 
+				visible="{field_visibility>/phisical_person/visible}" >
+				<layoutData>
+					<l:GridData span="L2 M2 S2" />
+				</layoutData>
+			</Text>
+			<CheckBox selected="{Naturalperson}" 
+				valueState="{= ${Naturalpersonappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+				tooltip="{= ${Naturalpersonappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+				id="phisical_person"
+				visible="{field_visibility>/phisical_person/visible}"
+				enabled="{field_visibility>/phisical_person/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</CheckBox>
+			
+			<Label  text="{i18n>birthCity}" 
+				visible="{field_visibility>/birth_city/visible}"
+				required="{field_visibility>/birth_city/required}" >
+			</Label>
+			<Input value="{Whbirthcity}" 
+				valueState="{= ${Whbirthcityappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+				tooltip="{= ${Whbirthcityappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+				id="birth_city"
+				visible="{field_visibility>/birth_city/visible}"
+				enabled="{field_visibility>/birth_city/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</Input>
+			<Text 
+				id="birth_date_label"
+				class="fakeLabel required" text="{i18n>birthDate}:" textAlign="End" 
+				visible="{field_visibility>/birth_date/visible}" >
+				<layoutData>
+					<l:GridData span="L2 M2 S2" />
+				</layoutData>
+			</Text>
+			<DatePicker dateValue="{Whbirthdate}" 
+				valueState="{= ${Whbirthdateappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+				tooltip="{= ${Whbirthdateappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+				id="birth_date"
+				textAlign="Center"
+				visible="{field_visibility>/birth_date/visible}"
+				enabled="{field_visibility>/birth_date/enabled}">
+			</DatePicker>
+			
+			<Label  text="{i18n>withholding}" 
+				visible="{field_visibility>/withholding/visible}"
+				required="{field_visibility>/withholding/required}" >
+			</Label>
+			<te:TESelect
+				id="withholding"
+				valueState="{= ${Company/0/SupplierWithholdingappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+				tooltip="{= ${Company/0/SupplierWithholdingappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+				forceSelection="false"
+                selectedKey="{Company/0/SupplierWithholding}"
+				visible="{field_visibility>/withholding/visible}"
+				enabled="{field_visibility>/withholding/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+				<te:layoutData>
+					<l:GridData span="L8 M8 S8" />
+				</te:layoutData>
+			</te:TESelect>
+			
+			<Label text="{i18n>company}" 
+					visible="{field_visibility>/fater_company/visible}" 
+					required="{field_visibility>/fater_company/required}"/>
+			<te:TESelect 
+					id="fater_company"
+					valueState="{= ${Company/0/SupplieBukrsappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/SupplieBukrsappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{Company/0/Bukrs}"
+					items="{
+						path: 'oDataModel>/CompanySet',
+						sorter: { path: 'Butxt' }
+					}"
+					visible="{field_visibility>/fater_company/visible}"
+					enabled="{field_visibility>/fater_company/enabled}">
+				<core:Item key="{oDataModel>Bukrs}" text="{oDataModel>Bukrs} - {oDataModel>Butxt}"/>
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</te:layoutData>
+			</te:TESelect>
+		</f:content>
+	</f:SimpleForm>
+	<!-- END FISCAL INFORMATION -->
+	<!-- START REFERENCE DATA-->
+	<f:SimpleForm binding="{}" layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true"
+		title="{i18n>referenceData}">
+		<f:content>
+			<Label text="{i18n>industrialSector}" 
+					visible="{field_visibility>/industrial_sector/visible}" 
+					required="{field_visibility>/industrial_sector/required}"/>
+			<te:TESelect 
+					id="industrial_sector"
+					valueState="{= ${IndustrialSectorappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${IndustrialSectorappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{IndustrialSector}"
+					items="{
+						path: 'oDataModel>/IndustrialSectorSet',
+						sorter: { path: 'Description' }
+					}"
+					visible="{field_visibility>/industrial_sector/visible}"
+					enabled="{field_visibility>/industrial_sector/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Key} - {oDataModel>Description}"/>
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</te:layoutData>
+			</te:TESelect>
+					
+		</f:content>
+	</f:SimpleForm>
+	<!-- END REFERENCE DATA-->
+	<!-- START BANK DATA -->
+	<f:SimpleForm binding="{}" layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true" title="{i18n>bankData}"
+		visible="{field_visibility>/payment_form/visible}">
+		<f:content>
+			<Label text="{i18n>bankName}" 
+					visible="{field_visibility>/bank_name/visible}" 
+					required="{field_visibility>/bank_name/required}"/>
+			<Input value="{Company/0/BankName}" 
+					valueState="{= ${Company/0/BankNameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/BankNameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="bank_name"
+					maxLength="50"
+					visible="{field_visibility>/bank_name/visible}"
+					enabled="{field_visibility>/bank_name/enabled}"></Input>
+			<Label text="{i18n>bankAddress}" 
+					visible="{field_visibility>/bank_address/visible}" 
+					required="{field_visibility>/bank_address/required}"/>
+			<Input value="{Company/0/BankAddress}"
+					valueState="{= ${Company/0/BankAddressappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/BankAddressappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="bank_address"
+					maxLength="60"
+					visible="{field_visibility>/bank_address/visible}"
+					enabled="{field_visibility>/bank_address/enabled}"></Input>
+					
+			<Label text="{i18n>branch}" 
+				visible="{field_visibility>/branch/visible}" 
+				required="{field_visibility>/branch/required}"/>
+			<Input value="{
+					path: 'Company/0/Branch',
+					type: 'org.fater.app.control.TENumberType'
+				}"
+				valueState="{= ${Company/0/Branchappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+				tooltip="{= ${Company/0/Branchappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+				id="branch"
+				maxLength="255"
+				visible="{field_visibility>/branch/visible}"
+				enabled="{field_visibility>/branch/enabled}"></Input>
+			<Text text="{i18n>branchCode}" textAlign="End"
+				class="fakeLabel required" 
+				visible="{field_visibility>/branch_code/visible}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2"/>
+				</layoutData>
+			</Text>
+			<Input value="{Company/0/BranchCode}" type="Number"
+				valueState="{= ${Company/0/BranchCodeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+				tooltip="{= ${Company/0/BranchCodeappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+				id="branch_code"
+				maxLength="255"
+				visible="{field_visibility>/branch_code/visible}"
+				enabled="{field_visibility>/branch_code/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</layoutData>
+			</Input>		
+					
+			<Label text="{i18n>bankABI}" 
+					visible="{field_visibility>/abi/visible}" 
+					required="{field_visibility>/abi/required}"/>
+			<Input value="{Company/0/Abi}" 
+					valueState="{= ${Company/0/Abiappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/Abiappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="abi"
+					maxLength="5"
+					visible="{field_visibility>/abi/visible}"
+					enabled="{field_visibility>/abi/enabled}"></Input>
+			<Text id="cab_label" class="fakeLabel" text="{i18n>bankCAB}:" textAlign="End" 
+					visible="{field_visibility>/cab/visible}" />
+			<Input value="{Company/0/Cab}" 
+					valueState="{= ${Company/0/Cabappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/Cabappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="cab"
+					maxLength="5"
+					visible="{field_visibility>/cab/visible}"
+					enabled="{field_visibility>/cab/enabled}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2"/>
+				</layoutData>
+			</Input>
+			<Text id="bank_account_label" class="fakeLabel" text="{i18n>bankAccount}:" textAlign="End" 
+					visible="{field_visibility>/bank_account/visible}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2"/>
+				</layoutData>
+			</Text>
+			<Input value="{Company/0/BankAccount}" 
+					valueState="{= ${Company/0/BankAccountappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/BankAccountappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="bank_account"
+					maxLength="12"
+					visible="{field_visibility>/bank_account/visible}"
+					enabled="{field_visibility>/bank_account/enabled}">
+				<layoutData>
+					<l:GridData span="L3 M3 S3"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>bankCIN}" 
+					visible="{field_visibility>/cin/visible}" 
+					required="{field_visibility>/cin/required}"/>
+			<Input value="{Company/0/Cin}" 
+					valueState="{= ${Company/0/Cinappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/Cinappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="cin"
+					maxLength="1"
+					visible="{field_visibility>/cin/visible}"
+					enabled="{field_visibility>/cin/enabled}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2"/>
+				</layoutData>
+			</Input>
+			<Text id="swift_label" class="fakeLabel" text="{i18n>bankSWIFT}:" textAlign="End" 
+					visible="{field_visibility>/swift/visible}">
+				<layoutData>
+					<l:GridData span="L1 M1 S1"/>
+				</layoutData>
+			</Text>
+			<Input value="{Company/0/Swift}" 
+					valueState="{= ${Company/0/Swiftappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/Swiftappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="swift"
+					maxLength="11"
+					visible="{field_visibility>/swift/visible}"
+					enabled="{field_visibility>/swift/enabled}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2"/>
+				</layoutData>
+			</Input>
+			<Text id="iban_label" class="fakeLabel" text="{i18n>bankIBAN}:" textAlign="End" 
+					visible="{field_visibility>/iban/visible}" >
+				<layoutData>
+					<l:GridData span="L1 M1 S1"/>
+				</layoutData>
+			</Text>
+			<Input value="{Company/0/Iban}" 
+					valueState="{= ${Company/0/Ibanappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/Ibanappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="iban"
+					maxLength="30"
+					visible="{field_visibility>/iban/visible}"
+					enabled="{field_visibility>/iban/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>bankAccountAlternatePayeePayment}" 
+					visible="{field_visibility>/backup_account/visible}" 
+					required="{field_visibility>/backup_account/required}">
+				<layoutData>
+					<l:GridData span="L5 M5 S5"/>
+				</layoutData>
+			</Label>
+			<Input value="{Company/0/BackupAccount}" 
+					valueState="{= ${Company/0/BackupAccountappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/BackupAccountappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					id="backup_account"
+					maxLength="255"
+					visible="{field_visibility>/backup_account/visible}"
+					enabled="{field_visibility>/backup_account/enabled}">
+				<layoutData>
+					<l:GridData span="L7 M7 S7"/>
+				</layoutData>
+			</Input>
+		</f:content>
+	</f:SimpleForm>
+	<!-- END BANK DATA -->
+	<!-- START ACCOUNT MANAGEMENT -->
+	<f:SimpleForm binding="{}" layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true"
+		title="{i18n>accountManagement}"
+		visible="{field_visibility>/account_management_form/visible}">
+		<!-- TO DO: From mockup visible only for RESP ANAGRAFICA -->
+		<f:content>
+			<Label text="{i18n>reconciliationAccount}" 
+					visible="{field_visibility>/reconciliation_account/visible}" 
+					required="{field_visibility>/reconciliation_account/required}">
+				<layoutData>
+					<l:GridData span="L3 M3 S3"/>
+				</layoutData>
+			</Label>
+			
+			<ComboBox
+					id="reconciliation_account"
+					valueState="{= ${Company/0/ReconciliationAccountappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/ReconciliationAccountappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					selectedKey="{Company/0/ReconciliationAccount}"
+					visible="{field_visibility>/reconciliation_account/visible}"
+					enabled="{field_visibility>/reconciliation_account/enabled}">
+				<core:ListItem key="{oDataModel>Key}" text="{oDataModel>Key} - {oDataModel>Description}"/>
+				<layoutData>
+					<l:GridData span="L9 M9 S9"/>
+				</layoutData>
+			</ComboBox>
+			
+			<Label text="{i18n>classificationKey}" 
+					visible="{field_visibility>/classification_key/visible}" 
+					required="{field_visibility>/classification_key/required}">
+				<layoutData>
+					<l:GridData span="L3 M3 S3"/>
+				</layoutData>
+			</Label>
+			<te:TESelect 
+					id="classification_key"
+					valueState="{= ${Company/0/ClassificationKeyappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/ClassificationKeyappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{Company/0/ClassificationKey}"
+					items="{
+						path: 'oDataModel>/ClassificationKeySet',
+						sorter: { path: 'Description' }
+					}"
+					visible="{field_visibility>/classification_key/visible}"
+					enabled="{field_visibility>/classification_key/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Key} - {oDataModel>Description}"/>
+				<te:layoutData>
+					<l:GridData span="L9 M9 S9"/>
+				</te:layoutData>
+			</te:TESelect>
+		</f:content>
+	</f:SimpleForm>
+	<!-- END ACCOUNT MANAGEMENT -->
+	<!-- START PAYMENT DATA -->
+	<f:SimpleForm binding="{}" labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true"
+		title="{i18n>paymentData}">
+		<f:content>
+			<Label text="{i18n>paymentConditionsText}" 
+					visible="{field_visibility>/payment_condition_text/visible}" 
+					required="{field_visibility>/payment_condition_text/required}"/>
+			<TextArea id="payment_condition_text" value="{Company/0/PaymentConditionText}" growing="true" growingMaxLines="7" width="100%" 
+					valueState="{= ${Company/0/PaymentConditionTextappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/PaymentConditionTextappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					maxLength="255"
+					visible="{field_visibility>/payment_condition_text/visible}"
+					enabled="{field_visibility>/payment_condition_text/enabled}"/>
+			<Label text="{i18n>paymentConditionsChoice}" 
+					visible="{field_visibility>/payment_condition/visible}" 
+					required="{field_visibility>/payment_condition/required}"/>
+			<te:TESelect 
+					id="payment_condition"
+					valueState="{= ${Company/0/PaymentConditionappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/PaymentConditionappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{Company/0/PaymentCondition}"
+					items="{
+						path: 'oDataModel>/PaymentConditionSet',
+						sorter: { path: 'Description' }
+					}"
+					visible="{field_visibility>/payment_condition/visible}"
+					enabled="{field_visibility>/payment_condition/enabled}">
+				<core:Item key="{oDataModel>Key}" text="{oDataModel>Key} - {oDataModel>Description}"/>
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</te:layoutData>
+			</te:TESelect>
+			
+			<Label text="{i18n>doubleInvoiceVerification}" 
+					visible="{field_visibility>/check_double_invoice/visible}" 
+					required="{field_visibility>/check_double_invoice/required}"/>
+			<CheckBox
+					id="check_double_invoice"
+					valueState="{= ${Company/0/CheckDoubleInvoiceappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/CheckDoubleInvoiceappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					selected="{Company/0/CheckDoubleInvoice}" 
+					visible="{field_visibility>/check_double_invoice/visible}"
+					enabled="{field_visibility>/check_double_invoice/enabled}"/>
+			<Label text="{i18n>paymentMethod}" 
+					visible="{field_visibility>/payment_method/visible}" 
+					required="{field_visibility>/payment_method/required}"/>
+			<te:TESelect 
+					id="payment_method"
+					valueState="{= ${Company/0/PaymentMethodappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+					tooltip="{= ${Company/0/PaymentMethodappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+					forceSelection="false"
+					selectedKey="{Company/0/PaymentMethod}"
+					visible="{field_visibility>/payment_method/visible}"
+					enabled="{field_visibility>/payment_method/enabled}">
+					<core:Item key="{oDataModel>Key}" text="{oDataModel>Description}" />
+				<te:layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</te:layoutData>
+			</te:TESelect>
+		</f:content>
+	</f:SimpleForm>
+	<!-- END PAYMENT DATA -->
+</core:FragmentDefinition>

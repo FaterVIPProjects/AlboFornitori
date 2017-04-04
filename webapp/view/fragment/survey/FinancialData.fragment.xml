@@ -1,0 +1,150 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m">
+	<f:SimpleForm layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true" title="{i18n>bankSupport}"
+		visible="{field_visibility>/payment_form/visible}">
+		<f:content>
+			<Label text="{i18n>bankName}" 
+				visible="{field_visibility>/bank_name/visible}" 
+				required="{field_visibility>/bank_name/required}"/>
+			<Input value="{BankName}" 
+				id="bank_name"
+				maxLength="50"
+				visible="{field_visibility>/bank_name/visible}"
+				enabled="{field_visibility>/bank_name/enabled}"></Input>
+			<Label text="{i18n>bankAddress}" 
+				visible="{field_visibility>/bank_address/visible}" 
+				required="{field_visibility>/bank_address/required}"/>
+			<Input value="{BankAddress}"
+				id="bank_address"
+				maxLength="60"
+				visible="{field_visibility>/bank_address/visible}"
+				enabled="{field_visibility>/bank_address/enabled}"></Input>
+			<Label text="{i18n>branch}" 
+				visible="{field_visibility>/branch/visible}" 
+				required="{field_visibility>/branch/required}"/>
+			<Input value="{
+					path: 'Branch',
+					type: 'org.fater.app.control.TENumberType'
+				}"
+				id="branch"
+				maxLength="255"
+				visible="{field_visibility>/branch/visible}"
+				enabled="{field_visibility>/branch/enabled}"></Input>
+			<Label text="{i18n>bankABI}" 
+				visible="{field_visibility>/abi/visible}" 
+				required="{field_visibility>/abi/required}"/>
+			<Input value="{Abi}"
+				id="abi"
+				maxLength="5"
+				visible="{field_visibility>/abi/visible}"
+				enabled="{field_visibility>/abi/enabled}"></Input>
+			<Text text="{i18n>bankCAB}" textAlign="End"
+				class="fakeLabel required" 
+				visible="{field_visibility>/cab/visible}">
+				<layoutData>
+					<l:GridData span="L1 M1 S1"/>
+				</layoutData>
+			</Text>
+			<Input value="{
+					path: 'Cab',
+					type: 'org.fater.app.control.TENumberType'
+				}"
+				id="cab"
+				maxLength="5"
+				visible="{field_visibility>/cab/visible}"
+				enabled="{field_visibility>/cab/enabled}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2"/>
+				</layoutData>
+			</Input>
+			<Text text="{i18n>bankAccount}:" textAlign="End"
+				class="fakeLabel required" 
+				visible="{field_visibility>/bank_account/visible}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2"/>
+				</layoutData>
+			</Text>
+			<Input value="{BankAccount}"
+				id="bank_account"
+				maxLength="12"
+				visible="{field_visibility>/bank_account/visible}"
+				enabled="{field_visibility>/bank_account/enabled}">
+				<layoutData>
+					<l:GridData span="L3 M3 S3"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>bankCIN}" 
+				visible="{field_visibility>/cin/visible}" 
+				required="{field_visibility>/cin/required}"/>
+			<Input value="{Cin}"
+				id="cin" 
+				maxLength="1"
+				visible="{field_visibility>/cin/visible}"
+				enabled="{field_visibility>/cin/enabled}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>bankIBAN}"
+				required="{field_visibility>/iban/required}"
+				visible="{field_visibility>/iban/visible}">
+			</Label>
+			<Input value="{Iban}" 
+				id="iban" 
+				maxLength="30"
+				visible="{field_visibility>/iban/visible}"
+				enabled="{field_visibility>/iban/enabled}">
+				<layoutData>
+					<l:GridData span="L7 M7 S7"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>bankSWIFT}"
+				required="{field_visibility>/swift/required}"
+				visible="{field_visibility>/swift/visible}">
+			</Label>
+			<Input value="{Swift}" 
+				id="swift" 
+				maxLength="11"
+				visible="{field_visibility>/swift/visible}"
+				enabled="{field_visibility>/swift/enabled}">
+				<layoutData>
+					<l:GridData span="L3 M3 S3"/>
+				</layoutData>
+			</Input>
+			<Text text="{i18n>branchCode}" textAlign="End"
+				class="fakeLabel required" 
+				visible="{field_visibility>/branch_code/visible}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2"/>
+				</layoutData>
+			</Text>
+			<Input value="{
+					path: 'BranchCode',
+					type: 'org.fater.app.control.TENumberType'
+				}"
+				id="branch_code"
+				maxLength="255"
+				visible="{field_visibility>/branch_code/visible}"
+				enabled="{field_visibility>/branch_code/enabled}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" linebreak="{= ${field_visibility>/branch_code/visible} === false  }"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>bankAccountAlternatePayeePayment}" 
+				visible="{field_visibility>/backup_account/visible}" 
+				required="{field_visibility>/backup_account/required}">
+				<layoutData>
+					<l:GridData span="L5 M5 S5"/>
+				</layoutData></Label>
+			<Input value="{BackupAccount}" 
+				id="backup_account" 
+				maxLength="255"
+				visible="{field_visibility>/backup_account/visible}"
+				enabled="{field_visibility>/backup_account/enabled}">
+				<layoutData>
+					<l:GridData span="L7 M7 S7"/>
+				</layoutData>
+			</Input>
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

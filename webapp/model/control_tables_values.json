@@ -1,0 +1,22 @@
+{
+	"ContactArea_IT": [
+		{ "Key": "commercial", "Description": "Commerciale" },
+		{ "Key": "tecnical", "Description": "Tecnico" },
+		{ "Key": "administration", "Description": "Amministrazione" },
+		{ "Key": "management", "Description": "Direzione" }
+	],
+	"ContactArea_EN": [
+		{ "Key": "commercial", "Description": "Commercial" },
+		{ "Key": "tecnical", "Description": "Tecnical" },
+		{ "Key": "administration", "Description": "Administration" },
+		{ "Key": "management", "Description": "Management" }
+	],
+	"Gender_IT": [
+		{ "Key": "M", "Description": "Uomo" },
+		{ "Key": "F", "Description": "Donna" }
+	],
+	"Gender_EN": [
+		{ "Key": "M", "Description": "Male" },
+		{ "Key": "F", "Description": "Female" }
+	]
+}

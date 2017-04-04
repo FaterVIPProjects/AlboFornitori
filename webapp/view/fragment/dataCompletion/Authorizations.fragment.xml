@@ -1,0 +1,382 @@
+<core:FragmentDefinition
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:te="org.fater.app.control"
+	xmlns="sap.m">
+		<l:Grid defaultSpan="L4 M4 S4" class="sapUiSmallMarginTop">
+			<l:content>
+				<f:SimpleForm 
+					binding="{}"
+					columnsL="12"
+					columnsM="12"
+					labelSpanL="1"
+					labelSpanM="1"
+					labelSpanS="3"
+					layout="ResponsiveGridLayout"
+					editable="true">
+					<f:content>
+						<Label text="{i18n>user}" 
+							visible="{field_visibility>/supplier_user_hca/visible}" 
+							required="{field_visibility>/supplier_user_hca/required}" />
+						<Input value="{Supplier/UserHsne}" 
+							id="supplier_user_hca"
+							maxLength="100"
+							visible="{field_visibility>/supplier_user_hca/visible}"
+							enabled="{field_visibility>/supplier_user_hca/enabled}">
+							<layoutData>
+								<l:GridData span="L9 M9 S9" />
+							</layoutData>
+						</Input>
+						<Label text="{i18n>userHSEFirstName}" 
+							visible="{field_visibility>/supplier_user_hse_firstname/visible}" 
+							required="{field_visibility>/supplier_user_hse_firstname/required}" />
+						<Input value="{Supplier/Hsefirstname}" 
+							id="supplier_user_hse_firstname"
+							maxLength="100"
+							visible="{field_visibility>/supplier_user_hse_firstname/visible}"
+							enabled="{field_visibility>/supplier_user_hse_firstname/enabled}">
+							<layoutData>
+								<l:GridData span="L9 M9 S9" />
+							</layoutData>
+						</Input>
+						<Label text="{i18n>userHSELastName}" 
+							visible="{field_visibility>/supplier_user_hse_lastname/visible}" 
+							required="{field_visibility>/supplier_user_hse_lastname/required}" />
+						<Input value="{Supplier/Hselastname}" 
+							id="supplier_user_hse_lastname"
+							maxLength="100"
+							visible="{field_visibility>/supplier_user_hse_lastname/visible}"
+							enabled="{field_visibility>/supplier_user_hse_lastname/enabled}">
+							<layoutData>
+								<l:GridData span="L9 M9 S9" />
+							</layoutData>
+						</Input>
+						<Label text="{i18n>userHSEEmail}" 
+							visible="{field_visibility>/supplier_user_hse_email/visible}" 
+							required="{field_visibility>/supplier_user_hse_email/required}" />
+						<Input value="{Supplier/Hseemail}" 
+							id="supplier_user_hse_email"
+							maxLength="100"
+							visible="{field_visibility>/supplier_user_hse_email/visible}"
+							enabled="{field_visibility>/supplier_user_hse_email/enabled}">
+							<layoutData>
+								<l:GridData span="L9 M9 S9" />
+							</layoutData>
+						</Input>
+						<Text id="supplier_roles_label" text="{i18n>role}" textAlign="Center" class="selectListTitle withBorder"
+								visible="{field_visibility>/supplier_roles/visible}"  >
+							<layoutData>
+								<l:GridData span="L12 M12 S12" />
+							</layoutData>
+						</Text>
+						<List
+							id="supplier_roles"
+							mode="{= ${user>/Username} === ${CommercialRefId} || ( ${user>/Username} === ${CommercManagerId} &amp;&amp; ${DoneByFater} ) ? 'MultiSelect' : 'None' }"
+							class="withBorder supplierRoleTypes"
+							items="{Types>/supplierRoleTypes}"
+							selectionChange="onRoleSelected"
+							visible="{field_visibility>/supplier_roles/visible}">
+							<te:TEStandardListItem
+								icon="{
+									parts: [
+										{path: 'Types>'},
+										{path: 'Supplier/Role'},
+										{path: 'user>/Role'}
+									],
+									formatter: '.formatter.isSupplierRoleTypeSelectedIcon'
+								}"
+								press="onRoleSelected"
+								title="{
+									path:'Types>',
+									formatter:'.formatter.supplierRoleType'
+								}"
+								enabled="{
+									parts: [
+										{path: 'Types>'}
+									],
+									formatter: '.formatter.isSupplierRoleTypeEnabled'
+								}"
+								selected="{
+									parts: [
+										{path: 'Types>'},
+										{path: 'Supplier/Role'}
+									],
+									formatter: '.formatter.isSupplierRoleTypeSelected'
+								}" />
+							<layoutData>
+								<l:GridData span="L12 M12 S12" />
+							</layoutData>
+						</List>
+						<List 
+							id="supplier_association_list"
+							visible="{
+									parts: [
+										{path: 'Supplier/Role'}
+									],
+									formatter: '.formatter.isSupplierRoleTypeBankStatementSelected'
+								}"
+								mode="Delete"
+								delete="handleSupplierDelete"
+								enableBusyIndicator="true"
+								growing="true">
+							<headerToolbar>
+								<Toolbar>
+									<Title text="{i18n>supplierAssignment}"/>
+									<ToolbarSpacer />
+									<Button icon="sap-icon://add"
+										press="handleTableSelectDialogPress"/>
+								</Toolbar>
+							</headerToolbar>
+							<items>
+								<StandardListItem	
+									title="{oDataModel>Supplier/Name1}"
+									description="{oDataModel>Supplier/VatIt}"/>
+							</items>
+							<layoutData>
+								<l:GridData span="L12 M12 S12" />
+							</layoutData>
+						</List>	
+					</f:content>
+				</f:SimpleForm>
+				<!-- START CONTACT INFORMATIONS -->
+				<f:SimpleForm 
+					binding="{Supplier/}" 
+					columnsL="12"
+					columnsM="12"
+					labelSpanL="1"
+					labelSpanM="1"
+					labelSpanS="4"
+					layout="ResponsiveGridLayout"
+					title="{i18n>contactInformations}"
+					editable="true">
+					<f:content>
+						<Label text="{i18n>title}" 
+							visible="{field_visibility>/contact_title/visible}" 
+							required="{field_visibility>/contact_title/required}" />
+						<Input value="{ContactTitle}" 
+							id="contact_title"
+							valueState="{= ${ContactTitleappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${ContactTitleappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							visible="{field_visibility>/contact_title/visible}"
+							enabled="{field_visibility>/contact_title/enabled}">
+							<layoutData>
+								<l:GridData span="L8 M8 S8" />
+							</layoutData>
+						</Input>
+						<Label text="{i18n>name}/{i18n>surname}" 
+							visible="{field_visibility>/contact_name/visible}" 
+							required="{field_visibility>/contact_name/required}" />
+						<Input value="{ContactName}" 
+							id="contact_name"
+							valueState="{= ${ContactNameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${ContactNameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							visible="{field_visibility>/contact_name/visible}"
+							enabled="{field_visibility>/contact_name/enabled}">
+							<layoutData>
+								<l:GridData span="L4 M4 S4" />
+							</layoutData>
+						</Input>
+						<Input value="{ContactSurname}" 
+							id="contact_surname"
+							valueState="{= ${ContactSurnameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${ContactSurnameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							visible="{field_visibility>/contact_surname/visible}"
+							enabled="{field_visibility>/contact_surname/enabled}">
+							<layoutData>
+								<l:GridData span="L4 M4 S4" />
+							</layoutData>
+						</Input>
+						<Label text="{i18n>area}" 
+							visible="{field_visibility>/contact_area/visible}" 
+							required="{field_visibility>/contact_area/required}" />
+							
+						<te:TESelect
+							id="contact_area"
+							valueState="{= ${ContactAreaappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${ContactAreaappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							forceSelection="false"
+		                    selectedKey="{ContactArea}"
+							visible="{field_visibility>/contact_area/visible}"
+							enabled="{field_visibility>/contact_area/enabled}">
+							<te:layoutData>
+								<l:GridData span="L8 M8 S8" />
+							</te:layoutData>
+						</te:TESelect>	
+						
+						<Label text="{i18n>telNum}/{i18n>cellNum}" 
+							visible="{field_visibility>/contact_telephone/visible}" 
+							required="{field_visibility>/contact_telephone/required}" />
+						<Input value="{ContactTelNumber}" 
+							id="contact_telephone"
+							valueState="{= ${ContactTelNumberappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${ContactTelNumberappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							visible="{field_visibility>/contact_telephone/visible}"
+							enabled="{field_visibility>/contact_telephone/enabled}">
+							<layoutData>
+								<l:GridData span="L4 M4 S4" />
+							</layoutData>
+						</Input>
+						<Input value="{ContactCellNumber}" 
+							id="contact_cellphone"
+							valueState="{= ${ContactCellNumberappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${ContactCellNumberappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							visible="{field_visibility>/contact_cellphone/visible}"
+							enabled="{field_visibility>/contact_cellphone/enabled}">
+							<layoutData>
+								<l:GridData span="L4 M4 S4" />
+							</layoutData>
+						</Input>
+						<Label text="{i18n>email}"
+							visible="{field_visibility>/contact_email/visible}" 
+							required="{field_visibility>/contact_email/required}" />
+						<Input value="{ContactEmail}" 
+							type="Email"
+							valueState="{= ${ContactEmailappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${ContactEmailappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							id="contact_email"
+							visible="{field_visibility>/contact_email/visible}"
+							enabled="{field_visibility>/contact_email/enabled}">
+							<layoutData>
+								<l:GridData span="L8 M8 S8" />
+							</layoutData>
+						</Input>
+						
+						<Title text="{i18n>businessContact}" class="supplierContactTitle">
+							<layoutData>
+								<l:GridData span="L6 M6 S6" />
+							</layoutData>
+						</Title>
+						<Label text="{i18n>name}/{i18n>surname}" 
+							visible="{field_visibility>/contact_business_name/visible}" 
+							required="{field_visibility>/contact_business_name/required}" />
+						<Input value="{CommercialName}" 
+							valueState="{= ${CommercialNameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${CommercialNameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							id="contact_business_name"
+							visible="{field_visibility>/contact_business_name/visible}"
+							enabled="{field_visibility>/contact_business_name/enabled}">
+							<layoutData>
+								<l:GridData span="L4 M4 S4" />
+							</layoutData>
+						</Input>
+						<Input value="{CommercialSurname}"
+							id="contact_business_surname"
+							valueState="{= ${CommercialSurnameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${CommercialSurnameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							visible="{field_visibility>/contact_business_surname/visible}"
+							enabled="{field_visibility>/contact_business_surname/enabled}">
+							<layoutData>
+								<l:GridData span="L4 M4 S4" />
+							</layoutData>
+						</Input>
+						<Label text="{i18n>email}" 
+							visible="{field_visibility>/contact_business_email/visible}" 
+							required="{field_visibility>/contact_business_email/required}" />
+						<Input value="{CommercialEmail}"
+							id="contact_business_email"
+							valueState="{= ${CommercialEmailappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${CommercialEmailappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							type="Email"
+							visible="{field_visibility>/contact_business_email/visible}"
+							enabled="{field_visibility>/contact_business_email/enabled}">
+							<layoutData>
+								<l:GridData span="L8 M8 S8" />
+							</layoutData>
+						</Input>
+						
+						<Title text="{i18n>administrativeContact}" class="supplierContactTitle">
+							<layoutData>
+								<l:GridData span="L6 M6 S6" />
+							</layoutData>
+						</Title>
+						<Label text="{i18n>name}/{i18n>surname}" 
+							visible="{field_visibility>/contact_administration_name/visible}" 
+							required="{field_visibility>/contact_administration_name/required}" />
+						<Input value="{AdministrationName}"
+							id="contact_administration_name"
+							valueState="{= ${AdministrationNameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${AdministrationNameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							visible="{field_visibility>/contact_administration_name/visible}"
+							enabled="{field_visibility>/contact_administration_name/enabled}">
+							<layoutData>
+								<l:GridData span="L4 M4 S4" />
+							</layoutData>
+						</Input>
+						<Input value="{AdministrationSurname}"
+							id="contact_administration_surname"
+							valueState="{= ${AdministrationSurnameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${AdministrationSurnameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							visible="{field_visibility>/contact_administration_surname/visible}"
+							enabled="{field_visibility>/contact_administration_surname/enabled}">
+							<layoutData>
+								<l:GridData span="L4 M4 S4" />
+							</layoutData>
+						</Input>
+						<Label text="{i18n>email}" 
+							visible="{field_visibility>/contact_administration_email/visible}" 
+							required="{field_visibility>/contact_administration_email/required}" />
+						<Input value="{AdministrationEmail}"
+							type="Email"
+							valueState="{= ${AdministrationEmailappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${AdministrationEmailappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							id="contact_administration_email"
+							visible="{field_visibility>/contact_administration_email/visible}"
+							enabled="{field_visibility>/contact_administration_email/enabled}">
+							<layoutData>
+								<l:GridData span="L8 M8 S8" />
+							</layoutData>
+						</Input>
+						
+						<Title text="{i18n>odaConfirmationContact}" class="supplierContactTitle">
+							<layoutData>
+								<l:GridData span="L6 M6 S6" />
+							</layoutData>
+						</Title>
+						<Label text="{i18n>name}/{i18n>surname}" 
+							visible="{field_visibility>/contact_oda_name/visible}" 
+							required="{field_visibility>/contact_oda_name/required}" />
+						<Input value="{OdaName}"
+							id="contact_oda_name"
+							valueState="{= ${OdaNameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${OdaNameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							visible="{field_visibility>/contact_oda_name/visible}"
+							enabled="{field_visibility>/contact_oda_name/enabled}">
+							<layoutData>
+								<l:GridData span="L4 M4 S4" />
+							</layoutData>
+						</Input>
+						<Input value="{OdaSurname}"
+							id="contact_oda_surname"
+							valueState="{= ${OdaSurnameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${OdaSurnameappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							visible="{field_visibility>/contact_oda_surname/visible}"
+							enabled="{field_visibility>/contact_oda_surname/enabled}">
+							<layoutData>
+								<l:GridData span="L4 M4 S4" />
+							</layoutData>
+						</Input>
+						<Label text="{i18n>email}" 
+							visible="{field_visibility>/contact_oda_email/visible}" 
+							required="{field_visibility>/contact_oda_email/required}" />
+						<Input value="{OdaEmail}"
+							type="Email"
+							valueState="{= ${OdaEmailappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
+							tooltip="{= ${OdaEmailappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"
+							id="contact_oda_email"
+							visible="{field_visibility>/contact_oda_email/visible}"
+							enabled="{field_visibility>/contact_oda_email/enabled}">
+							<layoutData>
+								<l:GridData span="L8 M8 S8" />
+							</layoutData>
+						</Input>
+					</f:content>
+					<f:layoutData>
+						<l:GridData span="L8 M8 S8" />
+					</f:layoutData>
+				</f:SimpleForm>
+				<!-- END CONTACT INFORMATIONS -->
+			</l:content>
+		</l:Grid>
+</core:FragmentDefinition>

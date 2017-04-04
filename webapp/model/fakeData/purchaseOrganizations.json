@@ -1,0 +1,25 @@
+[{
+	"OrganizationName": "Org. Acq. Fater",
+	"OrganizaionId": "10",
+	"CompanyId": "20"
+}, {
+	"OrganizationName": "Porto Purch. Org.",
+	"OrganizaionId": "30",
+	"CompanyId": "30"
+}, {
+	"OrganizationName": "Romania Purch. Org.",
+	"OrganizaionId": "32",
+	"CompanyId": "32"
+}, {
+	"OrganizationName": "Russia Purch Org.",
+	"OrganizaionId": "34",
+	"CompanyId": "34"
+}, {
+	"OrganizationName": "Turkey Purch. Org.",
+	"OrganizaionId": "40",
+	"CompanyId": "40"
+}, {
+	"OrganizationName": "Morocco Purch. Org.",
+	"OrganizaionId": "50",
+	"CompanyId": "50"
+}]
