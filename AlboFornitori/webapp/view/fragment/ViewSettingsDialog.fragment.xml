@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="_handleConfirm"
+		sortItems="{tempModel>/sortItems}"
+		groupItems="{tempModel>/groupItems}">
+		<sortItems>
+			<ViewSettingsItem text="{tempModel>text}" key="{tempModel>key}" selected="{tempModel>selected}"/>
+		</sortItems>
+		<groupItems>
+			<ViewSettingsItem text="{tempModel>text}" key="{tempModel>key}" selected="{tempModel>selected}"/>
+		</groupItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,24 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="org.fater.albofornitori.controller.Main"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="{i18n>mainTitle}">
+				<content>
+					
+					<core:Fragment fragmentName="org.fater.albofornitori.view.fragment.FilterBar" type="XML" />
+					
+					<!-- Suppliers Table -->
+					<Panel
+						expandable="false"
+						expanded="true"
+						visible="{tempModel>/dataLoaded}">
+						
+							<core:Fragment fragmentName="org.fater.albofornitori.view.fragment.SuppliersTable" type="XML" />
+							
+					</Panel>
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

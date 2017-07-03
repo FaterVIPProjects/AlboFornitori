@@ -1,0 +1,134 @@
+<core:FragmentDefinition
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m">
+	<Dialog
+		visible="true"
+		title="{i18n>submitSupplierDialogTitle}"
+		type="Standard"
+		state="None">
+		<content>
+			<f:SimpleForm
+				layout="ResponsiveGridLayout"
+				editable="true">
+				<Text 
+					text="{i18n>submitSupplierDialogMessage}">
+					<layoutData>
+						<l:GridData span="L12 M12 S12"/>
+					</layoutData>
+				</Text>	
+				
+				<!-- APPROVAZIONE PAYMENT -->
+				<Link 
+					visible="{= ${Survey/Showacceptpaymentcondition} === true &amp;&amp; ${Type} !== ${Types>/participationType/PRE_QUALIFICATION} }"
+					text="{i18n>acceptPaymentLinkText}"
+					href="{i18n>acceptPaymentLinkUrl}"
+					target="_blank"
+					emphasized="true">
+					<layoutData>
+						<l:GridData span="L12 M12 S12"/>
+					</layoutData>
+				</Link>	
+				<RadioButton
+					visible="{= ${Survey/Showacceptpaymentcondition} === true &amp;&amp; ${Type} !== ${Types>/participationType/PRE_QUALIFICATION} }"
+					id="payment_accepted"
+					groupName="payment"
+					select="onPaymentSelected"
+					selected="{= ${Acceptedpaymentcondition} === true ? true : false }">
+					<layoutData>
+						<l:GridData span="L1 M1 S1"/>
+					</layoutData>
+				</RadioButton>
+				<Text 
+					visible="{= ${Survey/Showacceptpaymentcondition} === true &amp;&amp; ${Type} !== ${Types>/participationType/PRE_QUALIFICATION} }"
+					text="{i18n>accept}">
+					<layoutData>
+						<l:GridData span="L2 M2 S2"/>
+					</layoutData>
+				</Text>	
+				<RadioButton
+					visible="{= ${Survey/Showacceptpaymentcondition} === true &amp;&amp; ${Type} !== ${Types>/participationType/PRE_QUALIFICATION} }"
+					id="payment_not_accepted"
+					groupName="payment"
+					select="onPrivacySelected"
+					selected="{= ${Acceptedpaymentcondition} === true ? false : true }">
+					<layoutData>
+						<l:GridData span="L1 M1 S1"/>
+					</layoutData>
+				</RadioButton>
+				<Text 
+					visible="{= ${Survey/Showacceptpaymentcondition} === true &amp;&amp; ${Type} !== ${Types>/participationType/PRE_QUALIFICATION} }"
+					text="{i18n>not_accept}">
+					<layoutData>
+						<l:GridData span="L2 M2 S2"/>
+					</layoutData>
+				</Text>	
+				
+				
+				<!-- APPROVAZIONE PRIVACY -->
+				<Link 
+					visible="{= ${DoneByFater} === false }"
+					text="{i18n>acceptPrivacyLinkText}"
+					href="{i18n>acceptPrivacyLinkUrl}"
+					target="_blank"
+					emphasized="true">
+					<layoutData>
+						<l:GridData span="L12 M12 S12"/>
+					</layoutData>
+				</Link>	
+				<RadioButton
+					visible="{= ${DoneByFater} === false }"
+					id="privacy_accepted"
+					groupName="privacy"
+					select="onPrivacySelected"
+					selected="{= ${Privacyaccepted} === true ? true : false }">
+					<layoutData>
+						<l:GridData span="L1 M1 S1"/>
+					</layoutData>
+				</RadioButton>
+				<Text 
+					visible="{= ${DoneByFater} === false }"
+					text="{i18n>accept}">
+					<layoutData>
+						<l:GridData span="L2 M2 S2"/>
+					</layoutData>
+				</Text>	
+				<RadioButton
+					visible="{= ${DoneByFater} === false }"
+					id="privacy_not_accepted"
+					groupName="privacy"
+					select="onPrivacySelected"
+					selected="{= ${Privacyaccepted} === true ? false : true }">
+					<layoutData>
+						<l:GridData span="L1 M1 S1"/>
+					</layoutData>
+				</RadioButton>
+				<Text 
+					visible="{= ${DoneByFater} === false }"
+					text="{i18n>not_accept}">
+					<layoutData>
+						<l:GridData span="L2 M2 S2"/>
+					</layoutData>
+				</Text>	
+				
+				
+				
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button
+				type="Reject"
+				press="onCancelPress"
+				text="{i18n>submitSupplierDialogNegativeAction}"/>
+		</beginButton>
+		<endButton>
+			<Button
+				type="Accept"
+				press="onSubmitConfirmPress"
+				enabled="{= ( ${Privacyaccepted} || ${DoneByFater} ) &amp;&amp; ( ${Acceptedpaymentcondition} || ${Survey/Showacceptpaymentcondition} === false || ${Type} === ${Types>/participationType/PRE_QUALIFICATION} ) }"
+				text="{i18n>submitSupplierDialogPositiveAction}"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

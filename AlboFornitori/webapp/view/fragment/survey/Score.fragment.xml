@@ -1,0 +1,251 @@
+<core:FragmentDefinition
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<l:Grid>
+		<Label
+			visible="{= ${Survey/GroupS/0/QuestionS/}.length > 0 || ${Survey/GroupS/1/QuestionS/}.length > 0 || ${Survey/GroupS/2/QuestionS/}.length > 0 || ${Survey/GroupS/3/QuestionS/}.length > 0 }"
+			text="{i18n>totalScore}:">
+			<layoutData>
+				<l:GridData	span="L3 M2 S6"/>
+			</layoutData>
+		</Label>
+		<Text
+			visible="{= ${Survey/GroupS/0/QuestionS/}.length > 0 || ${Survey/GroupS/1/QuestionS/}.length > 0 || ${Survey/GroupS/2/QuestionS/}.length > 0 || ${Survey/GroupS/3/QuestionS/}.length > 0 }"
+			text="{
+			parts:[
+				{path: 'Survey/GroupS/0'},
+				{path: 'Survey/GroupS/1'},
+				{path: 'Survey/GroupS/2'},
+				{path: 'Survey/GroupS/3'},
+				{path: 'Survey/GroupS/0/Points'},
+				{path: 'Survey/GroupS/1/Points'},
+				{path: 'Survey/GroupS/2/Points'},
+				{path: 'Survey/GroupS/3/Points'}
+			],
+			formatter: '.formatter.averagePoints'
+		}">
+			<layoutData>
+				<l:GridData	span="L1 M1 S6"/>
+			</layoutData>
+		</Text>
+		<core:Icon	src="sap-icon://circle-task-2"
+			visible="{= ${Survey/GroupS/0/QuestionS/}.length > 0 || ${Survey/GroupS/1/QuestionS/}.length > 0 || ${Survey/GroupS/2/QuestionS/}.length > 0 || ${Survey/GroupS/3/QuestionS/}.length > 0 }"
+			color="{
+			parts:[
+				{path: 'Survey/GroupS/0'},
+				{path: 'Survey/GroupS/1'},
+				{path: 'Survey/GroupS/2'},
+				{path: 'Survey/GroupS/3'},
+				{path: 'Survey/GroupS/0/Points'},
+				{path: 'Survey/GroupS/1/Points'},
+				{path: 'Survey/GroupS/2/Points'},
+				{path: 'Survey/GroupS/3/Points'}
+			],
+			formatter: '.formatter.averageColor'
+		}" >
+		</core:Icon>
+		
+		<Label	
+			visible="{= ${Survey/GroupS/0/QuestionS/}.length > 0 || ${Survey/GroupS/1/QuestionS/}.length > 0 || ${Survey/GroupS/2/QuestionS/}.length > 0 || ${Survey/GroupS/3/QuestionS/}.length > 0 }"
+			text="{i18n>totalScoreTarget}:">
+			<layoutData>
+				<l:GridData	span="L3 M2 S6"
+					linebreakS="true"
+					linebreakM="true"
+					linebreakL="true"/>
+			</layoutData>
+		</Label>
+		<Text	
+			visible="{= ${Survey/GroupS/0/QuestionS/}.length > 0 || ${Survey/GroupS/1/QuestionS/}.length > 0 || ${Survey/GroupS/2/QuestionS/}.length > 0 || ${Survey/GroupS/3/QuestionS/}.length > 0 }"
+			text="{
+			parts:[
+				{path: 'Survey/GroupS/0'},
+				{path: 'Survey/GroupS/1'},
+				{path: 'Survey/GroupS/2'},
+				{path: 'Survey/GroupS/3'}
+			],
+			formatter: '.formatter.averageTargetPoint'
+		}">
+			<layoutData>
+				<l:GridData	span="L1 M1 S6"/>
+			</layoutData>
+		</Text>
+		<Label 
+			visible="{= ${Survey/GroupS/0/QuestionS/}.length > 0 || ${Survey/GroupS/1/QuestionS/}.length > 0 || ${Survey/GroupS/2/QuestionS/}.length > 0 || ${Survey/GroupS/3/QuestionS/}.length > 0 }"
+			text="{i18n>totalScoreThreshold}:">
+			<layoutData>
+				<l:GridData	span="L3 M2 S6"
+					linebreakS="true"
+					linebreakM="true"
+					linebreakL="true"/>
+			</layoutData>
+		</Label>
+		<Text 
+			visible="{= ${Survey/GroupS/0/QuestionS/}.length > 0 || ${Survey/GroupS/1/QuestionS/}.length > 0 || ${Survey/GroupS/2/QuestionS/}.length > 0 || ${Survey/GroupS/3/QuestionS/}.length > 0 }"
+			text="{
+			parts:[
+				{path: 'Survey/GroupS/0'},
+				{path: 'Survey/GroupS/1'},
+				{path: 'Survey/GroupS/2'},
+				{path: 'Survey/GroupS/3'}
+			],
+			formatter: '.formatter.averageThresholdPoint'
+		}">
+			<layoutData>
+				<l:GridData	span="L1 M1 S6"/>
+			</layoutData>
+		</Text>
+		<Table 
+			visible="{= ${Survey/GroupS/0/QuestionS/}.length > 0 || ${Survey/GroupS/1/QuestionS/}.length > 0 || ${Survey/GroupS/2/QuestionS/}.length > 0 || ${Survey/GroupS/3/QuestionS/}.length > 0 }"
+			id="idSurveyTable"
+			inset="false"
+			class="sapUiResponsiveContentPadding">
+			<columns>
+				<Column	hAlign="Center">
+					<Text text="{i18n>survey}" />
+				</Column>
+				<Column	hAlign="Center">
+					<Text text="{i18n>score}" />
+				</Column>
+				<Column	hAlign="Center">
+					<Text text="{i18n>target}" />
+				</Column>
+				<Column	hAlign="Center">
+					<Text text="{i18n>threshold}" />
+				</Column>
+				<Column
+					hAlign="Center">
+					<Text text="{i18n>weight}" />
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem
+					visible="{= ${Survey/GroupS/0/QuestionS/}.length > 0 }">
+					<cells>
+						<Text	text="{i18n>titleCompanyInformation}" />
+						<HBox	justifyContent="Center">
+							<Text	class="sapUiSmallMarginEnd"
+								text="{Survey/GroupS/0/Points}" />
+							<core:Icon	src="sap-icon://circle-task-2"
+								color="{
+									parts:[
+										{path: 'Survey/GroupS/0/Points'},
+										{path: 'Survey/GroupS/0/TargetPoint'},
+										{path: 'Survey/GroupS/0/ThresholdPoint'}
+									],
+									formatter: '.formatter.color'
+								}"/>
+						</HBox>
+						<Text
+							text="{Survey/GroupS/0/TargetPoint}" />
+						<Text
+							text="{Survey/GroupS/0/ThresholdPoint}" />
+						<Text
+							text="{Survey/GroupS/0/Weight}" />
+					</cells>
+				</ColumnListItem>
+				<ColumnListItem
+					visible="{= ${Survey/GroupS/1/QuestionS/}.length > 0 }">
+					<cells>
+						<Text	text="{i18n>financialData}" />
+						<HBox	justifyContent="Center">
+							<Text	class="sapUiSmallMarginEnd"
+								text="{Survey/GroupS/1/Points}" />
+							<core:Icon	src="sap-icon://circle-task-2"
+								color="{
+									parts:[
+										{path: 'Survey/GroupS/1/Points'},
+										{path: 'Survey/GroupS/1/TargetPoint'},
+										{path: 'Survey/GroupS/1/ThresholdPoint'}
+									],
+									formatter: '.formatter.color'
+								}"/>
+						</HBox>
+						<Text
+							text="{Survey/GroupS/1/TargetPoint}" />
+						<Text
+							text="{Survey/GroupS/1/ThresholdPoint}" />
+						<Text
+							text="{Survey/GroupS/1/Weight}" />
+					</cells>
+				</ColumnListItem>
+				<ColumnListItem
+					visible="{= ${Survey/GroupS/2/QuestionS/}.length > 0 }">
+					<cells>
+						<Text	text="{i18n>plan}" />
+						<HBox	justifyContent="Center">
+							<Text	class="sapUiSmallMarginEnd"
+								text="{Survey/GroupS/2/Points}" />
+							<core:Icon	src="sap-icon://circle-task-2"
+								color="{
+									parts:[
+										{path: 'Survey/GroupS/2/Points'},
+										{path: 'Survey/GroupS/2/TargetPoint'},
+										{path: 'Survey/GroupS/2/ThresholdPoint'}
+									],
+									formatter: '.formatter.color'
+								}"/>
+						</HBox>
+						<Text
+							text="{Survey/GroupS/2/TargetPoint}" />
+						<Text
+							text="{Survey/GroupS/2/ThresholdPoint}" />
+						<Text
+							text="{Survey/GroupS/2/Weight}" />
+					</cells>
+				</ColumnListItem>
+				<ColumnListItem
+					visible="{= ${Survey/GroupS/3/QuestionS/}.length > 0 }">
+					<cells>
+						<Text	text="{i18n>qualitySecurity}" />
+						<HBox	justifyContent="Center">
+							<Text	class="sapUiSmallMarginEnd"
+								text="{Survey/GroupS/3/Points}" />
+							<core:Icon	src="sap-icon://circle-task-2"
+								color="{
+									parts:[
+										{path: 'Survey/GroupS/3/Points'},
+										{path: 'Survey/GroupS/3/TargetPoint'},
+										{path: 'Survey/GroupS/3/ThresholdPoint'}
+									],
+									formatter: '.formatter.color'
+								}"/>
+						</HBox>
+						<Text
+							text="{Survey/GroupS/3/TargetPoint}" />
+						<Text
+							text="{Survey/GroupS/3/ThresholdPoint}" />
+						<Text
+							text="{Survey/GroupS/3/Weight}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+			<layoutData>
+				<l:GridData	span="L12 M12 S12"
+					linebreakS="true"
+					linebreakM="true"
+					linebreakL="true"/>
+			</layoutData>
+		</Table>
+		<Label	text="{i18n>internalNotes}">
+			<layoutData>
+				<l:GridData	span="L12 M12 S12"
+					linebreakS="true"
+					linebreakM="true"
+					linebreakL="true"/>
+			</layoutData>					
+		</Label>
+		<TextArea	id="idTextArea"
+			width="100%"
+			value="{Note}">
+			<layoutData>
+				<l:GridData	span="L12 M12 S12"
+					linebreakS="true"
+					linebreakM="true"
+					linebreakL="true"/>
+			</layoutData>			
+		</TextArea> 
+	</l:Grid>
+</core:FragmentDefinition>

@@ -1,0 +1,140 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	
+	<Table id="suppliersTable"
+		updateFinished="onUpdateFinishedTable">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="{i18n>suppliersListHeaderText}" level="H2"/>
+				<ToolbarSpacer></ToolbarSpacer>
+				<!--  Add the Personalization button -->
+				<Button icon="sap-icon://excel-attachment" press="onExcelExportButtonPressed" tooltip="{i18n>tableHeaderExportButtonTTP}">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+				<Button icon="sap-icon://sort" press="onTableSortingButtonPressed" tooltip="{i18n>tableHeaderSortButtonTTP}">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+				<Button icon="sap-icon://group-2" press="onTableGroupingButtonPressed" tooltip="{i18n>tableHeaderGroupButtonTTP}">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+				<Button icon="sap-icon://action-settings" press="onTablePersonalizationButtonPressed" tooltip="{i18n>tableHeaderSettingsButtonTTP}">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column 
+				id="company"			
+				hAlign="Center"	
+				visible="{tempModel>/tableColumns/0/selected}">
+				<Text text="{i18n>companyLabel}" tooltip="{i18n>companyColumnTTP}"/>
+			</Column>
+			<Column 
+				id="purchaseOrganization" 		
+				minScreenWidth="Tablet" 
+				demandPopin="true"	
+				hAlign="Center"	
+				visible="{tempModel>/tableColumns/1/selected}">
+				<Text text="{i18n>purchaseOrganizationLabel}" tooltip="{i18n>purchaseOrganizationColumnTTP}"/>
+			</Column>
+			<Column 
+				id="supplierType"					
+				minScreenWidth="Tablet" 
+				demandPopin="true"	
+				hAlign="Center"	
+				visible="{tempModel>/tableColumns/2/selected}">
+				<Text text="{i18n>supplierTypeLabel}" tooltip="{i18n>supplierTypeColumnTTP}"/>
+			</Column>
+			<Column 
+				id="qualStatus"		
+				minScreenWidth="Tablet"	
+				demandPopin="true"	
+				hAlign="Center"	
+				visible="{tempModel>/tableColumns/3/selected}">
+				<Text text="{i18n>qualStatusLabel}" tooltip="{i18n>qualStatusColumnTTP}"/>
+			</Column>
+			<Column 
+				id="supplierId"	
+				minScreenWidth="Tablet"	
+				demandPopin="true"	
+				hAlign="Center"	
+				visible="{tempModel>/tableColumns/4/selected}">
+				<Text text="{i18n>supplierIdLabel}" tooltip="{i18n>supplierIdColumnTTP}"/>
+			</Column>
+			<Column 
+				id="supplierName" 	
+				minScreenWidth="Tablet" 
+				demandPopin="true"	
+				hAlign="Center"	
+				visible="{tempModel>/tableColumns/5/selected}">
+				<Text text="{i18n>supplierNameLabel}" tooltip="{i18n>supplierNameColumnTTP}"/>
+			</Column>
+			<Column 
+				id="cluster"				
+				minScreenWidth="Tablet" 
+				demandPopin="true"	
+				hAlign="Center"	
+				visible="{tempModel>/tableColumns/6/selected}">
+				<Text text="{i18n>clusterLabel}" tooltip="{i18n>clusterColumnTTP}"/>
+			</Column>
+			<Column 
+				id="registrationDate"						
+				minScreenWidth="Tablet"	
+				demandPopin="true"	
+				hAlign="Center"	
+				visible="{tempModel>/tableColumns/8/selected}">
+				<Text text="{i18n>registrationDateLable}" tooltip="{i18n>registrationDateColumnTTP}"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem
+				type="Navigation"
+				press="handleSupplierPress">
+				<cells>
+					<Text
+						text="{oDataModel>Butxt}" />
+					<Text
+						text="{oDataModel>Ekotx}" />
+					
+					<Text text="{
+						path:'oDataModel>Supplier/Status',
+						formatter: 'org.fater.albofornitori.util.Formatter2.supplierTypeFormat'
+					}" />
+					
+					<ObjectStatus 
+						state="{
+							path: 'oDataModel>Status',
+							formatter: 'org.fater.albofornitori.util.Formatter2.qualStatusValueStateFormat'                   
+						}"
+						text="{
+							path:'oDataModel>Status',
+							formatter: 'org.fater.albofornitori.util.Formatter2.qualStatusFormat'
+						}" />
+					
+					<Text text="{oDataModel>SupplierId}" />
+					
+					<Text
+						text="{oDataModel>Supplier/Name1}"/>
+						
+					<Text text="{oDataModel>Cluster/Name}" />
+					
+					<Text text="{
+						parts:[
+							{path: 'oDataModel>Supplier/CreatedT'}
+						],
+						formatter: 'org.fater.albofornitori.util.Formatter2.dateCompletedFormat'
+					}" />
+ 
+ 				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	
+</core:FragmentDefinition>

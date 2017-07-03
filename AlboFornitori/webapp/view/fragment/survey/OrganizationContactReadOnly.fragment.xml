@@ -1,0 +1,158 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m">
+	<f:SimpleForm layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true"
+		title="{i18n>supplierContactInformation}">
+		<f:content>
+			<Title text="{i18n>businessContact}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" indent="L2 M2 S2"/>
+				</layoutData>
+			</Title>
+			<Label text="{i18n>name}/{i18n>surname}"
+				visible="{field_visibility>/contact_business_name/visible}" 
+				required="{field_visibility>/contact_business_name/required}"/>
+			<Input 
+				value="{CommercialName}"
+				type="Text"
+				maxLength="100"
+				visible="{field_visibility>/contact_business_name/visible}"
+				enabled="false">
+				<layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</layoutData>
+			</Input>
+			<Input 
+				value="{CommercialSurname}"
+				type="Text"
+				maxLength="100"
+				visible="{field_visibility>/contact_business_surname/visible}"
+				enabled="false">
+				<layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>email}"
+				visible="{field_visibility>/contact_business_email/visible}" 
+				required="{field_visibility>/contact_business_email/required}"/>
+			<Input  
+				value="{CommercialEmail}"
+				type="Email"
+				maxLength="50"
+				visible="{field_visibility>/contact_business_email/visible}"
+				enabled="false">
+				<layoutData>
+					<l:GridData span="L8 M8 S8"/>
+				</layoutData>
+			</Input>
+			
+			<Label 
+				visible="{field_visibility>/contact_business_bank_attestation/visible}" 
+				required="{field_visibility>/contact_business_bank_attestation/required}" 
+				text="{i18n>contact_business_bank_attestation}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" />
+				</layoutData>
+			</Label>
+			<Link
+				target="_blank"
+				visible="{= ${BankAttestation} !== '' }"
+				text="{i18n>uploadedFile}"
+				emphasized="true"
+				href="{
+					parts: [
+						{ path: 'BankAttestation' },
+						{ path: '/SupplierId' }
+					],
+					formatter: '.formatter.fileUrl'
+				}">
+				<layoutData>
+					<l:GridData span="L2 M2 S2" />
+				</layoutData>
+			</Link>
+			
+			
+			<Title text="{i18n>administrativeContact}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" indent="L2 M2 S2" linebreak="true"/>
+				</layoutData>
+			</Title>
+			<Label text="{i18n>name}/{i18n>surname}"
+				visible="{field_visibility>/contact_administration_name/visible}" 
+				required="{field_visibility>/contact_administration_name/required}"/>
+			<Input   
+				value="{AdministrationName}"
+				type="Text"
+				maxLength="100"
+				visible="{field_visibility>/contact_administration_name/visible}"
+				enabled="false">
+				<layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</layoutData>
+			</Input>
+			<Input   
+				value="{AdministrationSurname}"
+				type="Text"
+				maxLength="100"
+				visible="{field_visibility>/contact_administration_surname/visible}"
+				enabled="false">
+				<layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>email}"
+				visible="{field_visibility>/contact_administration_email/visible}" 
+				required="{field_visibility>/contact_administration_email/required}"/>
+			<Input   
+				value="{AdministrationEmail}"
+				type="Email"
+				maxLength="50"
+				visible="{field_visibility>/contact_administration_email/visible}"
+				enabled="false">
+				<layoutData>
+					<l:GridData span="L8 M8 S8"/>
+				</layoutData>
+			</Input>
+			<Title text="{i18n>odaConfirmationContact}">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" indent="L2 M2 S2"/>
+				</layoutData>
+			</Title>
+			<Label text="{i18n>name}/{i18n>surname}"
+				visible="{field_visibility>/contact_oda_name/visible}" 
+				required="{field_visibility>/contact_oda_name/required}"/>
+			<Input   
+				value="{OdaName}"
+				type="Text"
+				maxLength="100"
+				visible="{field_visibility>/contact_oda_name/visible}"
+				enabled="false">
+				<layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</layoutData>
+			</Input>
+			<Input   
+				value="{OdaSurname}"
+				type="Text"
+				maxLength="100"
+				visible="{field_visibility>/contact_oda_surname/visible}"
+				enabled="false">
+				<layoutData>
+					<l:GridData span="L4 M4 S4"/>
+				</layoutData>
+			</Input>
+			<Label text="{i18n>email}"
+				visible="{field_visibility>/contact_oda_email/visible}" 
+				required="{field_visibility>/contact_oda_email/required}"/>
+			<Input   
+				value="{OdaEmail}"
+				type="Email"
+				maxLength="50"
+				visible="{field_visibility>/contact_oda_email/visible}"
+				enabled="false">
+				<layoutData>
+					<l:GridData span="L8 M8 S8"/>
+				</layoutData>
+			</Input>
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

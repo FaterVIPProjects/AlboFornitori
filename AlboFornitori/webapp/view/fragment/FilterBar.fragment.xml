@@ -1,0 +1,149 @@
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core" 
+	xmlns:l="sap.ui.layout"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	
+	<fb:FilterBar useToolbar="false"
+		id="supplierFilterBar" 
+		reset="onFilterBarReset" 
+		search="onFilterBarSearch" 
+		clear="onFilterBarReset" 
+		showRestoreButton="true" 
+		showClearButton="false"
+		showClearOnFB="false">
+		
+		<fb:filterItems>
+			
+			<!-- Supplier status selection -->
+			<fb:FilterItem name="A0" label="{i18n>supplierTypesFilterLabel}">
+				<fb:control>
+					<ComboBox
+						items="{tempModel>/supplierTypes}"
+						selectedKey="{tempModel>/filters/supplierStatus}">
+						<core:Item key="{tempModel>key}" text="{tempModel>name}" />
+					</ComboBox>
+				</fb:control>
+			</fb:FilterItem>
+			
+			<!-- Qualification status selection -->
+			<fb:FilterItem name="B0" label="{i18n>qualificationStatusFilterLabel}">
+				<fb:control>
+					<ComboBox
+						items="{tempModel>/qualStatuses}"
+						selectedKey="{tempModel>/filters/qualStatus}">
+						<core:Item key="{tempModel>key}" text="{tempModel>name}" />
+					</ComboBox>
+				</fb:control>
+			</fb:FilterItem>
+			
+			<!-- Cluster selection -->
+			<fb:FilterItem name="E0" label="{i18n>clusterFilterLabel}">
+				<fb:control>
+					<MultiInput 
+						app:filterName="clusters"
+						app:fragmentName="Clusters"
+						id="clusterFilterInput"
+						type="Text"
+						placeholder="{i18n>clusterFilterInputPlaceholder}"
+						showSuggestion="true"
+						showValueHelp="true"
+						valueHelpRequest="onValueHelpRequest"
+						suggestionItems="{
+							path: 'oDataModel>/ClusterSet',
+							templateShareable: true
+						}"
+						enableMultiLineMode="true"
+						tokenChange="onTokenChange"
+						tooltip="{i18n>clusterFilterInputTTP}">
+						<suggestionItems>
+							<core:Item key="{oDataModel>ClusterId}" text="{oDataModel>Name}" />
+						</suggestionItems>
+					</MultiInput>
+				</fb:control>
+			</fb:FilterItem>
+			
+		</fb:filterItems>
+		
+		<fb:filterGroupItems>
+			<fb:FilterGroupItem groupName="G1" groupTitle="{i18n>filterBarGroup1Label}" name="A" label="{i18n>registrationStartDateStatusFilterLabel}"  visibleInFilterBar="true">
+				<fb:control>
+					<DatePicker
+						id="filterLowerBoundDatePicker"
+						placeholder="{i18n>registrationStartDatePlaceholder}"
+						displayFormat="long"
+						app:filterName="registrationStartDate"
+						change="handleDateChange"
+						class="sapUiSmallMarginBottom"
+						tooltip="{i18n>filterRegistrationStartDatePickerTTP}"/>
+				</fb:control>				
+			</fb:FilterGroupItem>
+			<fb:FilterGroupItem groupName="G1" groupTitle="{i18n>filterBarGroup1Label}" name="B" label="{i18n>registrationEndDateLabel}" visibleInFilterBar="true">
+				<fb:control>
+					<DatePicker
+						id="filterUpperBoundDatePicker"
+						placeholder="{i18n>registrationEndDatePlaceholder}" 
+						displayFormat="long"
+						app:filterName="registrationEndDate"
+						change="handleDateChange"
+						class="sapUiSmallMarginBottom"
+						tooltip="{i18n>filterRegistrationEndDatePickerTTP}"/>
+				</fb:control>				
+			</fb:FilterGroupItem>
+			
+			<fb:FilterGroupItem groupName="G2" groupTitle="{i18n>filterBarGroup2Label}" name="A" label="{i18n>companyFilterLabel}" visibleInFilterBar="true">
+				<fb:control>
+					<MultiInput
+						app:filterName="company"
+						app:fragmentName="Company"
+						id="companyFilterInput"
+						type="Text"
+						placeholder="{i18n>companyFilterInputPlaceholder}"
+						showSuggestion="true"
+						showValueHelp="true"
+						valueHelpRequest="onValueHelpRequest"
+						suggestionItems="{
+							path: 'oDataModel>/CompanySet',
+							templateShareable: true
+						}"
+						enableMultiLineMode="true"
+						tokenChange="onTokenChange"
+						tooltip="{i18n>companyFilterInputTTP}">
+						<suggestionItems>
+							<core:Item text="{oDataModel>Butxt}" />
+						</suggestionItems>
+					</MultiInput>
+				</fb:control>				
+			</fb:FilterGroupItem>
+			
+			<fb:FilterGroupItem groupName="G2" groupTitle="{i18n>filterBarGroup2Label}" name="B" label="{i18n>purchaseOrganizationFilterLabel}" visibleInFilterBar="true">
+				<fb:control>
+					<MultiInput
+						app:filterName="purchase_org"
+						app:fragmentName="PurchaseOrg"
+						id="purchaseOrganizationFilterInput"
+						type="Text"
+						placeholder="{i18n>purchaseOrganizationFilterInputPlaceholder}"
+						showSuggestion="true"
+						showValueHelp="true"
+						valueHelpRequest="onValueHelpRequest"
+						suggestionItems="{
+							path: 'oDataModel>/PurchaseOrganizationSet',
+							templateShareable: true
+						}"
+						enableMultiLineMode="true"
+						tokenChange="onTokenChange"
+						tooltip="{i18n>purchaseOrganizationFilterInputTTP}">
+						<suggestionItems>
+							<core:Item text="{oDataModel>Ekotx}" />
+						</suggestionItems>
+					</MultiInput>
+				</fb:control>				
+			</fb:FilterGroupItem>
+			
+		</fb:filterGroupItems>
+		
+	</fb:FilterBar>
+	
+</core:FragmentDefinition>

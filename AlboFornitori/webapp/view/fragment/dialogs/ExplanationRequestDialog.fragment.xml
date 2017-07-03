@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m">
+	<Dialog contentHeight="95%"
+		contentWidth="60%"
+		visible="true"
+		title="{i18n>explanationRequest}"
+		type="Standard"
+		state="None">
+		<content>
+			<List items="{Survey/GroupS}">
+				<CustomListItem>
+					<Panel expandable="true"
+						expanded="true">
+						<headerToolbar>
+							<Toolbar design="Info">
+								<Title text="{
+									path: 'Title',
+									formatter: '.formatter.groupTitle'
+								}"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<List
+								items="{QuestionS}"
+								mode="MultiSelect">
+								<StandardListItem title="{Title}"/>
+							</List>
+						</content>
+					</Panel>					
+				</CustomListItem>
+			</List>
+		</content>
+		<beginButton>
+			<Button
+				press="onCancelPress"
+				text="{i18n>cancel}"/>
+		</beginButton>
+		<endButton>
+			<Button
+				press="onConfirmPress"
+				text="{i18n>confirm}"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns="sap.m">
+	<l:Grid>
+		<l:content>
+			<Image class="faterLogoClass" width="100%" id="welcome_image">
+				<layoutData>
+					<l:GridData span="L4 M4 S4" indent="L4 M4 S4"/>
+				</layoutData>
+			</Image>
+			<Title
+				text="{i18n>welcomeTabTitle}"
+				level="H2"
+				titleStyle="H2"
+				width="100%"
+				textAlign="Center">
+				<layoutData>
+					<l:GridData span="L8 M8 S8" indent="L2 M2 S2" linebreak="true"/>
+				</layoutData>
+			</Title>
+			<Text class="bigBlackTextClass" text="{i18n>welcomeTabText}">
+				<layoutData>
+					<l:GridData span="L6 M6 S6" indent="L3 M3 S3" linebreak="true"/>
+				</layoutData>
+			</Text>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

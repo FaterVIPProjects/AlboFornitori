@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog 
+		id="materialCategoriesInputAssistedDialog"
+		title="{i18n>suppliersValueHelpDialogTitle}" 
+		class="sapUiPopupWithPadding" 
+		items="{tempModel>/materialCategories}" 
+		multiSelect="true"
+		search="_handleValueHelpSearch"
+		confirm="_handleValueHelpClose" 
+		cancel="_handleValueHelpClose">
+			<StandardListItem 
+				title="{tempModel>name}" 
+				description="{tempModel>key}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

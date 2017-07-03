@@ -1,0 +1,286 @@
+/* latin-ext */
+/*@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(http://fonts.gstatic.com/s/lato/v11/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}*/
+/* latin */
+/*@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(http://fonts.gstatic.com/s/lato/v11/EsvMC5un3kjyUhB9ZEPPwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}*/
+/* latin-ext */
+/*@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(http://fonts.gstatic.com/s/lato/v11/UyBMtLsHKBKXelqf4x7VRQ.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}*/
+/* latin */
+/*@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(http://fonts.gstatic.com/s/lato/v11/1YwB1sO8YE1Lyjf12WNiUA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}*/
+/* latin-ext */
+/*@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(http://fonts.gstatic.com/s/lato/v11/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}*/
+/* latin */
+/*@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(http://fonts.gstatic.com/s/lato/v11/H2DMvhDLycM56KNuAtbJYA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}*/
+/* latin-ext */
+/*@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Lato Light Italic'), local('Lato-LightItalic'), url(http://fonts.gstatic.com/s/lato/v11/XNVd6tsqi9wmKNvnh5HNEBJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}*/
+/* latin */
+/*@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Lato Light Italic'), local('Lato-LightItalic'), url(http://fonts.gstatic.com/s/lato/v11/2HG_tEPiQ4Z6795cGfdivFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}*/
+/* latin-ext */
+/*@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(http://fonts.gstatic.com/s/lato/v11/YMOYVM-eg6Qs9YzV9OSqZfesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}*/
+/* latin */
+/*@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(http://fonts.gstatic.com/s/lato/v11/PLygLKRVCQnA5fhu3qk5fQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}*/
+
+/**:not(.sapUiIcon){
+	font-family: "Lato", Serif !important;
+}*/
+
+.supplierContactTitle {
+    font-size: 120%;
+}
+
+.overflowVisible{
+	overflow: visible;
+}
+
+.sapMInputBaseInner {
+	height:2rem;
+}
+
+/* Shorter selector */
+.sapMSlt, .sapMSelectListItem {
+	height:2rem;
+}
+.sapMSlt>.sapMSltLabel, .sapMSlt>.sapMSltArrow, .sapMSelectListItem{
+	line-height:2rem;
+}
+
+.sapUiFormEdit.sapUiFormM .sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12), .sapUiFormEdit.sapUiFormM .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12), .sapUiFormEdit.sapUiFormM .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12), .sapUiFormEdit.sapUiFormM .sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12){
+	padding-top:0.75rem;	
+}
+
+.sapUiFormEdit .sapMText{
+	padding-top: 0.59rem;
+}
+
+/*Text same color label*/
+.fakeLabel {
+	color: #666666;
+}
+
+.fakeLabel.required:before {
+    content: "*";
+    color: #007cc0;
+    font-size: 1rem;
+    line-height: 0.9375rem;
+}
+/* SALETTI POLLO */
+/*Image Timeline*/
+/*.sapMImg{*/
+/*	width: 3rem !important;*/
+/*    height: 2.7rem !important;*/
+/*}*/
+
+/**
+* RIMUOVI LO STYLE PER .SAPImage
+**/
+.bigBlackTextClass {
+    text-align: justify !important;
+    width: 100%;
+}
+
+.secondButton .sapMBtnInner{
+	background-color:#0000FF;
+}
+
+.thirdButton .sapMBtnInner{
+	background-color:#0000FF;
+}
+
+.sapMITBText{
+	white-space: pre-line;
+	overflow: visible !important;
+}
+
+.sap-phone .sapMITBContainerContent, .sap-tablet .sapMITBContainerContent, html[data-sap-ui-os=win8] .sapMITBContainerContent, html[data-sap-ui-os=win10] .sapMITBContainerContent {
+	margin-top:0.2rem;
+}
+
+.sapUiTheme-sap_bluecrystal {
+	font-family: Lato !important;
+}
+
+/*Datepicker Layout*/
+.sapMInputValHelpInner{
+	height: 2rem;
+	line-height: 1.8rem;
+}
+
+/*Link vertical align*/
+.sapUiFormEdit .sapMLnk {
+    line-height: 2.5rem;
+}
+
+/*New line title timeline item*/
+.sapSuiteUiCommonsTimelineItemShellHdr{
+	font-weight: bold !important; 
+	display: block;
+}
+
+.withBorder{
+	border:1px solid #bfbfbf
+}
+.selectListTitle{
+	padding: 0 !important;
+	min-height:0 !important;
+}
+
+/* Tabs Filters Wider */
+.sapMITBFilter .sapMITBText, .sapMITBTab{
+	width: auto !important;
+}
+
+.sapMITBFilter {
+    margin: 0 0.7rem;
+}
+
+.supplierRoleTypes .sapMSLITitleOnly {
+    font-size: 0.9rem;
+}
+
+.supplierRoleTypes .sapMLIB{
+    padding: 0 1rem 0 1.5rem;
+}
+
+.TERadioQuestionSuccess{
+	border:2px solid #008a3b
+}
+
+.TERadioQuestionError{
+	border:2px solid #e52929
+}
+
+.TEChoiceQuestionSuccess{
+	border:2px solid #008a3b
+}
+
+.TEChoiceQuestionError{
+	border:2px solid #e52929
+}
+
+.TEFileQuestionSuccess{
+	border:2px solid #008a3b
+}
+
+.TEFileQuestionError {
+	border:2px solid #e52929
+}
+
+.sapMSltWarning {
+	border:2px solid #f0ab00
+}
+
+.sapMSltSuccess {
+	border:2px solid #008a3b
+}
+
+.sapMSltError {
+	border:2px solid #e52929
+}
+
+.TEMoneyQuestionSuccess {
+	border:2px solid #008a3b
+}
+
+.TEMoneyQuestionError {
+	border:2px solid #e52929
+}
+
+.TEFileComplexQuestionSuccess {
+	border:2px solid #008a3b
+}
+
+.TEFileComplexQuestionError {
+	border:2px solid #e52929
+}
+
+/**/
+.sapMTB-Info-CTX>.sapMTitle {
+	font-size: 1.1rem;
+}
+
+/* Question restryling */
+
+.sapUiFormResGrid>.sapUiFormTitle {
+    padding-left: 0.25rem !important;
+}
+
+.sapMInputBase.sapMTextArea {
+    width: 100%;
+}
+
+.newLineToolbar {
+	height: auto !important;
+	background: #177E97 !important;
+}
+
+.newLine {
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
+	white-space: initial;
+}
+
+.surveyContent .sapMPanelContent {
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
