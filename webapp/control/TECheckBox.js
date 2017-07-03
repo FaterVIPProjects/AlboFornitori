@@ -5,7 +5,7 @@ sap.ui.define([
 	], function(CheckBox, RichTooltip, ValueState, ValueStateSupport) {
 	"use strict";
 
-	var TECheckBox = CheckBox.extend("org.fater.app.control.TECheckBox", { 
+	var TECheckBox = CheckBox.extend("org.fater.albofornitori.control.TECheckBox", { 
 	
 		object : undefined,
 	

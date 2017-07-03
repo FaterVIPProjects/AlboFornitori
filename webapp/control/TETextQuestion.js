@@ -2,10 +2,10 @@
 /*eslint no-undef: "error"*/
 sap.ui.define([
 	"sap/ui/core/Control",
-	"org/fater/app/control/TEInput"
+	"org/fater/albofornitori/control/TEInput"
 ], function (Control, TEInput) {
 	"use strict";
-	return Control.extend("org.fater.app.control.TETextQuestion", {
+	return Control.extend("org.fater.albofornitori.control.TETextQuestion", {
 		metadata : {
 			properties : {
 				enabled			: { type : "bool", defaultValue : false },
@@ -13,7 +13,7 @@ sap.ui.define([
 			},
 			aggregations : {
 				internalLayout	: {type : "sap.ui.layout.Grid", multiple: false},
-				_input : {type : "org.fater.app.control.TEInput", multiple: false, visibility : "hidden"}
+				_input : {type : "org.fater.albofornitori.control.TEInput", multiple: false, visibility : "hidden"}
 			},
 			events : {
 			}

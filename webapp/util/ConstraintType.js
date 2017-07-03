@@ -1,4 +1,4 @@
-sap.ui.model.SimpleType.extend("org.fater.app.util.ConstraintType", {
+sap.ui.model.SimpleType.extend("org.fater.albofornitori.util.ConstraintType", {
 	
     formatValue: function(oValue) {
         return oValue;

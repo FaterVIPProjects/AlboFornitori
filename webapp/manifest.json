@@ -2,7 +2,7 @@
 	"_version": "1.1.0",
 	"sap.app": {
 		"_version": "1.1.0",
-		"id": "org.fater.app",
+		"id": "org.fater.albofornitori",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -65,7 +65,7 @@
 	"sap.ui5": {
 		"_version": "1.1.0",
 		"rootView": {
-			"viewName": "org.fater.app.view.App",
+			"viewName": "org.fater.albofornitori.view.App",
 			"type": "XML",
 			"id": "App"
 		},
@@ -85,7 +85,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "org.fater.app.i18n.i18n"
+					"bundleName": "org.fater.albofornitori.i18n.i18n"
 				}
 			},
 			"ControlValues": {
@@ -97,36 +97,32 @@
 				"dataSource": "types"
 			},
 			"oDataModel": {
-				"type": "sap.ui.model.odata.v2.ODataModel",
+				"type": "sap.ui.model.odata.ODataModel",
 				"settings": {
 					"defaultOperationMode": "Server",
 					"defaultBindingMode": "OneTime",
 					"defaultCountMode": "None",
 					"headers": {
 						"X-Requested-With": "X",
-						"Content-Type": "application/json",
-						"sap-client": "209"
+						"Content-Type": "application/json"
 					},
 					"useBatch": false
 				},
-				"dataSource": "ZVIP_PROJECT_SRV",
-				"preload": true
+				"dataSource": "ZVIP_PROJECT_SRV"
 			},
 			"oUserModel": {
-				"type": "sap.ui.model.odata.v2.ODataModel",
+				"type": "sap.ui.model.odata.ODataModel",
 				"settings": {
 					"defaultOperationMode": "Server",
 					"defaultBindingMode": "OneTime",
 					"defaultCountMode": "None",
 					"headers": {
 						"X-Requested-With": "X",
-						"Content-Type": "application/json",
-						"sap-client": "209"
+						"Content-Type": "application/json"
 					},
 					"useBatch": false
 				},
-				"dataSource": "ZVIP_USERMGMT_SRV",
-				"preload": true
+				"dataSource": "ZVIP_USERMGMT_SRV"
 			}
 		},
 		"resources": {
@@ -138,10 +134,10 @@
 		},
 		"routing": {
 			"config": {
-				"routerClass": "org.fater.app.Router",
+				"routerClass": "org.fater.albofornitori.Router",
 				"viewType": "XML",
 				"controlId": "myApp",
-				"viewPath": "org.fater.app.view",
+				"viewPath": "org.fater.albofornitori.view",
 				"controlAggregation": "pages",
 				"clearTarget": false,
 				"viewLevel": 0,

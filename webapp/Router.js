@@ -1,9 +1,8 @@
-
 jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
 jQuery.sap.require("sap.ui.core.routing.Router");
-jQuery.sap.declare("org.fater.app.Router");
+jQuery.sap.declare("org.fater.albofornitori.Router");
 
-sap.ui.core.routing.Router.extend("org.fater.app.Router", {
+sap.ui.core.routing.Router.extend("org.fater.albofornitori.Router", {
 
 	constructor : function() {
 		sap.ui.core.routing.Router.apply(this, arguments);

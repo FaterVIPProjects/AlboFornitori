@@ -5,13 +5,13 @@ sap.ui.define([
 	"sap/m/List",
 	"sap/m/CustomListItem",
 	"sap/m/RadioButton",
-	"org/fater/app/control/TERadioButton",
+	"org/fater/albofornitori/control/TERadioButton",
     "sap/ui/core/ValueState",
     "sap/ui/core/ValueStateSupport",
 	"sap/ui/commons/RichTooltip"
 ], function (Control, List, CustomListItem, RadioButton, TERadioButton, ValueState, ValueStateSupport, RichTooltip) {
 	"use strict";
-	return Control.extend("org.fater.app.control.TERadioQuestion", {
+	return Control.extend("org.fater.albofornitori.control.TERadioQuestion", {
 		metadata : {
 			properties : {
 				customId		: { type : "string", defaultValue : null },

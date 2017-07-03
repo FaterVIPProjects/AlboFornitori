@@ -6,7 +6,7 @@ sap.ui.define([
 ], function(Controller,MessageBox) {
 	"use strict";
 
-	return Controller.extend("org.fater.app.controller.App", {
+	return Controller.extend("org.fater.albofornitori.controller.App", {
 
 	});
 

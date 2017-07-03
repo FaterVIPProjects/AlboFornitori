@@ -1,12 +1,12 @@
 /*global someFunction b:true*/
 /*eslint no-undef: "error"*/
-ap.ui.define([
+sap.ui.define([
 	"sap/ui/model/SimpleType",
 	"sap/ui/model/ValidateException"
 ], function(SimpleType, ValidateException) {
 	"use strict";
 
-	return SimpleType.extend("org.fater.app.control.TENumberType", {
+	return SimpleType.extend("org.fater.albofornitori.control.TENumberType", {
 
 		formatValue: function(oValue) {
 			if( oValue !== null && oValue !== undefined && oValue !== "" ) {

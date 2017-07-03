@@ -2,10 +2,10 @@
 /*eslint no-undef: "error"*/
 sap.ui.define([
 	"sap/ui/core/Control",
-	"org/fater/app/control/TETextArea"
+	"org/fater/albofornitori/control/TETextArea"
 ], function (Control, TETextArea) {
 	"use strict";
-	return Control.extend("org.fater.app.control.TETextAreaQuestion", {
+	return Control.extend("org.fater.albofornitori.control.TETextAreaQuestion", {
 		metadata : {
 			properties : {
 				enabled			: { type : "bool", defaultValue : false },
@@ -13,7 +13,7 @@ sap.ui.define([
 			},
 			aggregations : {
 				internalLayout	: {type : "sap.ui.layout.Grid", multiple: false},
-				_input : {type : "org.fater.app.control.TETextArea", multiple: false, visibility : "hidden"}
+				_input : {type : "org.fater.albofornitori.control.TETextArea", multiple: false, visibility : "hidden"}
 			},
 			events : {
 			}

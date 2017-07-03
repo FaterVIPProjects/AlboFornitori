@@ -2,9 +2,9 @@
 /*eslint no-undef: "error"*/
 sap.ui.define([
 	"sap/ui/core/Control",
-	"org/fater/app/control/TEInput",
-	"org/fater/app/control/TEFileUploader",
-	"org/fater/app/control/TEButton",
+	"org/fater/albofornitori/control/TEInput",
+	"org/fater/albofornitori/control/TEFileUploader",
+	"org/fater/albofornitori/control/TEButton",
 	"sap/m/Link",
 	"sap/m/Label",
 	"sap/ui/core/Item",
@@ -16,7 +16,7 @@ sap.ui.define([
 
 ], function (Control, TEInput, TEFileUploader, TEButton, Link, Label, Item, ValueState, ValueStateSupport, RichTooltip, Grid, FlexBox) {
 	"use strict";
-	return Control.extend("org.fater.app.control.TEFileQuestion", {
+	return Control.extend("org.fater.albofornitori.control.TEFileQuestion", {
 		
 		metadata : {
 			properties : {
@@ -28,9 +28,9 @@ sap.ui.define([
 			aggregations : {
 				internalLayout	: {type : "sap.ui.layout.Grid", multiple: false},
 				_description_label : {type : "sap.m.Label", multiple: false},
-				_description : {type : "org.fater.app.control.TEInput", multiple: false, visibility : "hidden"},
-				_file_upload  : {type : "org.fater.app.control.TEFileUploader", multiple: false, visibility : "hidden"},
-				_file_button : {type : "org.fater.app.control.TEButton", multiple: false, visibility : "hidden"},
+				_description : {type : "org.fater.albofornitori.control.TEInput", multiple: false, visibility : "hidden"},
+				_file_upload  : {type : "org.fater.albofornitori.control.TEFileUploader", multiple: false, visibility : "hidden"},
+				_file_button : {type : "org.fater.albofornitori.control.TEButton", multiple: false, visibility : "hidden"},
 				_file_link  : {type : "sap.m.Link", multiple: false, visibility : "hidden"},
 			},
 			events : {

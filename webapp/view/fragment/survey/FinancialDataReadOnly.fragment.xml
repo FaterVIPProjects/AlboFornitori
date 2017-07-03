@@ -22,7 +22,7 @@
 				required="{field_visibility>/branch/required}"/>
 			<Input value="{
 					path: 'Branch',
-					type: 'org.fater.app.control.TENumberType'
+					type: 'org.fater.albofornitori.control.TENumberType'
 				}"
 				maxLength="255"
 				visible="{field_visibility>/branch/visible}"
@@ -43,7 +43,7 @@
 			</Text>
 			<Input value="{
 					path: 'Cab',
-					type: 'org.fater.app.control.TENumberType'
+					type: 'org.fater.albofornitori.control.TENumberType'
 				}"
 				maxLength="5"
 				visible="{field_visibility>/cab/visible}"
@@ -111,7 +111,7 @@
 			</Text>
 			<Input value="{
 					path: 'BranchCode',
-					type: 'org.fater.app.control.TENumberType'
+					type: 'org.fater.albofornitori.control.TENumberType'
 				}"
 				maxLength="255"
 				visible="{field_visibility>/branch_code/visible}"

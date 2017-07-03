@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" 
-	xmlns:te="org.fater.app.control"
+	xmlns:te="org.fater.albofornitori.control"
 	xmlns:u="sap.ui.unified"
 	xmlns="sap.m">
 	<List items="{QuestionS/}" updateFinished="onUpdateFinished"

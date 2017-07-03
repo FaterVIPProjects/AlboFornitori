@@ -30,7 +30,7 @@ sap.ui.define([
 	 * @alias sap.m.TEStandardListItem
 	 * @ui5-metamodel This control/element also will be described in the UI5 (legacy) designtime metamodel
 	 */
-	var TEStandardListItem = StandardListItem.extend("org.fater.app.control.TEStandardListItem", { 
+	var TEStandardListItem = StandardListItem.extend("org.fater.albofornitori.control.TEStandardListItem", { 
 	
 		metadata : {
 			properties : {

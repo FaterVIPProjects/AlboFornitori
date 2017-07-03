@@ -1,16 +1,16 @@
 /*global someFunction b:true*/
 /*eslint no-undef: "error"*/
-jQuery.sap.declare("org.fater.app.util.Formatter2");
+jQuery.sap.declare("org.fater.albofornitori.util.Formatter2");
 
-org.fater.app.util.Formatter2 = {
+org.fater.albofornitori.util.Formatter2 = {
 	
 	_getBundle: function (){
 		
-		if (!org.fater.app.util.Formatter2._bundle){
+		if (!org.fater.albofornitori.util.Formatter2._bundle){
 			var sLanguage = sap.ui.getCore().getConfiguration().getLanguage();
-			var sRootPath = jQuery.sap.getModulePath("org.fater.app");
+			var sRootPath = jQuery.sap.getModulePath("org.fater.albofornitori");
 		
-			org.fater.app.util.Formatter2._bundle = jQuery.sap.resources({
+			org.fater.albofornitori.util.Formatter2._bundle = jQuery.sap.resources({
 				url : sRootPath + "/i18n/i18n.properties", 
 				locale: sLanguage
 			});
@@ -32,7 +32,7 @@ org.fater.app.util.Formatter2 = {
 	dateCompletedFormat: function(sDate){
 		var oConfig = sap.ui.getCore().getConfiguration(),
 			sLocale = oConfig.getLocale().getLanguage(),
-			oBundle = org.fater.app.util.Formatter2._getBundle();	
+			oBundle = org.fater.albofornitori.util.Formatter2._getBundle();	
 
 		var date = new Date(sDate);
 		if (!sDate){
@@ -43,7 +43,7 @@ org.fater.app.util.Formatter2 = {
 	
 	supplierTypeFormat: function (sType){
 		
-		var oBundle = org.fater.app.util.Formatter2._getBundle();
+		var oBundle = org.fater.albofornitori.util.Formatter2._getBundle();
 		
 		switch (sType){
 			
@@ -78,7 +78,7 @@ org.fater.app.util.Formatter2 = {
 			C3          Completato Livello 3      -> approvato service manager 
 			R           Rifiutato 
 			*/		
-		var oBundle = org.fater.app.util.Formatter2._getBundle();
+		var oBundle = org.fater.albofornitori.util.Formatter2._getBundle();
 		
 		switch (sStatus){
 			

@@ -9,7 +9,7 @@ sap.ui.define([
 		_getBundle:  function(){
 			if (!this._bundle){
 				var sLanguage = sap.ui.getCore().getConfiguration().getLanguage(),
-				sRootPah = jQuery.sap.getModulePath("org.fater.app");
+				sRootPah = jQuery.sap.getModulePath("org.fater.albofornitori");
 				
 				this._bundle = jQuery.sap.resources({
 					url : sRootPah + "/i18n/i18n.properties", 

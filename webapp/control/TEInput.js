@@ -8,7 +8,7 @@ sap.ui.define([
 	function(Input, RichTooltip) {
 	"use strict";
 
-	var TEInput = Input.extend("org.fater.app.control.TEInput", { 
+	var TEInput = Input.extend("org.fater.albofornitori.control.TEInput", { 
 		
 		object : undefined,
 	

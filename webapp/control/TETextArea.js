@@ -8,7 +8,7 @@ sap.ui.define([
 	function(TextArea, RichTooltip) {
 	"use strict";
 
-	var TETextArea = TextArea.extend("org.fater.app.control.TETextArea", { 
+	var TETextArea = TextArea.extend("org.fater.albofornitori.control.TETextArea", { 
 		
 		object : undefined,
 	

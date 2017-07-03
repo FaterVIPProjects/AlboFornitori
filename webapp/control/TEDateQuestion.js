@@ -2,10 +2,10 @@
 /*eslint no-undef: "error"*/
 sap.ui.define([
 	"sap/ui/core/Control",
-	"org/fater/app/control/TEDatePicker"
+	"org/fater/albofornitori/control/TEDatePicker"
 ], function (Control, TEDatePicker) {
 	"use strict";
-	return Control.extend("org.fater.app.control.TEDateQuestion", {
+	return Control.extend("org.fater.albofornitori.control.TEDateQuestion", {
 		metadata : {
 			properties : {
 				enabled			: { type : "bool", defaultValue : false },
@@ -13,7 +13,7 @@ sap.ui.define([
 			},
 			aggregations : {
 				internalLayout	: {type : "sap.ui.layout.Grid", multiple: false},
-				_date : {type : "org.fater.app.control.TEDatePicker", multiple: false, visibility : "hidden"}
+				_date : {type : "org.fater.albofornitori.control.TEDatePicker", multiple: false, visibility : "hidden"}
 			},
 			events : {
 			}

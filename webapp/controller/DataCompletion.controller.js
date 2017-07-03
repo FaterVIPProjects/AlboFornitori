@@ -1,8 +1,8 @@
 /*global someFunction b:true*/
 /*eslint no-undef: "error"*/
 sap.ui.define([
-	"org/fater/app/framework/BaseController",
-	"org/fater/app/util/formatter",
+	"org/fater/albofornitori/framework/BaseController",
+	"org/fater/albofornitori/util/formatter",
 	"sap/ui/model/json/JSONModel",
 	"sap/m/MessageBox",
 	"sap/m/Dialog",
@@ -12,24 +12,24 @@ sap.ui.define([
 	"sap/m/ButtonType",
 	"sap/m/Text",
 	"sap/ui/commons/RichTooltip",
-	"org/fater/app/control/TETextQuestion",
-	"org/fater/app/control/TETextAreaQuestion",
-	"org/fater/app/control/TEChoiceQuestion",
-	"org/fater/app/control/TERadioQuestion",
-	"org/fater/app/control/TEFileQuestion",
-	"org/fater/app/control/TERevenueYear3Question",
-	"org/fater/app/control/TERevenueYearQuestion",
-	"org/fater/app/control/TEDateQuestion",
-	"org/fater/app/control/TEMoneyQuestion",
-	"org/fater/app/control/TEFileComplexQuestion",
-	"org/fater/app/control/TENumberType",
-	"org/fater/app/control/TENumberTypeString"
+	"org/fater/albofornitori/control/TETextQuestion",
+	"org/fater/albofornitori/control/TETextAreaQuestion",
+	"org/fater/albofornitori/control/TEChoiceQuestion",
+	"org/fater/albofornitori/control/TERadioQuestion",
+	"org/fater/albofornitori/control/TEFileQuestion",
+	"org/fater/albofornitori/control/TERevenueYear3Question",
+	"org/fater/albofornitori/control/TERevenueYearQuestion",
+	"org/fater/albofornitori/control/TEDateQuestion",
+	"org/fater/albofornitori/control/TEMoneyQuestion",
+	"org/fater/albofornitori/control/TEFileComplexQuestion",
+	"org/fater/albofornitori/control/TENumberType",
+	"org/fater/albofornitori/control/TENumberTypeString"
 ], function(Controller, formatter, JSONModel, MessageBox, Dialog, Input, TextArea, Button, ButtonType, Text, RichTooltip, TETextQuestion, TETextAreaQuestion,
 	TEChoiceQuestion, TERadioQuestion, TEFileQuestion, TERevenueYear3Question, TERevenueYearQuestion, TEDateQuestion, TEMoneyQuestion, 
 	TEFileComplexQuestion, TENumberType, TENumberTypeString) {
 	"use strict";
 
-	return Controller.extend("org.fater.app.controller.DataCompletion", {
+	return Controller.extend("org.fater.albofornitori.controller.DataCompletion", {
 		
 		__targetName: "dataCompletion",
 		formatter: formatter, 
@@ -1244,7 +1244,7 @@ sap.ui.define([
 		
 		handleParticipationEdit: function(dialog, decision, successMessage, errorMessage, successCallback) {
 			// instantiate dialog
-			var busyDialog = sap.ui.xmlfragment("org.fater.app.view.fragment.dialogs.BusyDialog", this);
+			var busyDialog = sap.ui.xmlfragment("org.fater.albofornitori.view.fragment.dialogs.BusyDialog", this);
 			this.getView().addDependent(busyDialog);
  
 			// open busyDialog
@@ -1306,7 +1306,7 @@ sap.ui.define([
 
 		updateParticipation: function(dialog, newStatus, successMessage, errorMessage, successCallback, saveInRegistry) {
 			// instantiate dialog
-			var busyDialog = sap.ui.xmlfragment("org.fater.app.view.fragment.dialogs.BusyDialog", this);
+			var busyDialog = sap.ui.xmlfragment("org.fater.albofornitori.view.fragment.dialogs.BusyDialog", this);
 			this.getView().addDependent(busyDialog);
  
 			// open busyDialog
@@ -1542,7 +1542,7 @@ sap.ui.define([
 		
 		handleTableSelectDialogPress: function(oEvent) {
 			if (! this._oSupplierDialog) {
-				this._oSupplierDialog = sap.ui.xmlfragment("org.fater.app.view.fragment.dialogs.SupplierSearchDialog", this);
+				this._oSupplierDialog = sap.ui.xmlfragment("org.fater.albofornitori.view.fragment.dialogs.SupplierSearchDialog", this);
 			}
  
 			this.getView().addDependent(this._oSupplierDialog);

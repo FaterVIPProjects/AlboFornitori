@@ -9,7 +9,7 @@ sap.ui.define([
 	], function(Select, RichTooltip, ValueState, ValueStateSupport) {
 	"use strict";
 
-	var TESelect = Select.extend("org.fater.app.control.TESelect", { 
+	var TESelect = Select.extend("org.fater.albofornitori.control.TESelect", { 
 	
 		metadata : {
 			//library : "sap.m",

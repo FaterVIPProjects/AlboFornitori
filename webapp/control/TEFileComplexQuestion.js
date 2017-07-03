@@ -2,11 +2,11 @@
 /*eslint no-undef: ["error", { "typeof": true }] */
 sap.ui.define([
 	"sap/ui/core/Control",
-	"org/fater/app/control/TEDatePicker",
-	"org/fater/app/control/TECheckBox",
-	"org/fater/app/control/TEInput",
-	"org/fater/app/control/TEFileUploader",
-	"org/fater/app/control/TEButton",
+	"org/fater/albofornitori/control/TEDatePicker",
+	"org/fater/albofornitori/control/TECheckBox",
+	"org/fater/albofornitori/control/TEInput",
+	"org/fater/albofornitori/control/TEFileUploader",
+	"org/fater/albofornitori/control/TEButton",
 	"sap/m/Link",
 	"sap/m/Label",
 	"sap/ui/core/Item",
@@ -18,7 +18,7 @@ sap.ui.define([
 
 ], function (Control, TEDatePicker, TECheckBox, TEInput, TEFileUploader, TEButton, Link, Label, Item, ValueState, ValueStateSupport, RichTooltip, Grid, FlexBox) {
 	"use strict";
-	return Control.extend("org.fater.app.control.TEFileComplexQuestion", {
+	return Control.extend("org.fater.albofornitori.control.TEFileComplexQuestion", {
 		metadata : {
 			properties : {
 				enabled			: { type : "bool", defaultValue : false },
@@ -29,13 +29,13 @@ sap.ui.define([
 			aggregations : {
 				internalLayout	: {type : "sap.ui.layout.Grid", multiple: false},
 				_date_label : {type : "sap.m.Label", multiple: false},
-				_date_input : {type : "org.fater.app.control.TEDatePicker", multiple: false, visibility : "hidden"},
-				_date_checkbox : {type : "org.fater.app.control.TECheckBox", multiple: false, visibility : "hidden"},
+				_date_input : {type : "org.fater.albofornitori.control.TEDatePicker", multiple: false, visibility : "hidden"},
+				_date_checkbox : {type : "org.fater.albofornitori.control.TECheckBox", multiple: false, visibility : "hidden"},
 				_description_label : {type : "sap.m.Label", multiple: false},
-				_description : {type : "org.fater.app.control.TEInput", multiple: false, visibility : "hidden"},
+				_description : {type : "org.fater.albofornitori.control.TEInput", multiple: false, visibility : "hidden"},
 				_file_link  : {type : "sap.m.Link", multiple: false, visibility : "hidden"},
-				_file_upload  : {type : "org.fater.app.control.TEFileUploader", multiple: false, visibility : "hidden"},
-				_file_button : {type : "org.fater.app.control.TEButton", multiple: false, visibility : "hidden"}
+				_file_upload  : {type : "org.fater.albofornitori.control.TEFileUploader", multiple: false, visibility : "hidden"},
+				_file_button : {type : "org.fater.albofornitori.control.TEButton", multiple: false, visibility : "hidden"}
 			},
 			events : {
 				upload : {

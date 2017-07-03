@@ -7,7 +7,7 @@ sap.ui.define([
 ], function (jQuery, Controller, History) {
 	"use strict";
 	
-	return Controller.extend("org.fater.app.framework.BaseController", {
+	return Controller.extend("org.fater.albofornitori.framework.BaseController", {
 		
 		__targetName: null,
 		__isMainAppController: false,

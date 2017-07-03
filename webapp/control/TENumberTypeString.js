@@ -5,7 +5,7 @@ sap.ui.define([
 ], function(SimpleType) {
 	"use strict";
 
-	return SimpleType.extend("org.fater.app.control.TENumberTypeString", {
+	return SimpleType.extend("org.fater.albofornitori.control.TENumberTypeString", {
 
 		formatValue: function(oValue) {
 			if( oValue !== null && oValue !== undefined && oValue !== "" ) {

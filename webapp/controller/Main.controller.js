@@ -1,16 +1,16 @@
 /*global someFunction b:true*/
 /*eslint no-undef: "error"*/
-jQuery.sap.require("org.fater.app.util.Formatter2");
+jQuery.sap.require("org.fater.albofornitori.util.Formatter2");
 
 sap.ui.define([
-	"org/fater/app/framework/BaseController",
+	"org/fater/albofornitori/framework/BaseController",
 	"sap/ui/model/Filter",
 	"sap/m/MessageBox",
 	"sap/m/MessageToast"
 ], function(Controller, Filter, MessageBox, MessageToast) {
 	"use strict";
 
-	return Controller.extend("org.fater.app.controller.Main", {
+	return Controller.extend("org.fater.albofornitori.controller.Main", {
 
 		__targetName: "surveyList",
 		__clonedItem: undefined,
@@ -21,7 +21,7 @@ sap.ui.define([
 
 		_getBundle: function(){
 			var sLanguage = sap.ui.getCore().getConfiguration().getLanguage();
-			var sRootPath = jQuery.sap.getModulePath("org.fater.app");
+			var sRootPath = jQuery.sap.getModulePath("org.fater.albofornitori");
 			
 			if (!this._bundle){
 				this._bundle = jQuery.sap.resources({
@@ -61,7 +61,7 @@ sap.ui.define([
 			
 			if (!this["_" + sFilterName + "ValueHelpDialog"]) {
 				this["_" + sFilterName + "ValueHelpDialog"] = sap.ui.xmlfragment(
-					"org.fater.app.view.fragment." + sFragmentName + "InputAssistedDialog",
+					"org.fater.albofornitori.view.fragment." + sFragmentName + "InputAssistedDialog",
 					this
 				);
 				this.getView().addDependent(this["_" + sFilterName + "ValueHelpDialog"]);
@@ -306,13 +306,13 @@ sap.ui.define([
 		        
 		        row +=	((aLines[i].CompanyName)				?	aLines[i].CompanyName														:	" ")	+ ";" +
 						((aLines[i].PurchaseOrganizationName) 	?	aLines[i].PurchaseOrganizationName											:	" ")	+ ";" +
-						((aLines[i].SupplierType)				?	org.fater.app.util.Formatter2.supplierTypeFormat(aLines[i].SupplierType)		:	" ")	+ ";" +
-						((aLines[i].QualStatus)					?	org.fater.app.util.Formatter2.qualStatusFormat(aLines[i].QualStatus)			:	" ")	+ ";" +
+						((aLines[i].SupplierType)				?	org.fater.albofornitori.util.Formatter2.supplierTypeFormat(aLines[i].SupplierType)		:	" ")	+ ";" +
+						((aLines[i].QualStatus)					?	org.fater.albofornitori.util.Formatter2.qualStatusFormat(aLines[i].QualStatus)			:	" ")	+ ";" +
 						((aLines[i].SupplierId)					?	aLines[i].SupplierId														:	" ")	+ ";" +
 						((aLines[i].Name1) 						?	aLines[i].Name1																:	" ")	+ ";" +
 						((aLines[i].Name)						?	aLines[i].Name																:	" ")	+ ";" +
 						((aLines[i].MaterialCategoryName)		?	aLines[i].MaterialCategoryName												:	" ")	+ ";" +
-						((aLines[i].CreationDate)				?	org.fater.app.util.Formatter2.dateFormat(aLines[i].CreationDate)				:	" ");
+						((aLines[i].CreationDate)				?	org.fater.albofornitori.util.Formatter2.dateFormat(aLines[i].CreationDate)				:	" ");
 						
 		        // row.slice(0, row.length - 1);
 		        
@@ -362,7 +362,7 @@ sap.ui.define([
 		onTablePersonalizationButtonPressed: function(oEvent){
 			if (!this._personalizationDialog){
 				this._personalizationDialog = sap.ui.xmlfragment(
-					"org.fater.app.view.fragment.TablePersonalizationDialog",
+					"org.fater.albofornitori.view.fragment.TablePersonalizationDialog",
 					this
 				);
 				this.getView().addDependent(this._personalizationDialog);
@@ -381,7 +381,7 @@ sap.ui.define([
 		
 		_getDialog : function () {
 			if (!this._oTableVSDialog) {
-				this._oTableVSDialog = sap.ui.xmlfragment("org.fater.app.view.fragment.ViewSettingsDialog", this);
+				this._oTableVSDialog = sap.ui.xmlfragment("org.fater.albofornitori.view.fragment.ViewSettingsDialog", this);
 				this.getView().addDependent(this._oTableVSDialog);
 			}
 			return this._oTableVSDialog;

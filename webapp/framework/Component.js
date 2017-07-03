@@ -4,11 +4,11 @@ sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/model/resource/ResourceModel",
-	"org/fater/app/framework/Router"
+	"org/fater/albofornitori/framework/Router"
 ], function (UIComponent, JSONModel, ResourceModel, Router) {
 	"use strict";
 
-	var oComponent = UIComponent.extend("org.fater.app.framework.Component", {
+	var oComponent = UIComponent.extend("org.fater.albofornitori.framework.Component", {
 
 		// Metadata must be defined by the subclass that extend framework Component
 

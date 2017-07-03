@@ -105,17 +105,17 @@
 					
 					<Text text="{
 						path:'oDataModel>Supplier/Status',
-						formatter: 'org.fater.app.util.Formatter2.supplierTypeFormat'
+						formatter: 'org.fater.albofornitori.util.Formatter2.supplierTypeFormat'
 					}" />
 					
 					<ObjectStatus 
 						state="{
 							path: 'oDataModel>Status',
-							formatter: 'org.fater.app.util.Formatter2.qualStatusValueStateFormat'                   
+							formatter: 'org.fater.albofornitori.util.Formatter2.qualStatusValueStateFormat'                   
 						}"
 						text="{
 							path:'oDataModel>Status',
-							formatter: 'org.fater.app.util.Formatter2.qualStatusFormat'
+							formatter: 'org.fater.albofornitori.util.Formatter2.qualStatusFormat'
 						}" />
 					
 					<Text text="{oDataModel>SupplierId}" />
@@ -129,7 +129,7 @@
 						parts:[
 							{path: 'oDataModel>Supplier/CreatedT'}
 						],
-						formatter: 'org.fater.app.util.Formatter2.dateCompletedFormat'
+						formatter: 'org.fater.albofornitori.util.Formatter2.dateCompletedFormat'
 					}" />
  
  				</cells>

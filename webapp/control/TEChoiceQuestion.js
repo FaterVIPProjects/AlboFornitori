@@ -4,13 +4,13 @@ sap.ui.define([
 	"sap/ui/core/Control",
 	"sap/m/List",
 	"sap/m/CustomListItem",
-	"org/fater/app/control/TECheckBox",
+	"org/fater/albofornitori/control/TECheckBox",
     "sap/ui/core/ValueState",
     "sap/ui/core/ValueStateSupport",
 	"sap/ui/commons/RichTooltip"
 ], function (Control, List, CustomListItem, TECheckBox, ValueState, ValueStateSupport, RichTooltip) {
 	"use strict";
-	return Control.extend("org.fater.app.control.TEChoiceQuestion", {
+	return Control.extend("org.fater.albofornitori.control.TEChoiceQuestion", {
 		metadata : {
 			properties : {
 				customId		: {type : "string", defaultValue : null},

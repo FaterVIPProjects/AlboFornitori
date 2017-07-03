@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
-	xmlns:te="org.fater.app.control"
+	xmlns:te="org.fater.albofornitori.control"
 	xmlns="sap.m">
 	<!-- START FISCAL INFORMATION -->
 	<f:SimpleForm binding="{}" layout="ResponsiveGridLayout" columnsL="10" columnsM="10" editable="true" title="{i18n>fiscalInformation}">
@@ -230,7 +230,7 @@
 				required="{field_visibility>/branch/required}"/>
 			<Input value="{
 					path: 'Company/0/Branch',
-					type: 'org.fater.app.control.TENumberType'
+					type: 'org.fater.albofornitori.control.TENumberType'
 				}"
 				valueState="{= ${Company/0/Branchappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? 'Warning' : 'None' }"
 				tooltip="{= ${Company/0/Branchappr} &amp;&amp; ${/Status} === ${Types>/participationStatus/QC} &amp;&amp; ( (${user>/Username} === ${/CommercManagerId} &amp;&amp; ${/Apprrespcomm}) || (${user>/Username} === ${/RegistryManagerId} &amp;&amp; ${/Apprrespanag}) ) ? ${i18n>value_state_warning_modified} : '' }"

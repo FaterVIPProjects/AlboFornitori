@@ -3,7 +3,7 @@
 	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core"
 	xmlns:form="sap.ui.layout.form"
-	xmlns:te="org.fater.app.control"
+	xmlns:te="org.fater.albofornitori.control"
 	xmlns="sap.m">
 		<l:Grid defaultSpan="L4 M4 S4" class="sapUiSmallMarginTop">
 			<l:content>

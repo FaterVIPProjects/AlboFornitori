@@ -6,7 +6,7 @@ sap.ui.define([
 	], function(RadioButton) {
 	"use strict";
 
-	var TERadioButton = RadioButton.extend("org.fater.app.control.TERadioButton", { 
+	var TERadioButton = RadioButton.extend("org.fater.albofornitori.control.TERadioButton", { 
 	
 		metadata : {
 			properties : {

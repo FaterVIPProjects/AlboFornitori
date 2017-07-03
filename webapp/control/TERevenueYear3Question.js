@@ -2,8 +2,8 @@
 /*eslint no-undef: "error"*/
 sap.ui.define([
 	"sap/ui/core/Control",
-	"org/fater/app/control/TEInput",
-	"org/fater/app/control/TESelect",
+	"org/fater/albofornitori/control/TEInput",
+	"org/fater/albofornitori/control/TESelect",
 	"sap/m/Label",
 	"sap/m/Text",
 	"sap/ui/core/Item",
@@ -15,7 +15,7 @@ sap.ui.define([
 
 ], function (Control, TEInput, TESelect, Label, Text, Item, ValueState, ValueStateSupport, RichTooltip, Grid, FlexBox) {
 	"use strict";
-	return Control.extend("org.fater.app.control.TERevenueYear3Question", {
+	return Control.extend("org.fater.albofornitori.control.TERevenueYear3Question", {
 		metadata : {
 			properties : {
 				enabled			: { type : "bool", defaultValue : false },
@@ -28,24 +28,24 @@ sap.ui.define([
 				
 				//Question 1
 				_revenue_label_0 : {type : "sap.m.Label", multiple: false},
-				_revenue_0 : {type : "org.fater.app.control.TEInput", multiple: false, visibility : "hidden"},
-				_currency_0 : {type : "org.fater.app.control.TESelect", multiple: false, visibility : "hidden"},
+				_revenue_0 : {type : "org.fater.albofornitori.control.TEInput", multiple: false, visibility : "hidden"},
+				_currency_0 : {type : "org.fater.albofornitori.control.TESelect", multiple: false, visibility : "hidden"},
 				_year_label_0 : {type : "sap.m.Text", multiple: false, visibility : "hidden"},
-				_year_0 : {type : "org.fater.app.control.TEInput", multiple: false, visibility : "hidden"},
+				_year_0 : {type : "org.fater.albofornitori.control.TEInput", multiple: false, visibility : "hidden"},
 				
 				//Question 2
 				_revenue_label_1 : {type : "sap.m.Label", multiple: false},
-				_revenue_1 : {type : "org.fater.app.control.TEInput", multiple: false, visibility : "hidden"},
-				_currency_1 : {type : "org.fater.app.control.TESelect", multiple: false, visibility : "hidden"},
+				_revenue_1 : {type : "org.fater.albofornitori.control.TEInput", multiple: false, visibility : "hidden"},
+				_currency_1 : {type : "org.fater.albofornitori.control.TESelect", multiple: false, visibility : "hidden"},
 				_year_label_1 : {type : "sap.m.Text", multiple: false, visibility : "hidden"},
-				_year_1 : {type : "org.fater.app.control.TEInput", multiple: false, visibility : "hidden"},
+				_year_1 : {type : "org.fater.albofornitori.control.TEInput", multiple: false, visibility : "hidden"},
 				
 				//Question 3
 				_revenue_label_2 : {type : "sap.m.Label", multiple: false},
-				_revenue_2 : {type : "org.fater.app.control.TEInput", multiple: false, visibility : "hidden"},
-				_currency_2 : {type : "org.fater.app.control.TESelect", multiple: false, visibility : "hidden"},
+				_revenue_2 : {type : "org.fater.albofornitori.control.TEInput", multiple: false, visibility : "hidden"},
+				_currency_2 : {type : "org.fater.albofornitori.control.TESelect", multiple: false, visibility : "hidden"},
 				_year_label_2 : {type : "sap.m.Text", multiple: false, visibility : "hidden"},
-				_year_2 : {type : "org.fater.app.control.TEInput", multiple: false, visibility : "hidden"}
+				_year_2 : {type : "org.fater.albofornitori.control.TEInput", multiple: false, visibility : "hidden"}
 			},
 			events : {
 			}
@@ -138,7 +138,7 @@ sap.ui.define([
 			input = new TEInput({
 				value: {
 					path: "Value",
-					type: "org.fater.app.control.TENumberTypeString"
+					type: "org.fater.albofornitori.control.TENumberTypeString"
 				},
 				maxLength: 4,
 				enabled: this.getEnabled(),

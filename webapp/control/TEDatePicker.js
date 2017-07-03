@@ -5,7 +5,7 @@ sap.ui.define([
 ], function (DatePicker, RichTooltip) {
 	"use strict";
 
-	var TEDatePicker = DatePicker.extend("org.fater.app.control.TEDatePicker", { 
+	var TEDatePicker = DatePicker.extend("org.fater.albofornitori.control.TEDatePicker", { 
 	
 		metadata : {
 			properties : {

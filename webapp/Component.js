@@ -1,13 +1,13 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"org/fater/app/model/models",
-	"org/fater/app/Router",
+	"org/fater/albofornitori/model/models",
+	"org/fater/albofornitori/Router",
 	"sap/ui/model/json/JSONModel"
 ], function(UIComponent, Device, models, Router, JSONModel) {
 	"use strict";
 
-	return UIComponent.extend("org.fater.app.Component", {
+	return UIComponent.extend("org.fater.albofornitori.Component", {
 
 		metadata: {
 			manifest: "json"
@@ -22,7 +22,7 @@ sap.ui.define([
 			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 			
-			var rootPath = jQuery.sap.getModulePath("org.fater.app");
+			var rootPath = jQuery.sap.getModulePath("org.fater.albofornitori");
 			jQuery("head").append("<script src=\""+rootPath+"/assets/js/underscore.js\"></script>");
 			jQuery("head").append("<script src=\""+rootPath+"/util/Constraint.js\"></script>");
 			jQuery("head").append("<script src=\""+rootPath+"/util/survey_utils.js\"></script>");
